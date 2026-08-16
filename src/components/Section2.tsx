@@ -107,6 +107,7 @@ export const Section2: React.FC = () => {
           src="/images/clouds.png" 
           alt="Clouds Transition" 
           className="relative w-full h-auto min-h-[300px] object-cover opacity-90 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+          loading="lazy"
         />
       </div>
 
@@ -194,7 +195,7 @@ export const Section2: React.FC = () => {
               >
                 {/* Image Placeholder or actual image */}
                 <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-gradient-to-br from-indigo-200 to-purple-200 flex items-center justify-center">
-                  <img src="../images/profile.jpg" alt="" className="w-full h-full object-cover object-center" />
+                  <img src="../images/profile.jpg" alt="" className="w-full h-full object-cover object-center" loading="lazy" />
                   </div>
 
               

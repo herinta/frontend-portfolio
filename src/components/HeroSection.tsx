@@ -150,7 +150,7 @@ export const HeroSection: React.FC = () => {
         {/* Background Image & Gradient */}
         <div 
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000"
-          style={{ backgroundImage: 'url(/images/bg.jpg)' }}
+          style={{ backgroundImage: 'url(/images/bg.webp)' }}
         >
           {/* Subtle gradient overlay to ensure text readability without hiding the bg */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#1a0b2e]/60 via-[#10072b]/50 to-[#0a2342]/60 mix-blend-multiply"></div>

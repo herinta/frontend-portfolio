@@ -74,7 +74,7 @@ function App() {
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div 
               className="absolute inset-0 w-full h-full bg-cover bg-top bg-no-repeat"
-              style={{ backgroundImage: 'url(/images/bg-section.jpg)' }}
+              style={{ backgroundImage: 'url(/images/bg-section.webp)' }}
             />
           </div>
 
