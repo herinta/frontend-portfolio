@@ -212,7 +212,7 @@ export const ExperienceSection: React.FC = () => {
       <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* ── Section heading ───────────────────────────────────────── */}
-        <div className="mb-10 text-center">
+        <div className="mb-10 text-center mt-20">
           <p className="text-purple-400 text-sm font-semibold tracking-[0.3em] uppercase mb-3">
             Journey
           </p>
