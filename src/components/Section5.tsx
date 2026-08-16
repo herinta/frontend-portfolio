@@ -104,23 +104,25 @@ export const Section5: React.FC = () => {
       ease: 'power2.inOut',
     }, 3);
 
-    // Sun parallax animation - Step 1: Move to bottom left and enlarge (scale down on mobile)
+    // Sun parallax animation - Step 1: Move to bottom left and enlarge (scale down/go offscreen on mobile)
     tl.to('.sun-parallax', {
       top: '90%',
       left: '15%',
       scale: isMobile ? 4.5 : 25,
-      opacity: 0.6,
-      duration: 3,
-      ease: 'power1.inOut',
+      opacity: isMobile ? 0 : 0.6,
+      duration: isMobile ? 1 : 3,
+      ease: isMobile ? 'power2.inOut' : 'power1.inOut',
     }, 0);
 
-    // Sun parallax animation - Step 2: Exit to the left
-    tl.to('.sun-parallax', {
-      left: '-20%',
-      opacity: 0,
-      duration: 1,
-      ease: 'power2.in',
-    }, 3);
+    // Sun parallax animation - Step 2: Exit to the left (desktop only)
+    if (!isMobile) {
+      tl.to('.sun-parallax', {
+        left: '-20%',
+        opacity: 0,
+        duration: 1,
+        ease: 'power2.in',
+      }, 3);
+    }
 
     // Cleanup
     return () => {
