@@ -1,0 +1,373 @@
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ── Stats ──────────────────────────────────────────────────────────────────
+interface Stat {
+  value: number;
+  suffix: string;
+  label: string;
+  icon: string;
+}
+
+const STATS: Stat[] = [
+  { value: 20,  suffix: '+', label: 'Projects Completed', icon: '🚀' },
+  { value: 3,   suffix: '+', label: 'Years of Experience', icon: '⚡' },
+  { value: 8,   suffix: '+', label: 'Technologies Mastered', icon: '🛠️' },
+  { value: 100, suffix: '%', label: 'Passion for Code',    icon: '❤️' },
+];
+
+// ── Experience entries ──────────────────────────────────────────────────────
+interface Experience {
+  period: string;
+  role: string;
+  company: string;
+  type: string;         // "Full-time" | "Internship" | "Freelance" etc.
+  description: string;
+  tags: string[];
+  accent: string;       // Tailwind color class for the timeline dot & border
+}
+
+const EXPERIENCES: Experience[] = [
+  {
+    period: '2025',
+    role: 'Frontend Mentor',
+    company: 'Tech Education / Freelance',
+    type: 'Mentor',
+    description:
+      'Mentoring and guiding students in frontend web development architectures. Conducting thorough code reviews, architectural feedback, and teaching modern React and Next.js best practices.',
+    tags: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    accent: 'from-purple-500 to-indigo-500',
+  },
+  {
+    period: '2024',
+    role: 'Full-Stack Developer Intern',
+    company: 'Demdomena',
+    type: 'Internship',
+    description:
+      'Developed and optimized full-stack web applications. Participated in team sprints to build client interfaces, backend routing, database designs, and streamlined state-management modules.',
+    tags: ['Next.js', 'React.js', 'Node.js', 'PostgreSQL'],
+    accent: 'from-pink-500 to-rose-500',
+  },
+  {
+    period: '2020',
+    role: 'Web Developer',
+    company: 'Pwk Consultant',
+    type: 'Contract',
+    description:
+      'Designed and engineered corporate web applications and internal consulting tools. Maintained legacy systems, integrated secure REST APIs, and managed MySQL database systems.',
+    tags: ['PHP', 'Laravel', 'MySQL', 'JavaScript'],
+    accent: 'from-sky-500 to-cyan-500',
+  },
+];
+
+// ── Component ───────────────────────────────────────────────────────────────
+export const ExperienceSection: React.FC = () => {
+  const sectionRef    = useRef<HTMLElement>(null);
+  const statsRef      = useRef<(HTMLDivElement | null)[]>([]);
+  const counterRefs   = useRef<(HTMLSpanElement | null)[]>([]);
+  const lineRef       = useRef<HTMLDivElement>(null);
+  const cardRefs      = useRef<(HTMLDivElement | null)[]>([]);
+  const leftCloudRef  = useRef<HTMLDivElement>(null);
+  const rightCloudRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // ── Stat cards slide-in ─────────────────────────────────────────────
+    gsap.fromTo(
+      statsRef.current,
+      { y: 60, opacity: 0, scale: 0.9 },
+      {
+        y: 0, opacity: 1, scale: 1,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: 'back.out(1.4)',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+      }
+    );
+
+    // ── Count-up numbers ────────────────────────────────────────────────
+    STATS.forEach((stat, i) => {
+      const el = counterRefs.current[i];
+      if (!el) return;
+      const obj = { val: 0 };
+      gsap.to(obj, {
+        val: stat.value,
+        duration: 2,
+        ease: 'power2.out',
+        delay: i * 0.12,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+        onUpdate: () => {
+          el.textContent = Math.round(obj.val).toString();
+        },
+      });
+    });
+
+    // ── Timeline line draw-down (Stepped per-card for Sun descent) ───────
+    const TARGET_HEIGHTS = ['25%', '65%', '100%'];
+    
+    cardRefs.current.forEach((card, i) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 80%',
+        onEnter: () => {
+          gsap.to(lineRef.current, {
+            height: TARGET_HEIGHTS[i],
+            duration: 0.8,
+            ease: 'power2.out'
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(lineRef.current, {
+            height: i === 0 ? '0%' : TARGET_HEIGHTS[i - 1],
+            duration: 0.8,
+            ease: 'power2.out'
+          });
+        }
+      });
+    });
+
+    // ── Experience cards fly in + bounce float after ────────────────────
+    const isMobile = window.innerWidth < 768;
+    cardRefs.current.forEach((card, i) => {
+      const fromLeft = i % 2 === 0;
+      const xOffset = isMobile ? 30 : (fromLeft ? -80 : 80);
+      gsap.fromTo(
+        card,
+        { x: xOffset, opacity: 0, y: 0 },
+        {
+          x: 0, opacity: 1,
+          duration: 0.8,
+          ease: 'back.out(1.6)',   // slight overshoot on entry
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 80%',
+          },
+          onComplete: () => {
+            // gentle infinite float after entrance — each card slightly offset in phase
+            gsap.to(card, {
+              y: -8,
+              duration: 1.8 + i * 0.15,   // stagger phase so they don't all move in sync
+              ease: 'sine.inOut',
+              repeat: -1,
+              yoyo: true,
+            });
+          },
+        }
+      );
+    });
+
+    // ── Floating clouds animation ────────────────────────────────────────
+    gsap.to(leftCloudRef.current, {
+      y: -15,
+      duration: 5,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true
+    });
+
+    gsap.to(rightCloudRef.current, {
+      y: 15,
+      duration: 5.5,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true
+    });
+
+  }, { scope: sectionRef });
+
+  return (
+    <section
+      ref={sectionRef}
+      id="experience"
+      className="relative w-full z-20 mt-0 md:-mt-20 pt-8 pb-64 px-6 md:px-12 overflow-hidden"
+    >
+      {/* No dark overlay — background image shows through. Text is adapted to light bg. */}
+      {/* ── Ambient glows ─────────────────────────────────────────── */}
+      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-purple-400/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-400/10 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Decorative Clouds on Left and Right sides */}
+      <div 
+        ref={leftCloudRef}
+        className="absolute left-0 top-[15%] w-[250px] md:w-[400px] pointer-events-none z-0 select-none -translate-x-[20%]"
+      >
+        
+      </div>
+      <div 
+        ref={rightCloudRef}
+        className="absolute right-0 bottom-[10%] w-[250px] md:w-[400px] pointer-events-none z-0 select-none translate-x-[20%] scale-x-[-1]"
+      >
+        <img src="" alt="Cloud Right" className="w-full h-auto object-contain opacity-40 filter brightness-110" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+
+        {/* ── Section heading ───────────────────────────────────────── */}
+        <div className="mb-10 text-center">
+          <p className="text-purple-400 text-sm font-semibold tracking-[0.3em] uppercase mb-3">
+            Journey
+          </p>
+          <h2
+            className="text-5xl md:text-7xl font-medium italic text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.35)] leading-none"
+            style={{ fontFamily: "'Dancing Script', cursive" }}
+          >
+            Experience
+          </h2>
+        </div>
+
+        {/* ── Stats row ─────────────────────────────────────────────── */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {STATS.map((stat, i) => (
+              <div
+                key={stat.label}
+                ref={(el) => { statsRef.current[i] = el; }}
+                style={{ perspective: '800px' }}
+                className="group"
+              >
+                {/* 3D glass card */}
+                <div className="
+                  relative overflow-hidden rounded-2xl p-[1px]
+                  bg-gradient-to-br from-white/20 via-white/5 to-transparent
+                  shadow-[0_8px_32px_rgba(99,102,241,0.12),0_1px_0_rgba(255,255,255,0.4)_inset]
+                  transition-transform duration-500 ease-out
+                  group-hover:[transform:rotateX(6deg)_rotateY(-4deg)_scale(1.04)]
+                ">
+                  {/* Inner glass — barely tinted, fully transparent feel */}
+                  <div className="
+                    rounded-[15px]
+                    bg-white/[0.06] backdrop-blur-md
+                    px-4 py-5 flex flex-col items-center text-center
+                    border border-white/20
+                  ">
+                    {/* Thin top shimmer */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full pointer-events-none" />
+
+                    {/* Number */}
+                    <div className="relative text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white via-slate-100 to-slate-300 leading-none mb-2 drop-shadow-sm">
+                      <span ref={(el) => { counterRefs.current[i] = el; }}>0</span>
+                      <span className="text-white">{stat.suffix}</span>
+                    </div>
+
+                    {/* Label */}
+                    <p className="relative text-[10px] md:text-xs text-slate-300 font-semibold tracking-wide">
+                      {stat.label}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Timeline ──────────────────────────────────────────────── */}
+        <div className="relative">
+
+          {/* Vertical line */}
+          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 -bottom-64 w-1 bg-white/5 rounded-full">
+            <div
+              ref={lineRef}
+              className="w-full bg-gradient-to-b from-purple-500 via-pink-500 to-indigo-500 rounded-full relative shadow-[0_0_8px_rgba(139,92,246,0.3)]"
+              style={{ height: '0%' }}
+            >
+              {/* Glowing Sun Head Dot */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-10 h-10 flex items-center justify-center pointer-events-none z-20">
+                {/* Sun Core */}
+                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 shadow-[0_0_16px_rgba(245,158,11,0.8),_0_0_32px_rgba(251,191,36,0.6)] relative flex items-center justify-center">
+                  {/* Sun Rays SVG */}
+                  <svg className="absolute w-10 h-10 text-amber-300/80" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Cards */}
+          <div className="flex flex-col gap-11">
+            {EXPERIENCES.map((exp, i) => {
+              const isLeft = i % 2 === 0;
+              const isDarkTheme = false; // All cards use the same dark theme
+              return (
+                <div key={i} className="relative flex items-center">
+
+                  {/* Period badge */}
+                  <div className="absolute left-10 md:left-1/2 -translate-x-0 md:-translate-x-1/2 -top-6 z-10">
+                    <span className={`text-[11px] font-semibold backdrop-blur-sm px-3 py-0.5 rounded-full whitespace-nowrap ${
+                      isDarkTheme 
+                        ? 'text-purple-800 bg-white/80 border border-purple-300/60 shadow-sm' 
+                        : 'text-purple-300 bg-black/60 border border-purple-500/20 shadow-none'
+                    }`}>
+                      {exp.period}
+                    </span>
+                  </div>
+
+                  {/* Spacer for opposite side */}
+                  {!isLeft && <div className="hidden md:block flex-1 pr-8" />}
+
+                  {/* Card */}
+                  <div
+                    ref={(el) => { cardRefs.current[i] = el; }}
+                    className={`flex-1 pl-10 md:pl-0 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}
+                  >
+                    <div className={`
+                      relative rounded-2xl backdrop-blur-md p-4.5 transition-all duration-300 group overflow-hidden
+                      ${isDarkTheme 
+                        ? 'bg-white/60 border border-white/70 shadow-md hover:bg-white/70' 
+                        : 'bg-white/5 border border-white/10 hover:bg-white/8 shadow-none'
+                      }
+                    `}>
+                      {/* Gradient accent bar */}
+                      <div className={`absolute top-0 ${isLeft ? 'md:right-0 md:left-auto left-0' : 'left-0'} w-1 md:w-1.5 h-full bg-gradient-to-b ${exp.accent} rounded-full`} />
+
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div>
+                          <h3 className={`text-base font-bold leading-snug ${isDarkTheme ? 'text-indigo-950' : 'text-white'}`}>{exp.role}</h3>
+                          <p className={`text-xs font-medium ${isDarkTheme ? 'text-purple-800' : 'text-purple-300'}`}>{exp.company}</p>
+                        </div>
+                        <span className={`shrink-0 text-[10px] px-2.5 py-0.5 rounded-full bg-gradient-to-r ${exp.accent} text-white font-semibold shadow`}>
+                          {exp.type}
+                        </span>
+                      </div>
+
+                      <p className={`text-[13px] leading-relaxed mb-3 ${isDarkTheme ? 'text-slate-700' : 'text-slate-400'}`}>
+                        {exp.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5">
+                        {exp.tags.map(tag => (
+                          <span
+                            key={tag}
+                            className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+                              isDarkTheme 
+                                ? 'bg-white/80 border border-slate-200 text-slate-700 shadow-sm' 
+                                : 'bg-white/5 border border-white/10 text-slate-300'
+                            }`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Spacer for opposite side */}
+                  {isLeft && <div className="hidden md:block flex-1 pl-8" />}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
