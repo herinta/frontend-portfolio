@@ -64,7 +64,7 @@ export const Section5: React.FC = () => {
         pin: true,
         scrub: 1,
         start: 'top top',
-        end: () => `+=${window.innerHeight * 4}`, // Scroll distance for 3 cards transition + 1 exit animation
+        end: () => `+=${window.innerHeight * 3}`, // Scroll distance for 3 cards transition (no exit animation)
         anticipatePin: 1,
       }
     });
@@ -96,14 +96,6 @@ export const Section5: React.FC = () => {
       ease: 'none',
     }, 2);
 
-    // Parallax Exit Effect: cards shrink and move up
-    tl.to(scrollWrapperRef.current, {
-      scale: isMobile ? 1 : 0.6,
-      y: isMobile ? -100 : -300,
-      opacity: 0,
-      ease: 'power2.inOut',
-    }, 3);
-
     // Sun parallax animation - Step 1: Move to bottom left and enlarge (scale down/go offscreen on mobile)
     tl.to('.sun-parallax', {
       top: '90%',
@@ -113,16 +105,6 @@ export const Section5: React.FC = () => {
       duration: isMobile ? 1 : 3,
       ease: isMobile ? 'power2.inOut' : 'power1.inOut',
     }, 0);
-
-    // Sun parallax animation - Step 2: Exit to the left (desktop only)
-    if (!isMobile) {
-      tl.to('.sun-parallax', {
-        left: '-20%',
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.in',
-      }, 3);
-    }
 
     // Cleanup
     return () => {
