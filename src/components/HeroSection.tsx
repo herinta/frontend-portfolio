@@ -171,7 +171,7 @@ export const HeroSection: React.FC = () => {
             <div
               key={tech.name}
               ref={(el) => { techRefs.current[i] = el; }}
-              className={`absolute font-bold text-sm sm:text-lg md:text-2xl opacity-0 ${tech.color} px-3 py-1.5 sm:px-5 sm:py-3 rounded-2xl bg-purple-950/60 md:bg-white/5 border border-white/10 backdrop-blur-none md:backdrop-blur-md shadow-2xl z-20 will-change-transform`}
+              className={`absolute font-bold text-sm sm:text-lg md:text-2xl opacity-0 ${tech.color} px-3 py-1.5 sm:px-5 sm:py-3 rounded-2xl bg-[#1d0d3a]/90 border border-white/15 shadow-2xl z-20 will-change-transform`}
               style={{ 
                 top: '50%', left: '50%'
               }}
@@ -201,10 +201,10 @@ export const HeroSection: React.FC = () => {
               <div className="absolute left-1/2 -top-[20px] md:-top-[30px] w-2 h-2 md:w-3.5 md:h-3.5 bg-purple-500 border border-white rounded-full -translate-x-1/2" />
             </div>
             
-            {/* Layer 2: Main Glass Plate (No backdrop blur on mobile for performance) */}
+            {/* Layer 2: Main Glass Plate (Optimized dark theme without backdrop blur for smooth 3D flip performance) */}
             <div 
               ref={layer2Ref} 
-              className="absolute inset-0 bg-[#160c2b]/90 md:bg-white/10 backdrop-blur-none md:backdrop-blur-xl border border-white/20 md:border-white/40 rounded-2xl sm:rounded-3xl origin-center shadow-[0_0_30px_rgba(138,43,226,0.2)] md:shadow-[0_0_50px_rgba(138,43,226,0.3)]"
+              className="absolute inset-0 bg-[#140a24]/95 border border-white/20 rounded-2xl sm:rounded-3xl origin-center shadow-[0_0_30px_rgba(138,43,226,0.25)] md:shadow-[0_0_50px_rgba(138,43,226,0.35)]"
             ></div>
 
             {/* Front Face: MY PORTFOLIO */}

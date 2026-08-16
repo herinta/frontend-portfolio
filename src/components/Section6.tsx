@@ -206,6 +206,34 @@ export const Section6: React.FC = () => {
 
     if (!name.trim() || !message.trim()) return;
 
+    // Indonesian bad words filter (handles repeated letters, e.g., 'memekkk', 'kontooool')
+    const badWords = [
+      'kontol', 'memek', 'jembut', 'peler', 'pepek', 'ngentot', 'ngentod', 'anjing', 
+      'bangsat', 'babi', 'goblok', 'tolol', 'jancok', 'jancuk', 'pantek', 'itil', 'lonte'
+    ];
+    
+    const checkProfanity = (text: string) => {
+      const lowerText = text.toLowerCase();
+      // Match words while ignoring repeated characters (e.g. k+o+n+t+o+l+)
+      for (const word of badWords) {
+        // Build regex patterns for repeated characters: k+o+n+t+o+l+
+        const pattern = word
+          .split('')
+          .map(char => `${char}+`)
+          .join('');
+        const regex = new RegExp(`\\b${pattern}\\b`, 'i');
+        if (regex.test(lowerText) || lowerText.includes(word)) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    if (checkProfanity(name) || checkProfanity(message)) {
+      alert('Komentar mengandung kata tidak sopan yang dilarang.');
+      return;
+    }
+
     // 2. URL/Link content block (prevents backlink spam crawlers)
     const urlRegex = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(\.[a-zA-Z]{2,6}\b)/i;
     if (urlRegex.test(message) || urlRegex.test(name)) {
