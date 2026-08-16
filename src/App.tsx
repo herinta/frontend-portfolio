@@ -78,7 +78,7 @@ function App() {
       {/* 3D Purple Planet Overlay */}
       <div 
         ref={planetRef}
-        className="fixed w-[200px] h-[200px] md:w-[280px] md:h-[280px] rounded-full z-45 pointer-events-none bg-cover bg-center bg-no-repeat mix-blend-screen"
+        className="fixed w-[200px] h-[200px] md:w-[280px] md:h-[280px] rounded-full z-45 pointer-events-none bg-cover bg-center bg-no-repeat mix-blend-screen will-change-transform"
         style={{
           backgroundImage: 'url(/images/planet-purple.png)',
           top: '-60px',

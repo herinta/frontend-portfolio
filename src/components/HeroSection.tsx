@@ -84,17 +84,6 @@ export const HeroSection: React.FC = () => {
       });
     }
 
-    // Continuous subtle bounce for the main card (only on desktop)
-    if (!isMobile) {
-      gsap.to(cardRef.current, {
-        y: '+=15',
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      });
-    }
-
     // 2. ScrollTrigger animation
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -166,23 +155,23 @@ export const HeroSection: React.FC = () => {
           {/* Subtle gradient overlay to ensure text readability without hiding the bg */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#1a0b2e]/60 via-[#10072b]/50 to-[#0a2342]/60 mix-blend-multiply"></div>
           
-          {/* Moving Ambient Color Blobs (Reduced size & opacity) */}
-          <div className="absolute top-10 left-10 w-[300px] h-[300px] bg-purple-500/15 rounded-full blur-[90px] mix-blend-screen ambient-blob"></div>
-          <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-blue-500/15 rounded-full blur-[100px] mix-blend-screen ambient-blob delay-1"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-pink-500/10 rounded-full blur-[80px] mix-blend-screen ambient-blob delay-2"></div>
+          {/* Moving Ambient Color Blobs (Reduced size & opacity, hidden on mobile for performance) */}
+          <div className="hidden md:block absolute top-10 left-10 w-[300px] h-[300px] bg-purple-500/15 rounded-full blur-[90px] mix-blend-screen ambient-blob"></div>
+          <div className="hidden md:block absolute bottom-10 right-10 w-[400px] h-[400px] bg-blue-500/15 rounded-full blur-[100px] mix-blend-screen ambient-blob delay-1"></div>
+          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-pink-500/10 rounded-full blur-[80px] mix-blend-screen ambient-blob delay-2"></div>
           
           <div className="absolute inset-0 bg-blue-900/10"></div>
         </div>
 
 
-        <div ref={mainContentRef} className="relative z-10 w-full h-full flex items-center justify-center transform-style-3d">
+        <div ref={mainContentRef} className="relative z-10 w-full h-full flex items-center justify-center transform-style-3d will-change-transform">
           
           {/* Tech Stack */}
           {TECH_STACK.map((tech, i) => (
             <div
               key={tech.name}
               ref={(el) => { techRefs.current[i] = el; }}
-              className={`absolute font-bold text-sm sm:text-lg md:text-2xl opacity-0 ${tech.color} px-3 py-1.5 sm:px-5 sm:py-3 rounded-2xl bg-purple-950/60 md:bg-white/5 border border-white/10 backdrop-blur-none md:backdrop-blur-md shadow-2xl z-20`}
+              className={`absolute font-bold text-sm sm:text-lg md:text-2xl opacity-0 ${tech.color} px-3 py-1.5 sm:px-5 sm:py-3 rounded-2xl bg-purple-950/60 md:bg-white/5 border border-white/10 backdrop-blur-none md:backdrop-blur-md shadow-2xl z-20 will-change-transform`}
               style={{ 
                 top: '50%', left: '50%'
               }}
@@ -194,7 +183,7 @@ export const HeroSection: React.FC = () => {
           {/* Central Rectangular Card Container */}
           <div 
             ref={cardRef} 
-            className="relative w-[88vw] sm:w-[500px] md:w-[750px] lg:w-[900px] h-[90px] sm:h-[130px] md:h-[180px] flex justify-center items-center z-30 pointer-events-none transform-style-3d"
+            className="relative w-[88vw] sm:w-[500px] md:w-[750px] lg:w-[900px] h-[90px] sm:h-[130px] md:h-[180px] flex justify-center items-center z-30 pointer-events-none transform-style-3d will-change-transform"
           >
             {/* Layer 1: Figma/Vector Edit Bounding Box */}
             <div 
