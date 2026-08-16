@@ -14,6 +14,8 @@ export const Section2: React.FC = () => {
   const starRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    const isMobile = window.innerWidth < 768;
+
     // Reveal text content when scrolling into Section 2
     gsap.fromTo(textContainerRef.current, 
       { y: 100, opacity: 0 },
@@ -29,25 +31,27 @@ export const Section2: React.FC = () => {
       }
     );
 
-    // Profile image complex entrance from behind clouds (above)
-    const startY = window.innerWidth < 768 ? -220 : -800;
+    // Profile image slide-in from the right (no falling from above)
+    const startX = isMobile ? 300 : 400;
     gsap.fromTo(profileWrapperRef.current,
       { 
-        y: startY, // Start high up (behind the clouds)
-        scale: 0.2, // Start small
-        rotation: 720, // Start rotated
+        x: startX,
+        y: 0,
+        scale: 0.95,
+        rotation: 0,
         opacity: 0,
       },
       {
+        x: 0,
         y: 0,
         scale: 1,
         rotation: 0,
         opacity: 1,
-        duration: 2.5, // Slower for dramatic effect
+        duration: 1.5,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top center',
+          start: isMobile ? 'top 80%' : 'top center',
         },
         onComplete: () => {
           // Start the continuous floating animation ONLY after it has fully landed

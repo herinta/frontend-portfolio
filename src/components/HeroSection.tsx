@@ -50,6 +50,8 @@ export const HeroSection: React.FC = () => {
   const roleRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
+    const isMobile = window.innerWidth < 768;
+
     // Initial states
     gsap.set(techRefs.current, {
       xPercent: -50,
@@ -67,29 +69,31 @@ export const HeroSection: React.FC = () => {
       transformStyle: 'preserve-3d'
     });
 
-    // 1. Continuous floating animation for role cards
-    roleRefs.current.forEach((ref, index) => {
-      gsap.to(ref, {
-        y: '+=20',
-        rotation: '+=3',
-        duration: 3 + index * 0.5,
+    // 1. Continuous floating animation for role cards (only on desktop)
+    if (!isMobile) {
+      roleRefs.current.forEach((ref, index) => {
+        gsap.to(ref, {
+          y: '+=20',
+          rotation: '+=3',
+          duration: 3 + index * 0.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: ROLE_CARDS[index].delay,
+        });
+      });
+    }
+
+    // Continuous subtle bounce for the main card (only on desktop)
+    if (!isMobile) {
+      gsap.to(cardRef.current, {
+        y: '+=15',
+        duration: 2.5,
         repeat: -1,
         yoyo: true,
-        ease: 'sine.inOut',
-        delay: ROLE_CARDS[index].delay,
+        ease: 'sine.inOut'
       });
-    });
-
-    // Continuous subtle bounce for the main card
-    gsap.to(cardRef.current, {
-      y: '+=15',
-      duration: 2.5,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut'
-    });
-
-    const isMobile = window.innerWidth < 768;
+    }
 
     // 2. ScrollTrigger animation
     const tl = gsap.timeline({
@@ -178,7 +182,7 @@ export const HeroSection: React.FC = () => {
             <div
               key={tech.name}
               ref={(el) => { techRefs.current[i] = el; }}
-              className={`absolute font-bold text-sm sm:text-lg md:text-2xl opacity-0 ${tech.color} px-3 py-1.5 sm:px-5 sm:py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl z-20`}
+              className={`absolute font-bold text-sm sm:text-lg md:text-2xl opacity-0 ${tech.color} px-3 py-1.5 sm:px-5 sm:py-3 rounded-2xl bg-purple-950/60 md:bg-white/5 border border-white/10 backdrop-blur-none md:backdrop-blur-md shadow-2xl z-20`}
               style={{ 
                 top: '50%', left: '50%'
               }}
@@ -208,10 +212,10 @@ export const HeroSection: React.FC = () => {
               <div className="absolute left-1/2 -top-[20px] md:-top-[30px] w-2 h-2 md:w-3.5 md:h-3.5 bg-purple-500 border border-white rounded-full -translate-x-1/2" />
             </div>
             
-            {/* Layer 2: Main Glass Plate */}
+            {/* Layer 2: Main Glass Plate (No backdrop blur on mobile for performance) */}
             <div 
               ref={layer2Ref} 
-              className="absolute inset-0 bg-white/10 backdrop-blur-xl border border-white/40 rounded-2xl sm:rounded-3xl origin-center shadow-[0_0_30px_rgba(138,43,226,0.2)] md:shadow-[0_0_50px_rgba(138,43,226,0.3)]"
+              className="absolute inset-0 bg-[#160c2b]/90 md:bg-white/10 backdrop-blur-none md:backdrop-blur-xl border border-white/20 md:border-white/40 rounded-2xl sm:rounded-3xl origin-center shadow-[0_0_30px_rgba(138,43,226,0.2)] md:shadow-[0_0_50px_rgba(138,43,226,0.3)]"
             ></div>
 
             {/* Front Face: MY PORTFOLIO */}

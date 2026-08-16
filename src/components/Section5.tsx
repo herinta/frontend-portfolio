@@ -47,11 +47,16 @@ export const Section5: React.FC = () => {
   const cloudsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    const isMobile = window.innerWidth < 768;
     // Stacking/shuffling card effect (wipe vertical transitions)
     const panels = gsap.utils.toArray('.portfolio-panel');
     
-    // Set all panels except the first (title) to start below the viewport with a slight rotation
-    gsap.set(panels.slice(1), { y: '100vh', rotation: 4, transformOrigin: 'center center' });
+    // Set all panels except the first (title) to start below the viewport with a slight rotation (no rotation on mobile)
+    gsap.set(panels.slice(1), { 
+      y: '100vh', 
+      rotation: isMobile ? 0 : 4, 
+      transformOrigin: 'center center' 
+    });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -71,9 +76,9 @@ export const Section5: React.FC = () => {
       ease: 'none',
     }, 0)
     .to(panels[0] as HTMLElement, {
-      scale: 0.92,
-      opacity: 0.4,
-      y: -30,
+      opacity: 0,
+      y: -50,
+      scale: 0.95,
       ease: 'none',
     }, 0);
 
@@ -82,12 +87,6 @@ export const Section5: React.FC = () => {
       y: 0,
       rotation: 0,
       ease: 'none',
-    }, 1)
-    .to(panels[1] as HTMLElement, {
-      scale: 0.92,
-      opacity: 0.4,
-      y: -30,
-      ease: 'none',
     }, 1);
 
     // Panel 3 (Project 2) slides up to cover Panel 2
@@ -95,24 +94,17 @@ export const Section5: React.FC = () => {
       y: 0,
       rotation: 0,
       ease: 'none',
-    }, 2)
-    .to(panels[2] as HTMLElement, {
-      scale: 0.92,
-      opacity: 0.4,
-      y: -30,
-      ease: 'none',
     }, 2);
 
     // Parallax Exit Effect: cards shrink and move up
     tl.to(scrollWrapperRef.current, {
-      scale: 0.6,
-      y: -300,
+      scale: isMobile ? 1 : 0.6,
+      y: isMobile ? -100 : -300,
       opacity: 0,
       ease: 'power2.inOut',
     }, 3);
 
     // Sun parallax animation - Step 1: Move to bottom left and enlarge (scale down on mobile)
-    const isMobile = window.innerWidth < 768;
     tl.to('.sun-parallax', {
       top: '90%',
       left: '15%',
@@ -195,7 +187,7 @@ export const Section5: React.FC = () => {
         >
           
           {/* PANEL 0: SECTION TITLE */}
-          <div className="portfolio-panel absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center px-6 z-10">
+          <div className="portfolio-panel absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center px-6 z-10 will-change-transform">
             <p className="text-indigo-900 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase mb-4">
               Showcase
             </p>
@@ -218,7 +210,7 @@ export const Section5: React.FC = () => {
           {PROJECTS.map((project, index) => (
             <div 
               key={project.title} 
-              className="portfolio-panel absolute inset-0 w-full h-full flex items-center justify-center px-6 md:px-16"
+              className="portfolio-panel absolute inset-0 w-full h-full flex items-center justify-center px-6 md:px-16 will-change-transform"
               style={{ zIndex: 11 + index }}
             >
 {/* The project card wrapper wrapper (to mount Figma edit outline) */}
@@ -237,10 +229,10 @@ export const Section5: React.FC = () => {
                   <div className="absolute left-1/2 -top-[30px] w-2.5 h-2.5 md:w-3.5 md:h-3.5 bg-indigo-600 border-2 border-white rounded-full -translate-x-1/2" />
                 </div>
 
-                {/* The actual project card (glassmorphic light theme) */}
+                {/* The actual project card (clean light theme optimized for performance) */}
                 <div className="
-                  w-full rounded-3xl border border-white/50 
-                  bg-white/70 backdrop-blur-xl p-4 sm:p-6 md:p-10 shadow-2xl 
+                  w-full rounded-3xl border border-white/80 
+                  bg-white p-4 sm:p-6 md:p-10 shadow-2xl 
                   grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center
                   relative overflow-hidden
                 ">
