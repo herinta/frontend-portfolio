@@ -119,7 +119,7 @@ export const FloatingNav: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] flex items-center bg-black/60 backdrop-blur-xl border border-white/10 rounded-full p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-purple-500/40">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] flex items-center bg-black/60 backdrop-blur-xl border border-white/10 rounded-full p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-500/40">
       {NAV_ITEMS.map(item => {
         const isActive = activeSection === item.id;
         return (
@@ -134,7 +134,7 @@ export const FloatingNav: React.FC = () => {
           >
             {/* Smooth active background capsule transition */}
             {isActive && (
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 rounded-full -z-10 shadow-[0_0_15px_rgba(139,92,246,0.5)] animate-gradient" />
+              <span className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-teal-600 to-blue-600 rounded-full -z-10 shadow-[0_0_15px_rgba(6,182,212,0.5)] animate-gradient" />
             )}
 
             {/* Icon (always visible) */}

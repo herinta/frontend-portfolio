@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Marquee } from './Marquee';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,35 +100,33 @@ export const Section2: React.FC = () => {
       {/* Transition Overlay (Clouds) */}
       <div 
         ref={cloudsContainerRef}
-        className="absolute top-0 left-0 w-full z-30 pointer-events-none transform -translate-y-[50%]"
+        className="absolute top-0 left-0 w-full z-30 pointer-events-none transform -translate-y-[48%]"
       >
         <img 
           src="/images/clouds.png" 
           alt="Clouds Transition" 
-          className="relative w-full h-auto min-h-[300px] object-cover opacity-90 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+          className="relative w-full h-auto min-h-[200px] sm:min-h-[260px] object-cover opacity-95 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
           loading="lazy"
         />
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 pt-[20vh]">
-        <Marquee />
-
+      <div className="relative z-10 pt-[12vh]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left Column (Typography & CTA) */}
           <div ref={textContainerRef} className="flex flex-col items-start space-y-8 order-2 lg:order-1">
             
             {/* Pill Badge */}
-            <div className="px-5 py-2 rounded-full bg-[#110d1a] shadow-lg border border-purple-900/30">
-              <span className="text-sm font-semibold text-purple-100 tracking-wide">
+            <div className="px-5 py-2 rounded-full bg-[#0a1628] shadow-lg border border-cyan-800/40">
+              <span className="text-sm font-semibold text-cyan-100 tracking-wide">
                 Available for Internships & Projects
               </span>
             </div>
 
             {/* Display Heading */}
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-black text-white leading-[1.1] tracking-tight drop-shadow-lg select-none" style={{ fontFamily: 'Georgia, serif' }}>
-              <span className="block font-style-italic text-purple-300 mb-2 text-2xl sm:text-5xl md:text-6xl drop-shadow-md">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-bold italic text-white leading-[1.08] drop-shadow-lg select-none font-script">
+              <span className="block text-cyan-300 font-semibold mb-2 text-3xl sm:text-5xl md:text-6xl drop-shadow-md font-script">
                 Hi, I'm
               </span>
               <span>Herinta</span>
@@ -140,7 +137,7 @@ export const Section2: React.FC = () => {
             {/* Tags Row */}
             <div className="flex flex-wrap gap-3">
               {['Engineering Undergraduate', 'Software Developer', 'Mapres Fakultas Teknik'].map(tag => (
-                <div key={tag} className="px-4 py-1.5 rounded-full bg-[#201533] text-purple-200 text-sm font-medium shadow-md">
+                <div key={tag} className="px-4 py-1.5 rounded-full bg-[#0d2238] text-cyan-200 text-sm font-medium shadow-md">
                   {tag}
                 </div>
               ))}
@@ -157,7 +154,7 @@ export const Section2: React.FC = () => {
                 href="https://github.com/herinta"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 rounded-full bg-purple-600 text-white font-semibold flex items-center gap-2 hover:bg-purple-500 transition-colors shadow-[0_0_20px_rgba(147,51,234,0.4)] cursor-pointer"
+                className="px-8 py-4 rounded-full bg-cyan-600 text-white font-semibold flex items-center gap-2 hover:bg-cyan-500 transition-colors shadow-[0_0_20px_rgba(6,182,212,0.4)] cursor-pointer"
               >
                 View Work <span className="text-xl leading-none">&rarr;</span>
               </a>
@@ -208,9 +205,10 @@ export const Section2: React.FC = () => {
             
           </div>
         </div>
-
-      
       </div>
+
+      {/* Smooth bottom transition into Tech Stack */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-[#0b1e3b] pointer-events-none z-10" />
     </section>
   );
 };

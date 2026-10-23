@@ -64,7 +64,7 @@ export const Section5: React.FC = () => {
         pin: true,
         scrub: 1,
         start: 'top top',
-        end: () => `+=${window.innerHeight * 3}`, // Scroll distance for 3 cards transition (no exit animation)
+        end: () => `+=${window.innerHeight * 4}`, // 4 units long to allow exit animation after last card
         anticipatePin: 1,
       }
     });
@@ -96,15 +96,23 @@ export const Section5: React.FC = () => {
       ease: 'none',
     }, 2);
 
-    // Sun parallax animation - Step 1: Move to bottom left and enlarge (scale down/go offscreen on mobile)
+    // Sun parallax animation - Step 1: Descend and enlarge to bottom-left
     tl.to('.sun-parallax', {
       top: '90%',
-      left: '15%',
-      scale: isMobile ? 4.5 : 25,
+      left: '5%',
+      scale: isMobile ? 4.5 : 18,
       opacity: isMobile ? 0 : 0.6,
-      duration: isMobile ? 1 : 3,
-      ease: isMobile ? 'power2.inOut' : 'power1.inOut',
+      duration: 3, // Span across panels 1, 2, and 3
+      ease: 'power1.inOut',
     }, 0);
+
+    // Step 2: Slide quickly off-screen to the left and fade out AFTER the last card is fully displayed
+    tl.to('.sun-parallax', {
+      left: '-100vw',
+      opacity: 0,
+      duration: 1,
+      ease: 'power2.inOut',
+    }, 3);
 
     // Cleanup
     return () => {
@@ -133,7 +141,7 @@ export const Section5: React.FC = () => {
       <section 
         ref={containerRef}
         id="portfolio"
-        className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-transparent via-[#dbeafe] to-white text-slate-800"
+        className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-[#38a8ed] via-[#65bef5] to-[#9ad9ff] text-slate-800"
       >
         {/* SUN CONTINUATION */}
         <div 
@@ -177,8 +185,7 @@ export const Section5: React.FC = () => {
               Showcase
             </p>
             <h2 
-              className="text-6xl md:text-8xl font-medium italic text-indigo-950 drop-shadow-[0_0_30px_rgba(255,255,255,0.7)] leading-none mb-6"
-              style={{ fontFamily: "'Dancing Script', cursive" }}
+              className="text-6xl md:text-9xl font-bold italic text-indigo-950 drop-shadow-[0_0_30px_rgba(255,255,255,0.7)] leading-none mb-6 font-script"
             >
               My Portfolio
             </h2>

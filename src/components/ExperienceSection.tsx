@@ -40,7 +40,7 @@ const EXPERIENCES: Experience[] = [
     description:
       'Mentoring and guiding students in frontend web development architectures. Conducting thorough code reviews, architectural feedback, and teaching modern React and Next.js best practices.',
     tags: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'],
-    accent: 'from-purple-500 to-indigo-500',
+    accent: 'from-cyan-500 to-blue-500',
   },
   {
     period: '2024',
@@ -188,38 +188,34 @@ export const ExperienceSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="experience"
-      className="relative w-full z-20 mt-0 md:-mt-20 pt-8 pb-64 px-6 md:px-12 overflow-hidden"
+      className="relative w-full z-20 pt-16 pb-48 px-6 md:px-12 overflow-hidden bg-gradient-to-b from-[#153b67] via-[#245b96] via-45% to-[#3d85c6]"
     >
-      {/* No dark overlay — background image shows through. Text is adapted to light bg. */}
-      {/* ── Ambient glows ─────────────────────────────────────────── */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-purple-400/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-400/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* ── Ambient sky light ─────────────────────────────────────────── */}
+      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-sky-300/20 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Decorative Clouds on Left and Right sides */}
       <div 
         ref={leftCloudRef}
         className="absolute left-0 top-[15%] w-[250px] md:w-[400px] pointer-events-none z-0 select-none -translate-x-[20%]"
       >
-        
+        <img src="/images/clouds.png" alt="Cloud Left" className="w-full h-auto object-contain opacity-75 filter brightness-110 drop-shadow-lg" />
       </div>
       <div 
         ref={rightCloudRef}
         className="absolute right-0 bottom-[10%] w-[250px] md:w-[400px] pointer-events-none z-0 select-none translate-x-[20%] scale-x-[-1]"
       >
-        <img src="" alt="Cloud Right" className="w-full h-auto object-contain opacity-40 filter brightness-110" />
+        <img src="/images/clouds.png" alt="Cloud Right" className="w-full h-auto object-contain opacity-65 filter brightness-110 drop-shadow-lg" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* ── Section heading ───────────────────────────────────────── */}
         <div className="mb-10 text-center mt-20">
-          <p className="text-purple-400 text-sm font-semibold tracking-[0.3em] uppercase mb-3">
+          <p className="text-cyan-300 text-xs sm:text-sm font-extrabold tracking-[0.3em] uppercase mb-3">
             Journey
           </p>
-          <h2
-            className="text-5xl md:text-7xl font-medium italic text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.35)] leading-none"
-            style={{ fontFamily: "'Dancing Script', cursive" }}
-          >
+          <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic text-white drop-shadow-[0_2px_15px_rgba(0,0,0,0.3)] leading-none font-script">
             Experience
           </h2>
         </div>
@@ -237,29 +233,28 @@ export const ExperienceSection: React.FC = () => {
                 {/* 3D glass card */}
                 <div className="
                   relative overflow-hidden rounded-2xl p-[1px]
-                  bg-gradient-to-br from-white/20 via-white/5 to-transparent
-                  shadow-[0_8px_32px_rgba(99,102,241,0.12),0_1px_0_rgba(255,255,255,0.4)_inset]
+                  bg-white/45 backdrop-blur-md border border-white/60
+                  shadow-[0_8px_32px_rgba(30,58,138,0.12),0_1px_0_rgba(255,255,255,0.7)_inset]
                   transition-transform duration-500 ease-out
                   group-hover:[transform:rotateX(6deg)_rotateY(-4deg)_scale(1.04)]
                 ">
-                  {/* Inner glass — barely tinted, fully transparent feel */}
+                  {/* Inner glass — bright daylight theme */}
                   <div className="
                     rounded-[15px]
-                    bg-white/[0.06] backdrop-blur-md
+                    bg-white/40 backdrop-blur-md
                     px-4 py-5 flex flex-col items-center text-center
-                    border border-white/20
                   ">
                     {/* Thin top shimmer */}
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full pointer-events-none" />
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-full pointer-events-none" />
 
                     {/* Number */}
-                    <div className="relative text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white via-slate-100 to-slate-300 leading-none mb-2 drop-shadow-sm">
+                    <div className="relative text-3xl md:text-4xl font-black text-indigo-950 leading-none mb-2 drop-shadow-sm">
                       <span ref={(el) => { counterRefs.current[i] = el; }}>0</span>
-                      <span className="text-white">{stat.suffix}</span>
+                      <span className="text-sky-700">{stat.suffix}</span>
                     </div>
 
                     {/* Label */}
-                    <p className="relative text-[10px] md:text-xs text-slate-300 font-semibold tracking-wide">
+                    <p className="relative text-[10px] md:text-xs text-slate-800 font-bold tracking-wide">
                       {stat.label}
                     </p>
                   </div>
@@ -273,10 +268,10 @@ export const ExperienceSection: React.FC = () => {
         <div className="relative">
 
           {/* Vertical line */}
-          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 -bottom-64 w-1 bg-white/5 rounded-full">
+          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 -bottom-64 w-1 bg-sky-900/15 rounded-full">
             <div
               ref={lineRef}
-              className="w-full bg-gradient-to-b from-purple-500 via-pink-500 to-indigo-500 rounded-full relative shadow-[0_0_8px_rgba(139,92,246,0.3)]"
+              className="w-full bg-gradient-to-b from-cyan-400 via-teal-400 to-blue-500 rounded-full relative shadow-[0_0_8px_rgba(6,182,212,0.4)]"
               style={{ height: '0%' }}
             >
               {/* Glowing Sun Head Dot */}
@@ -296,7 +291,7 @@ export const ExperienceSection: React.FC = () => {
           <div className="flex flex-col gap-11">
             {EXPERIENCES.map((exp, i) => {
               const isLeft = i % 2 === 0;
-              const isDarkTheme = false; // All cards use the same dark theme
+              const isDarkTheme = true; // Use bright daylight frosted card theme
               return (
                 <div key={i} className="relative flex items-center">
 
@@ -304,8 +299,8 @@ export const ExperienceSection: React.FC = () => {
                   <div className="absolute left-10 md:left-1/2 -translate-x-0 md:-translate-x-1/2 -top-6 z-10">
                     <span className={`text-[11px] font-semibold backdrop-blur-sm px-3 py-0.5 rounded-full whitespace-nowrap ${
                       isDarkTheme 
-                        ? 'text-purple-800 bg-white/80 border border-purple-300/60 shadow-sm' 
-                        : 'text-purple-300 bg-black/60 border border-purple-500/20 shadow-none'
+                        ? 'text-cyan-900 bg-white/80 border border-cyan-300/60 shadow-sm' 
+                        : 'text-cyan-300 bg-black/60 border border-cyan-500/20 shadow-none'
                     }`}>
                       {exp.period}
                     </span>
@@ -332,7 +327,7 @@ export const ExperienceSection: React.FC = () => {
                       <div className="flex items-start justify-between gap-4 mb-3">
                         <div>
                           <h3 className={`text-base font-bold leading-snug ${isDarkTheme ? 'text-indigo-950' : 'text-white'}`}>{exp.role}</h3>
-                          <p className={`text-xs font-medium ${isDarkTheme ? 'text-purple-800' : 'text-purple-300'}`}>{exp.company}</p>
+                          <p className={`text-xs font-medium ${isDarkTheme ? 'text-cyan-900' : 'text-cyan-300'}`}>{exp.company}</p>
                         </div>
                         <span className={`shrink-0 text-[10px] px-2.5 py-0.5 rounded-full bg-gradient-to-r ${exp.accent} text-white font-semibold shadow`}>
                           {exp.type}

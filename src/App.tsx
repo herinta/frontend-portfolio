@@ -1,12 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { HeroSection } from './components/HeroSection'
 import { Section2 } from './components/Section2'
 import { TechStackSection } from './components/TechStackSection'
 import { ExperienceSection } from './components/ExperienceSection'
 import { Section5 } from './components/Section5'
+import { FullProjectsSection } from './components/FullProjectsSection'
+import { EducationSection } from './components/EducationSection'
+import { CertificatesSection } from './components/CertificatesSection'
 import { Section6 } from './components/Section6'
 import { Section7 } from './components/Section7'
 import { FloatingNav } from './components/FloatingNav'
+import { LoadingScreen } from './components/LoadingScreen'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ReactLenis } from 'lenis/react'
@@ -16,16 +20,19 @@ import './App.css'
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const planetRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const lenisRef = useRef<any>(null);
 
   useEffect(() => {
     // Disable browser's automatic scroll restoration
     if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual'
+      history.scrollRestoration = 'manual';
     }
+
     // Force scroll to top on mount
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
     // Sync Lenis rendering loop with GSAP ticker for maximum performance
     function update(time: number) {
@@ -36,45 +43,56 @@ function App() {
     // Update ScrollTrigger calculations when Lenis scrolls
     const lenisInstance = lenisRef.current?.lenis;
     if (lenisInstance) {
+      lenisInstance.scrollTo(0, { immediate: true });
       lenisInstance.on('scroll', ScrollTrigger.update);
     }
-
-    // Animate the 3D purple planet on scroll to exit to the left before Section 2
-    gsap.to(planetRef.current, {
-      x: () => -(window.innerWidth + 200),
-      y: 100,
-      rotation: -180,
-      opacity: 0,
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: '200vh top',
-        scrub: true,
-      }
-    });
 
     return () => {
       gsap.ticker.remove(update);
     };
-  }, [])
+  }, []);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    // Explicitly guarantee user starts at the absolute top of the page
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+      ScrollTrigger.refresh();
+    }, 50);
+  };
 
   return (
     <ReactLenis ref={lenisRef} autoRaf={false} root>
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <div className="relative bg-black w-full min-h-screen overflow-x-hidden">
         
-        {/* Hero Section (Will be pinned by GSAP) */}
-        <div className="relative z-0 w-full">
+        {/* Hero Section */}
+        <div className="relative z-10 w-full">
           <HeroSection />
         </div>
 
         {/* Content wrapper for Section 2 and onwards */}
-        <div className="relative z-20 -mt-[50vh] w-full min-h-screen">
+        <div className="relative z-20 w-full min-h-screen">
           
-          {/* Scrollable Background Image — spans full content height */}
+          {/* Scrollable Background Image — covers Section 2 and smoothly fades into Tech Stack */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div 
-              className="absolute inset-0 w-full h-full bg-cover bg-top bg-no-repeat"
-              style={{ backgroundImage: 'url(/images/bg-section.webp)' }}
+              className="absolute inset-0 w-full bg-top"
+              style={{ 
+                backgroundImage: 'url(/images/bg-web.jpg)',
+                backgroundSize: '100% auto',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 95%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 95%)',
+              }}
             />
           </div>
 
@@ -86,6 +104,15 @@ function App() {
             
             {/* Section 5 (Portfolio) moved inside to share the background image seamlessly */}
             <Section5 />
+
+            {/* Full Projects Section with Web, ML, Mobile Dev tabs */}
+            <FullProjectsSection />
+
+            {/* Education Section */}
+            <EducationSection />
+
+            {/* Certificates Section */}
+            <CertificatesSection />
           </div>
         </div>
 
@@ -94,17 +121,6 @@ function App() {
 
         {/* Section 7 (Hire Me Call to Action / Footer) */}
         <Section7 />
-
-        {/* 3D Purple Planet Overlay */}
-        <div 
-          ref={planetRef}
-          className="fixed w-[200px] h-[200px] md:w-[280px] md:h-[280px] rounded-full z-45 pointer-events-none bg-cover bg-center bg-no-repeat mix-blend-screen will-change-transform"
-          style={{
-            backgroundImage: 'url(/images/planet-purple.png)',
-            top: '-60px',
-            right: '-60px',
-          }}
-        />
 
         {/* Floating fixed navigation bar */}
         <FloatingNav />
