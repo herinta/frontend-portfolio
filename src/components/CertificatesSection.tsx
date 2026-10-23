@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 interface CertificateItem {
   title: string;
@@ -13,94 +13,187 @@ interface CertificateItem {
 
 const CERTIFICATES_DATA: CertificateItem[] = [
   {
-    title: 'TensorFlow Developer Certificate',
-    issuer: 'Google / TensorFlow.org',
-    issueDate: '2025',
-    credentialId: 'TF-DEV-88391',
-    credentialUrl: 'https://www.coursera.org',
-    logo: '🤖',
-    gradientTop: 'from-[#ffafbd] to-[#ffc3a0]', // Soft Pink/Peach
-    gradientCard: 'to-[#ffafbd]/10'
+    title: '1st Place, Outstanding Student Award',
+    issuer: 'Faculty of Engineering & Computer Science (UNIMUS)',
+    issueDate: '2024',
+    credentialId: 'MAPRES-FTIK-2024',
+    logo: '🏆',
+    gradientTop: 'from-[#fef08a] to-[#fde047]', // Gold/Yellow
+    gradientCard: 'to-[#fef08a]/15'
   },
   {
-    title: 'Deep Learning Specialization',
-    issuer: 'DeepLearning.AI / Coursera',
-    issueDate: '2024',
-    credentialId: 'DL-SPEC-9281',
-    credentialUrl: 'https://www.coursera.org',
-    logo: '🧠',
-    gradientTop: 'from-[#c2e9fb] to-[#a1c4fd]', // Soft Light Blue
-    gradientCard: 'to-[#a1c4fd]/10'
+    title: 'Best Presenter Category Winner',
+    issuer: 'International Health Science Technology Competition',
+    issueDate: '2023',
+    credentialId: 'IHSTC-PRES-2023',
+    logo: '🥇',
+    gradientTop: 'from-[#c2e9fb] to-[#a1c4fd]', // Soft Blue
+    gradientCard: 'to-[#a1c4fd]/15'
   },
   {
-    title: 'Architecting on AWS',
-    issuer: 'Amazon Web Services',
-    issueDate: '2024',
-    credentialId: 'AWS-ARCH-5542',
-    credentialUrl: 'https://aws.amazon.com',
-    logo: '☁️',
-    gradientTop: 'from-[#f6d365] to-[#fda085]', // Soft Yellow/Orange
-    gradientCard: 'to-[#f6d365]/10'
+    title: '2nd Place Winner, Web Programming',
+    issuer: 'Festival Technology Jawa Tengah',
+    issueDate: '2023',
+    credentialId: 'FESTEK-JTG-2023',
+    logo: '🥈',
+    gradientTop: 'from-[#84fab0] to-[#8fd3f4]', // Mint / Cyan
+    gradientCard: 'to-[#84fab0]/15'
   },
   {
-    title: 'Menjadi React Web Developer Expert',
-    issuer: 'Dicoding Indonesia',
-    issueDate: '2024',
-    credentialId: 'REACT-EXP-7729',
-    credentialUrl: 'https://dicoding.com',
+    title: '2nd Place Winner, Programming Game',
+    issuer: 'APSI National Competition',
+    issueDate: '2022',
+    credentialId: 'APSI-GAME-2022',
+    logo: '🎮',
+    gradientTop: 'from-[#cd9cf2] to-[#fbc2eb]', // Lavender / Pink
+    gradientCard: 'to-[#cd9cf2]/15'
+  },
+  {
+    title: 'React JS & Tailwind CSS Development',
+    issuer: 'BuildWithAngga',
+    issueDate: '2023',
+    credentialId: 'BWA-REACT-CSS',
+    credentialUrl: 'https://buildwithangga.com',
     logo: '⚛️',
-    gradientTop: 'from-[#84fab0] to-[#8fd3f4]', // Soft Mint/Blue
-    gradientCard: 'to-[#84fab0]/10'
+    gradientTop: 'from-[#a7f3d0] to-[#6ee7b7]', // Emerald
+    gradientCard: 'to-[#6ee7b7]/15'
   },
   {
-    title: 'Back-End Developer Expert',
+    title: 'Database & Java Programming',
+    issuer: 'Oracle Academy',
+    issueDate: '2022',
+    credentialId: 'ORACLE-SQL-JAVA',
+    logo: '☕',
+    gradientTop: 'from-[#fed7aa] to-[#fdba74]', // Orange
+    gradientCard: 'to-[#fdba74]/15'
+  },
+  {
+    title: 'Web & JavaScript Programming',
     issuer: 'Dicoding Indonesia',
     issueDate: '2023',
-    credentialId: 'BK-EXP-4410',
+    credentialId: 'DICODING-WEB-JS',
     credentialUrl: 'https://dicoding.com',
-    logo: '⚙️',
-    gradientTop: 'from-[#cd9cf2] to-[#fbc2eb]', // Soft Lavender/Pink
-    gradientCard: 'to-[#cd9cf2]/10'
+    logo: '📜',
+    gradientTop: 'from-[#fed7aa] to-[#fca5a5]', // Coral
+    gradientCard: 'to-[#fca5a5]/15'
   }
 ];
 
 export const CertificatesSection: React.FC = () => {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isDownRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const hasMovedRef = useRef(false);
+
+  // Enable horizontal scrolling with mouse wheel when cursor is over the carousel
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      // Determine vertical scroll input
+      const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+      if (Math.abs(delta) < 1) return;
+
+      // Always prevent page scroll while mouse cursor is over carousel area
+      e.preventDefault();
+      e.stopPropagation();
+
+      // User requirement:
+      // "scroll mouse keatas itu ke kanan, kalo scroll ke bawah itu ke kiri"
+      // deltaY < 0 (scroll ke atas) -> scroll ke kanan (+scrollLeft)
+      // deltaY > 0 (scroll ke bawah) -> scroll ke kiri (-scrollLeft)
+      const moveDirection = delta > 0 ? -1 : 1;
+      const scrollDistance = Math.abs(delta) * 1.5;
+
+      el.scrollBy({
+        left: moveDirection * scrollDistance,
+        behavior: 'auto'
+      });
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+    };
+  }, []);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    isDownRef.current = true;
+    hasMovedRef.current = false;
+    startXRef.current = e.pageX - carouselRef.current.offsetLeft;
+    scrollLeftRef.current = carouselRef.current.scrollLeft;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDownRef.current || !carouselRef.current) return;
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = x - startXRef.current;
+    if (Math.abs(walk) > 4) {
+      hasMovedRef.current = true;
+      carouselRef.current.scrollLeft = scrollLeftRef.current - walk * 1.3;
+    }
+  };
+
+  const handleMouseUp = () => {
+    isDownRef.current = false;
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = 360;
+      carouselRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section 
       id="certificates-section" 
-      className="relative w-full pt-20 pb-24 px-6 md:px-12 bg-gradient-to-b from-[#e0f2fe] via-[#f0f9ff] to-[#e0f2fe] text-slate-800 overflow-hidden"
+      className="relative w-full pt-20 pb-24 px-0 bg-gradient-to-b from-[#e0f2fe] via-[#f0f9ff] to-[#f0f9ff] text-slate-800 overflow-hidden"
     >
       {/* Decorative ambient glows */}
-      <div className="absolute top-[15%] right-[10%] w-[320px] h-[320px] bg-sky-200/30 rounded-full blur-[110px] pointer-events-none" />
-      <div className="absolute bottom-[10%] left-[10%] w-[280px] h-[280px] bg-teal-100/30 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[15%] right-[10%] w-[320px] h-[320px] bg-sky-100/40 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-[5%] left-[10%] w-[300px] h-[300px] bg-sky-50/50 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        
-        {/* Section Heading */}
-        <div className="text-center mb-16">
-          <p className="text-cyan-600 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase mb-3">
-            Verified Credentials &bull; Certifications
-          </p>
-          <h2 
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic tracking-wide text-indigo-950 leading-none mb-6 font-script"
-          >
-            Certificates
-          </h2>
-          <p className="text-slate-600 text-sm md:text-base max-w-md mx-auto leading-relaxed">
-            Verified technical certifications, specialization credentials, and industry honors.
-          </p>
-        </div>
+      {/* Centered Heading */}
+      <div className="max-w-4xl mx-auto px-6 text-center mb-10 relative z-10">
+        <p className="text-cyan-600 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase mb-3">
+          Verified Credentials &bull; Certifications
+        </p>
+        <h2 
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic tracking-wide text-indigo-950 leading-none mb-4 font-script"
+        >
+          Certificates
+        </h2>
+        <p className="text-slate-600 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+          Verified technical certifications, specialization credentials, and industry honors.
+        </p>
+      </div>
 
-        {/* Certificates Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {/* Full Width Edge-to-Edge Scrollable Carousel */}
+      <div className="relative w-full z-10">
+        <div
+          ref={carouselRef}
+          data-lenis-prevent="true"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          className="w-full flex flex-row items-stretch gap-5 md:gap-6 overflow-x-auto py-6 px-4 sm:px-6 md:px-8 snap-x snap-mandatory cursor-grab active:cursor-grabbing [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
           {CERTIFICATES_DATA.map((cert) => (
             <div
               key={cert.title}
               className={`
-                group relative flex flex-col justify-between rounded-2xl
+                group relative shrink-0 w-[280px] sm:w-[320px] md:w-[350px] snap-start flex flex-col justify-between rounded-2xl
                 bg-gradient-to-b from-white via-white ${cert.gradientCard} p-0 shadow-md 
-                hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 
-                overflow-hidden h-full cursor-default border border-slate-200/60
+                hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 
+                overflow-hidden h-auto cursor-default border border-slate-200/70 select-none
               `}
             >
               {/* Top photo area - Certificate mockup on soft gradient */}
@@ -109,7 +202,7 @@ export const CertificatesSection: React.FC = () => {
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-[1200ms] ease-out pointer-events-none -skew-x-12" />
                 
                 {/* Miniature certificate paper mockup */}
-                <div className="w-[85%] h-[80%] bg-white/95 rounded-md shadow-lg border border-white/40 p-2 flex flex-col justify-between relative select-none">
+                <div className="w-[85%] h-[80%] bg-white/95 rounded-md shadow-lg border border-white/40 p-2.5 flex flex-col justify-between relative select-none">
                   {/* Certificate borders */}
                   <div className="absolute inset-1 border border-indigo-900/10 rounded-[4px]" />
                   
@@ -168,6 +261,9 @@ export const CertificatesSection: React.FC = () => {
                       href={cert.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => {
+                        if (hasMovedRef.current) e.preventDefault();
+                      }}
                       className="text-[11px] font-bold text-indigo-600 hover:text-indigo-500 flex items-center gap-1 transition-colors cursor-pointer"
                     >
                       Verify
@@ -182,6 +278,32 @@ export const CertificatesSection: React.FC = () => {
           ))}
         </div>
 
+        {/* Carousel Navigation Arrow Controls */}
+        <div className="flex items-center justify-center gap-4 mt-6 px-4">
+          <button
+            type="button"
+            onClick={() => scroll('left')}
+            className="w-10 h-10 rounded-full bg-white/90 hover:bg-white border border-slate-200/90 shadow-md flex items-center justify-center text-slate-700 hover:text-indigo-950 transition-all hover:scale-110 active:scale-95 cursor-pointer"
+            aria-label="Previous Certificate"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          <span className="text-xs font-semibold text-slate-500 tracking-wider">
+            Scroll or Drag to View All
+          </span>
+          <button
+            type="button"
+            onClick={() => scroll('right')}
+            className="w-10 h-10 rounded-full bg-white/90 hover:bg-white border border-slate-200/90 shadow-md flex items-center justify-center text-slate-700 hover:text-indigo-950 transition-all hover:scale-110 active:scale-95 cursor-pointer"
+            aria-label="Next Certificate"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   );

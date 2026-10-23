@@ -15,8 +15,8 @@ interface Stat {
 
 const STATS: Stat[] = [
   { value: 20,  suffix: '+', label: 'Projects Completed', icon: '🚀' },
-  { value: 3,   suffix: '+', label: 'Years of Experience', icon: '⚡' },
-  { value: 8,   suffix: '+', label: 'Technologies Mastered', icon: '🛠️' },
+  { value: 4,   suffix: '+', label: 'Years Experience',    icon: '⚡' },
+  { value: 3.84, suffix: '', label: 'Cumulative GPA',     icon: '🎓' },
   { value: 100, suffix: '%', label: 'Passion for Code',    icon: '❤️' },
 ];
 
@@ -33,34 +33,44 @@ interface Experience {
 
 const EXPERIENCES: Experience[] = [
   {
-    period: '2025',
-    role: 'Frontend Mentor',
-    company: 'Tech Education / Freelance',
+    period: 'Mar 2025 – Jul 2025',
+    role: 'Web Development Mentor',
+    company: 'Informatics Study Club, Unimus',
     type: 'Mentor',
     description:
-      'Mentoring and guiding students in frontend web development architectures. Conducting thorough code reviews, architectural feedback, and teaching modern React and Next.js best practices.',
-    tags: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+      'Guided 20 students in understanding web development concepts and practices including HTML, CSS, JavaScript, and TailwindCSS. Developed structured learning materials, practical tutorials, and monitored project milestones.',
+    tags: ['TailwindCSS', 'JavaScript', 'HTML5', 'CSS3', 'Mentoring'],
     accent: 'from-cyan-500 to-blue-500',
   },
   {
-    period: '2024',
-    role: 'Full-Stack Developer Intern',
-    company: 'Demdomena',
+    period: 'Sep 2024 – Feb 2025',
+    role: 'Fullstack Developer Intern',
+    company: 'Dedomena Digital Indonesia',
     type: 'Internship',
     description:
-      'Developed and optimized full-stack web applications. Participated in team sprints to build client interfaces, backend routing, database designs, and streamlined state-management modules.',
-    tags: ['Next.js', 'React.js', 'Node.js', 'PostgreSQL'],
+      'Engineered and maintained UI for company profiles, developed scalable microservices architectures, and built a full-stack debt collection application using React.js for the frontend and Java Spring Boot for the backend.',
+    tags: ['React.js', 'Java Spring Boot', 'Microservices', 'RESTful API'],
     accent: 'from-pink-500 to-rose-500',
   },
   {
-    period: '2020',
-    role: 'Web Developer',
-    company: 'Pwk Consultant',
-    type: 'Contract',
+    period: 'Jul 2021 – Jun 2022',
+    role: 'Front End Web Developer',
+    company: 'PWK Consultant',
+    type: 'Part Time Remote',
     description:
-      'Designed and engineered corporate web applications and internal consulting tools. Maintained legacy systems, integrated secure REST APIs, and managed MySQL database systems.',
-    tags: ['PHP', 'Laravel', 'MySQL', 'JavaScript'],
+      'Built and maintained responsive user interfaces for corporate company profiles and delivered interactive, cross-device compatible UI components utilizing HTML, CSS, and modern JavaScript.',
+    tags: ['JavaScript', 'HTML5', 'CSS3', 'Responsive UI'],
     accent: 'from-sky-500 to-cyan-500',
+  },
+  {
+    period: 'Dec 2019 – Mar 2020',
+    role: 'Web Developer Intern',
+    company: 'Sebo Studio',
+    type: 'Internship',
+    description:
+      'Transformed complex design mockups into high-fidelity functional websites. Collaborated closely with UI/UX designers to guarantee visual aesthetics, pixel-perfection, and cross-device performance optimization.',
+    tags: ['UI Slicing', 'HTML/CSS', 'JavaScript', 'Design Systems'],
+    accent: 'from-purple-500 to-indigo-500',
   },
 ];
 
@@ -106,13 +116,15 @@ export const ExperienceSection: React.FC = () => {
           start: 'top 75%',
         },
         onUpdate: () => {
-          el.textContent = Math.round(obj.val).toString();
+          el.textContent = Number.isInteger(stat.value)
+            ? Math.round(obj.val).toString()
+            : obj.val.toFixed(2);
         },
       });
     });
 
     // ── Timeline line draw-down (Stepped per-card for Sun descent) ───────
-    const TARGET_HEIGHTS = ['25%', '65%', '100%'];
+    const TARGET_HEIGHTS = ['20%', '48%', '75%', '100%'];
     
     cardRefs.current.forEach((card, i) => {
       ScrollTrigger.create({
@@ -120,14 +132,14 @@ export const ExperienceSection: React.FC = () => {
         start: 'top 80%',
         onEnter: () => {
           gsap.to(lineRef.current, {
-            height: TARGET_HEIGHTS[i],
+            height: TARGET_HEIGHTS[i] || '100%',
             duration: 0.8,
             ease: 'power2.out'
           });
         },
         onLeaveBack: () => {
           gsap.to(lineRef.current, {
-            height: i === 0 ? '0%' : TARGET_HEIGHTS[i - 1],
+            height: i === 0 ? '0%' : (TARGET_HEIGHTS[i - 1] || '0%'),
             duration: 0.8,
             ease: 'power2.out'
           });

@@ -272,21 +272,58 @@ export const FullProjectsSection: React.FC = () => {
       <svg className="falling-leaf leaf-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17 8C12.5 8 9.5 11 8.5 15.5C8 18 9 20 11.5 20C16 20 19 17 20 12.5C20.5 10 19.5 8 17 8ZM12.7 18.5C11.5 18.5 10.5 17.5 10.7 15.8C11.5 12.5 13.5 10.5 16 10.5C17.2 10.5 18.2 11.5 18 13.2C17.2 16.5 15.2 18.5 12.7 18.5Z" /></svg>
       <svg className="falling-leaf leaf-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17 8C12.5 8 9.5 11 8.5 15.5C8 18 9 20 11.5 20C16 20 19 17 20 12.5C20.5 10 19.5 8 17 8ZM12.7 18.5C11.5 18.5 10.5 17.5 10.7 15.8C11.5 12.5 13.5 10.5 16 10.5C17.2 10.5 18.2 11.5 18 13.2C17.2 16.5 15.2 18.5 12.7 18.5Z" /></svg>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <p className="text-emerald-600 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase mb-3">
-            Open Source &bull; GitHub Repositories
+            Open Source &bull; Code &amp; Contributions
           </p>
           <h2 
             className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic tracking-wide text-emerald-950 leading-none mb-4 font-script"
           >
-            Full Projects
+            GitHub Repositories
           </h2>
           <p className="text-slate-600 text-sm md:text-base max-w-lg mx-auto leading-relaxed font-medium">
             Browse through my verified project repositories and architectures authored by Herinta.
           </p>
+        </div>
+
+        {/* GitHub Live Green Commit Activity Box (Full width matching cards container) */}
+        <div className="w-full mb-10 p-5 sm:p-6 rounded-2xl bg-white/95 backdrop-blur-sm border border-slate-200/90 shadow-[0_4px_20px_rgba(6,78,59,0.05)] text-left">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
+            <div className="flex items-center gap-2.5">
+              <svg className="w-5 h-5 text-emerald-800" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              <span className="font-bold text-sm text-slate-800">GitHub Commit Activity</span>
+              <span className="inline-flex items-center gap-1.5 text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full font-mono font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                Live Sync
+              </span>
+            </div>
+            <div className="flex items-center gap-4 text-xs text-slate-600">
+              <span className="hidden md:inline font-mono text-slate-400">Continuous Integration &bull; Public Activity</span>
+              <a 
+                href="https://github.com/herinta" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-xs text-emerald-700 hover:text-emerald-900 font-semibold transition-colors flex items-center gap-1"
+              >
+                <span>@herinta on GitHub</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-2 flex justify-center items-center">
+            <img 
+              src="https://ghchart.rshah.org/10b981/herinta" 
+              alt="Herinta's Live GitHub Contribution Chart" 
+              className="w-full max-w-5xl min-w-[700px] h-auto select-none"
+              loading="lazy"
+            />
+          </div>
         </div>
 
         {/* Filter Bar with Search Box and Categories */}
@@ -339,23 +376,23 @@ export const FullProjectsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Repository Cards Grid (2 Columns, Repository Style matching Reference Image) */}
+        {/* Repository Cards Grid (3 Columns, Wide & Compact Horizontal Cards) */}
         <div className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 pb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-4">
             {filteredRepos.map((repo) => (
               <div
                 key={repo.id}
                 className="
-                  group relative flex flex-col justify-between rounded-2xl border border-slate-200/90
-                  bg-white p-5 sm:p-6 shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_28px_rgba(6,78,59,0.08)] 
+                  group relative flex flex-col justify-between rounded-xl border border-slate-200/90
+                  bg-white p-4 sm:p-5 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_24px_rgba(6,78,59,0.08)] 
                   hover:border-emerald-400/80 hover:-translate-y-0.5 transition-all duration-300 
-                  overflow-hidden h-full cursor-default
+                  overflow-hidden cursor-default
                 "
               >
                 <div>
                   {/* Card Header: Repo Book Icon + Name + Public Badge */}
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
                       {/* GitHub Repo Folder/Book Icon */}
                       <svg
                         className="w-4 h-4 text-emerald-800 shrink-0"
@@ -370,72 +407,76 @@ export const FullProjectsSection: React.FC = () => {
                         href={repo.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-sm sm:text-base font-bold text-slate-900 group-hover:text-emerald-800 transition-colors truncate"
+                        className="font-mono text-xs sm:text-sm font-bold text-slate-900 group-hover:text-emerald-800 transition-colors truncate"
+                        title={repo.name}
                       >
                         {repo.name}
                       </a>
                     </div>
-                    <span className="text-[10px] sm:text-xs font-medium text-slate-500 border border-slate-200/80 px-2.5 py-0.5 rounded-full bg-slate-50/80 shrink-0">
+                    <span className="text-[10px] font-medium text-slate-500 border border-slate-200/80 px-2 py-0.5 rounded-full bg-slate-50/80 shrink-0">
                       Public
                     </span>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  {/* Description: Clamped to 2 lines so card stays wide & compact */}
+                  <p className="text-slate-600 text-xs leading-relaxed mb-3 font-normal line-clamp-2 min-h-[32px]">
                     {repo.description}
                   </p>
 
-                  {/* Hashtag Topic Badges */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {repo.tags.map(tag => (
+                  {/* Hashtag Topic Badges (Top 3 tags + overflow counter) */}
+                  <div className="flex flex-wrap items-center gap-1.5 mb-3.5">
+                    {repo.tags.slice(0, 3).map(tag => (
                       <span
                         key={tag}
-                        className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-emerald-50/80 text-emerald-900 border border-emerald-200/60 font-medium"
+                        className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50/80 text-emerald-900 border border-emerald-200/60 font-medium truncate max-w-[120px]"
                       >
                         {tag}
                       </span>
                     ))}
+                    {repo.tags.length > 3 && (
+                      <span className="text-[10px] font-mono text-slate-400 font-semibold px-1">
+                        +{repo.tags.length - 3}
+                      </span>
+                    )}
                   </div>
                 </div>
 
-                {/* Card Footer: Language indicator, Stars, Forks, Commits & Link */}
-                <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs text-slate-500">
-                  {/* Left: Language dot + Name, Stars, Forks */}
-                  <div className="flex items-center gap-3.5">
+                {/* Card Footer: Language dot, Stars, Forks & Commits Link */}
+                <div className="flex items-center justify-between pt-2.5 mt-auto border-t border-slate-100 text-[11px] text-slate-500">
+                  {/* Left: Language indicator + Stars + Forks */}
+                  <div className="flex items-center gap-2.5">
                     <div className="flex items-center gap-1.5">
                       <span
-                        className="w-2.5 h-2.5 rounded-full shrink-0 shadow-xs"
+                        className="w-2 h-2 rounded-full shrink-0 shadow-xs"
                         style={{ backgroundColor: repo.langColor }}
                       />
-                      <span className="font-medium text-slate-700 text-xs">{repo.language}</span>
+                      <span className="font-medium text-slate-700 text-[11px]">{repo.language}</span>
                     </div>
 
                     <div className="flex items-center gap-1 text-slate-500 hover:text-slate-800 transition-colors" title="Stars">
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                       </svg>
                       <span>{repo.stars}</span>
                     </div>
 
                     <div className="flex items-center gap-1 text-slate-500 hover:text-slate-800 transition-colors" title="Forks">
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 14.25v2.25m3 0v-2.25m3 0v2.25m3 0v-2.25m-12-6.75h12a2.25 2.25 0 012.25 2.25v6.75a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 18v-6.75A2.25 2.25 0 014.5 7.5z" />
                       </svg>
                       <span>{repo.forks}</span>
                     </div>
                   </div>
 
-                  {/* Right: Commits badge button + External link */}
-                  <div className="flex items-center gap-2">
+                  {/* Right: Commits badge button + Repo Link */}
+                  <div className="flex items-center gap-1.5">
                     <a
                       href={repo.githubUrl + '/commits'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-emerald-800 border border-slate-200/80 hover:border-emerald-200 text-xs font-mono transition-colors"
+                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-emerald-800 border border-slate-200/80 hover:border-emerald-200 text-[10px] font-mono transition-colors"
+                      title="View Commits"
                     >
-                      <svg className="w-3 h-3 text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v4.5a2.25 2.25 0 002.25 2.25h.75m0-9a2.25 2.25 0 012.25-2.25h4.5a2.25 2.25 0 012.25 2.25m-9 0v9m9-9h.75A2.25 2.25 0 0119.5 9.75v4.5a2.25 2.25 0 01-2.25 2.25h-.75m0-9v9m0 0a2.25 2.25 0 01-2.25 2.25h-4.5a2.25 2.25 0 01-2.25-2.25" />
-                      </svg>
                       <span>Commits</span>
                     </a>
 
@@ -444,10 +485,10 @@ export const FullProjectsSection: React.FC = () => {
                         href={repo.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 transition-colors"
+                        className="p-1 rounded-md bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 transition-colors"
                         title="Live Demo"
                       >
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                         </svg>
                       </a>
@@ -457,10 +498,10 @@ export const FullProjectsSection: React.FC = () => {
                       href={repo.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-800 border border-slate-200/80 transition-colors"
+                      className="p-1 rounded-md bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-800 border border-slate-200/80 transition-colors"
                       title="Open GitHub Repository"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                       </svg>
                     </a>

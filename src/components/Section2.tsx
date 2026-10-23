@@ -136,7 +136,7 @@ export const Section2: React.FC = () => {
 
             {/* Tags Row */}
             <div className="flex flex-wrap gap-3">
-              {['Engineering Undergraduate', 'Software Developer', 'Mapres Fakultas Teknik'].map(tag => (
+              {['Full-Stack Engineer', 'Informatics (UNIMUS)', 'GPA 3.84', '1st Outstanding Student'].map(tag => (
                 <div key={tag} className="px-4 py-1.5 rounded-full bg-[#0d2238] text-cyan-200 text-sm font-medium shadow-md">
                   {tag}
                 </div>
@@ -145,7 +145,7 @@ export const Section2: React.FC = () => {
 
             {/* Description */}
             <p className="text-lg md:text-xl text-slate-300 font-medium max-w-lg leading-relaxed drop-shadow-md">
-              Final-year Engineering undergraduate currently in my 8th semester. Aspiring Software Developer and AI Enthusiast with expertise in React.js, Next.js, and TypeScript, passionate about building immersive web experiences and interactive ecosystems.
+              Highly motivated Full-Stack Software Engineer and final-year Informatics student (3.84 GPA) at UNIMUS. Skilled in developing robust web applications from frontend to backend, integrating modern AI tools into development workflows to optimize efficiency and build scalable digital solutions.
             </p>
 
             {/* Action Buttons */}

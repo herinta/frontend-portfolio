@@ -128,12 +128,12 @@ export const Section7: React.FC = () => {
         .firefly-6 { top: 82%; left: 42%; animation-delay: 2.8s; animation-duration: 3.9s; }
       `}</style>
 
-      {/* Cloud Transition Seam between Note Section and Green Meadow Footer */}
-      <div className="absolute top-0 left-0 w-full z-30 pointer-events-none transform -translate-y-[48%]">
+      {/* Leaf / Foliage Transition Seam between Note Section and Green Meadow Footer */}
+      <div className="absolute top-0 left-0 w-full z-30 pointer-events-none transform -translate-y-[45%]">
         <img 
-          src="/images/clouds.png" 
-          alt="Clouds Transition to Footer" 
-          className="relative w-full h-auto min-h-[180px] sm:min-h-[260px] object-cover opacity-95"
+          src="/images/daun.png" 
+          alt="Daun Transition to Footer" 
+          className="relative w-full h-auto min-h-[160px] sm:min-h-[240px] md:min-h-[300px] object-cover drop-shadow-md select-none"
           loading="lazy"
         />
       </div>
@@ -141,13 +141,13 @@ export const Section7: React.FC = () => {
       <section
         ref={sectionRef}
         id="contact"
-        className="relative w-full min-h-screen pt-48 sm:pt-56 md:pt-64 pb-20 flex flex-col items-center justify-between bg-gradient-to-b from-white via-[#dcfce7] via-30% to-[#15803d] text-slate-800 overflow-hidden"
+        className="relative w-full min-h-screen pt-48 sm:pt-56 md:pt-64 pb-20 flex flex-col items-center justify-between bg-gradient-to-b from-[#f8fafc] via-[#f0f9ff] via-35% to-[#e0f2fe] text-slate-800 overflow-hidden"
       >
-        {/* Soft sunny emerald ambient light glows */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-emerald-300/20 rounded-full blur-[140px] pointer-events-none z-0" />
-        <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-green-400/15 rounded-full blur-[140px] pointer-events-none z-0" />
+        {/* Soft sunny white & light blue ambient light glows */}
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-sky-100/60 rounded-full blur-[140px] pointer-events-none z-0" />
+        <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-emerald-100/30 rounded-full blur-[140px] pointer-events-none z-0" />
 
-        {/* ── Full Green Grass & Rolling Hills SVG Landscape Illustration ── */}
+        {/* ── Full Fresh Grass Meadow Landscape Illustration ── */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
           <svg
             viewBox="0 0 1440 900"
@@ -157,26 +157,26 @@ export const Section7: React.FC = () => {
             className="w-full h-full object-cover"
           >
             <defs>
-              {/* Distant Hills Gradient */}
+              {/* Distant Hills Gradient - Light Fresh Meadow Grass */}
               <linearGradient id="hillFar" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#86efac" stopOpacity="0.85" />
-                <stop offset="100%" stopColor="#4ade80" stopOpacity="0.95" />
+                <stop offset="0%" stopColor="#bbf7d0" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#86efac" stopOpacity="0.95" />
               </linearGradient>
 
-              {/* Mid Hills Gradient */}
+              {/* Mid Hills Gradient - Vibrant Natural Grass Green */}
               <linearGradient id="hillMid" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#4ade80" />
-                <stop offset="100%" stopColor="#22c55e" />
+                <stop offset="0%" stopColor="#86efac" />
+                <stop offset="100%" stopColor="#4ade80" />
               </linearGradient>
 
-              {/* Near Grass Gradient */}
+              {/* Near Grass Gradient - Rich Lush Turf */}
               <linearGradient id="hillNear" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stopColor="#22c55e" />
                 <stop offset="60%" stopColor="#16a34a" />
                 <stop offset="100%" stopColor="#15803d" />
               </linearGradient>
 
-              {/* Foreground Turf Gradient */}
+              {/* Foreground Turf Gradient - Deep Rolling Green Meadow */}
               <linearGradient id="turfGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stopColor="#16a34a" />
                 <stop offset="40%" stopColor="#15803d" />
@@ -209,7 +209,7 @@ export const Section7: React.FC = () => {
             />
 
             {/* Detailed Grass Blade Tufts along the ridge */}
-            <g fill="#86efac" opacity="0.8">
+            <g fill="#bbf7d0" opacity="0.9">
               {/* Clump 1 */}
               <path d="M140,650 Q145,610 142,580 Q148,615 152,650 Z" />
               <path d="M148,650 Q155,605 158,575 Q160,612 163,650 Z" />
@@ -247,43 +247,43 @@ export const Section7: React.FC = () => {
         {/* Main Content Area */}
         <div className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center justify-center text-center my-auto px-6">
           
-          {/* Abstract Glowing Emerald Meadow Portal */}
+          {/* Abstract Glowing Meadow Portal */}
           <div 
             ref={portalRef}
             className="
               relative w-56 h-56 md:w-64 md:h-64 rounded-full mb-12
-              bg-white/40 border border-emerald-400/50
-              shadow-[0_0_50px_rgba(34,197,94,0.35),_inset_0_0_20px_rgba(255,255,255,0.6)]
+              bg-white/40 border border-[#4ade80]/60
+              shadow-[0_0_50px_rgba(74,222,128,0.35),_inset_0_0_20px_rgba(255,255,255,0.6)]
               flex items-center justify-center backdrop-blur-md
             "
           >
             {/* Inner concentric ring */}
-            <div className="w-[80%] h-[80%] rounded-full border border-emerald-500/30 bg-emerald-100/30 flex items-center justify-center animate-spin duration-[20s]">
-              <div className="w-4 h-4 rounded-full bg-emerald-500 shadow-[0_0_14px_#22c55e] transform translate-x-20" />
+            <div className="w-[80%] h-[80%] rounded-full border border-[#22c55e]/40 bg-[#86efac]/30 flex items-center justify-center animate-spin duration-[20s]">
+              <div className="w-4 h-4 rounded-full bg-[#15803d] shadow-[0_0_14px_#4ade80] transform translate-x-20" />
             </div>
 
             {/* Keyhole light core */}
-            <div className="absolute w-[40%] h-[40%] rounded-full bg-white/70 border border-emerald-300/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] flex flex-col items-center justify-center animate-pulse duration-[4s]">
+            <div className="absolute w-[40%] h-[40%] rounded-full bg-white/70 border border-[#4ade80]/50 shadow-[0_0_20px_rgba(74,222,128,0.25)] flex flex-col items-center justify-center animate-pulse duration-[4s]">
               {/* Keyhole shape */}
-              <div className="w-4 h-4 rounded-full bg-gradient-to-b from-emerald-600 to-teal-800 shadow-sm" />
-              <div className="w-2.5 h-6 bg-gradient-to-b from-emerald-600 to-teal-800 -mt-1 rounded-b" />
+              <div className="w-4 h-4 rounded-full bg-gradient-to-b from-[#16a34a] to-[#14532d] shadow-sm" />
+              <div className="w-2.5 h-6 bg-gradient-to-b from-[#16a34a] to-[#14532d] -mt-1 rounded-b" />
             </div>
 
             {/* Sparkling motes inside portal */}
             <div className="absolute inset-0 w-full h-full rounded-full overflow-hidden opacity-50 pointer-events-none">
-              <div className="absolute top-[20%] left-[10%] w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping duration-[3s]" />
-              <div className="absolute bottom-[25%] right-[15%] w-1 h-1 bg-teal-400 rounded-full animate-ping duration-[4s]" />
+              <div className="absolute top-[20%] left-[10%] w-1.5 h-1.5 bg-[#86efac] rounded-full animate-ping duration-[3s]" />
+              <div className="absolute bottom-[25%] right-[15%] w-1 h-1 bg-[#4ade80] rounded-full animate-ping duration-[4s]" />
             </div>
           </div>
 
           {/* Text */}
-          <p className="text-emerald-800 font-extrabold tracking-[0.4em] uppercase mb-4 drop-shadow-sm">
+          <p className="text-[#14532d] font-extrabold tracking-[0.4em] uppercase mb-4 drop-shadow-sm">
             Ready for the Next Chapter?
           </p>
 
           <h2 
             ref={titleRef}
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic text-emerald-950 drop-shadow-[0_2px_15px_rgba(255,255,255,0.9)] leading-none mb-8 select-none font-script"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic text-[#052e16] drop-shadow-[0_2px_15px_rgba(255,255,255,0.9)] leading-none mb-8 select-none font-script"
             style={{ transform: 'rotate(-2deg)' }}
           >
             Let's Create Something Great
@@ -291,7 +291,7 @@ export const Section7: React.FC = () => {
 
           <p 
             ref={subtitleRef}
-            className="text-emerald-900 font-medium text-sm md:text-base max-w-lg leading-relaxed mb-12 drop-shadow-sm"
+            className="text-[#064e3b] font-medium text-sm md:text-base max-w-lg leading-relaxed mb-12 drop-shadow-sm"
           >
             I am currently open to full-time opportunities, freelance projects, and exciting collaborations. 
             Tap below to send a direct email and let's explore how we can work together.
@@ -307,10 +307,10 @@ export const Section7: React.FC = () => {
             onMouseLeave={handleMouseLeave}
             className="
               relative px-8 py-4 rounded-full font-bold tracking-wider text-xs md:text-sm uppercase
-              bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600
+              bg-gradient-to-r from-[#16a34a] via-[#15803d] to-[#14532d]
               text-white hover:text-white transition-all duration-300
-              shadow-[0_0_30px_rgba(16,185,129,0.4)]
-              hover:shadow-[0_0_45px_rgba(16,185,129,0.7)]
+              shadow-[0_0_30px_rgba(22,163,74,0.5)]
+              hover:shadow-[0_0_45px_rgba(34,197,94,0.7)]
               hover:scale-[1.04] active:scale-[0.98]
               flex items-center gap-3 group cursor-pointer
             "
@@ -352,8 +352,8 @@ export const Section7: React.FC = () => {
           
           {/* Social Links */}
           <div className="flex items-center gap-6 font-semibold text-emerald-300">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+            <a href="https://github.com/herinta" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/herinta-armantya" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
             <a href="mailto:herintya@gmail.com" className="hover:text-white transition-colors">Email</a>
           </div>
 

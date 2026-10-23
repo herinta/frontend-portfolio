@@ -328,12 +328,12 @@ export const Section6: React.FC = () => {
     <section
       ref={containerRef}
       id="guestbook"
-      className="relative w-full min-h-screen py-28 px-6 bg-gradient-to-b from-[#e0f2fe] via-[#f0f9ff] via-35% to-[#dcfce7] text-slate-800 flex flex-col items-center justify-center gap-8 overflow-x-hidden overflow-y-visible md:overflow-hidden"
+      className="relative w-full min-h-screen py-28 px-6 bg-gradient-to-b from-[#f0f9ff] via-white via-40% to-white text-slate-800 flex flex-col items-center justify-center gap-8 overflow-x-hidden overflow-y-visible md:overflow-hidden"
     >
-        {/* Soft atmospheric background glow */}
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-sky-200/40 rounded-full blur-[140px] pointer-events-none z-0" />
-        {/* Bottom soft green gradient glow to blend seamlessly into footer below */}
-        <div className="absolute bottom-0 left-0 w-full h-[450px] bg-gradient-to-t from-emerald-200/50 via-green-100/30 to-transparent pointer-events-none z-0" />
+        {/* Soft luminous airy ambient background glow */}
+        <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-sky-100/50 rounded-full blur-[140px] pointer-events-none z-0" />
+        {/* Pure white airy bottom feather glow */}
+        <div className="absolute bottom-0 left-0 w-full h-[450px] bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none z-0" />
 
         {/* DESKTOP VIEW: SCATTERED CONVEYOR BELT COMMENTS */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">

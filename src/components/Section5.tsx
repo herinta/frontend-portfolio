@@ -39,6 +39,14 @@ const PROJECTS: Project[] = [
     tags: ['Next.js', 'WebSockets', 'Prisma', 'LangChain'],
     color: 'from-purple-500/20 to-fuchsia-500/20',
   },
+  {
+    title: 'Codevas Learning',
+    category: 'EdTech Platform',
+    description: 'An interactive developer learning platform featuring live code execution, interactive coding challenges, and structured engineering roadmaps.',
+    image: '/images/p1.svg',
+    tags: ['React', 'Next.js', 'Tailwind CSS', 'Monaco Editor'],
+    color: 'from-amber-500/20 to-orange-500/20',
+  },
 ];
 
 export const Section5: React.FC = () => {
@@ -64,7 +72,7 @@ export const Section5: React.FC = () => {
         pin: true,
         scrub: 1,
         start: 'top top',
-        end: () => `+=${window.innerHeight * 4}`, // 4 units long to allow exit animation after last card
+        end: () => `+=${window.innerHeight * 5}`, // 5 units long to allow exit animation after all 4 cards
         anticipatePin: 1,
       }
     });
@@ -96,13 +104,20 @@ export const Section5: React.FC = () => {
       ease: 'none',
     }, 2);
 
+    // Panel 4 (Project 3) slides up to cover Panel 3
+    tl.to(panels[4] as HTMLElement, {
+      y: 0,
+      rotation: 0,
+      ease: 'none',
+    }, 3);
+
     // Sun parallax animation - Step 1: Descend and enlarge to bottom-left
     tl.to('.sun-parallax', {
       top: '90%',
       left: '5%',
       scale: isMobile ? 4.5 : 18,
       opacity: isMobile ? 0 : 0.6,
-      duration: 3, // Span across panels 1, 2, and 3
+      duration: 4, // Span across panels 1, 2, 3, and 4
       ease: 'power1.inOut',
     }, 0);
 
@@ -112,7 +127,7 @@ export const Section5: React.FC = () => {
       opacity: 0,
       duration: 1,
       ease: 'power2.inOut',
-    }, 3);
+    }, 4);
 
     // Cleanup
     return () => {
@@ -187,7 +202,7 @@ export const Section5: React.FC = () => {
             <h2 
               className="text-6xl md:text-9xl font-bold italic text-indigo-950 drop-shadow-[0_0_30px_rgba(255,255,255,0.7)] leading-none mb-6 font-script"
             >
-              My Portfolio
+              My Top Project
             </h2>
             <p className="text-slate-700 text-sm md:text-base max-w-md leading-relaxed mb-8">
               Scroll down to explore my featured projects. Cards will stack and overlay one another from the bottom, just like a deck of cards.

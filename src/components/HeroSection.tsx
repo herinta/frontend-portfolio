@@ -10,7 +10,6 @@ export const HeroSection: React.FC = () => {
 
   return (
     <div
-      id="hero"
       className="relative w-full min-h-screen flex flex-col justify-center items-center bg-[#070312] text-white pt-16 pb-20 select-none"
     >
       {/* Background Image with subtle blend */}

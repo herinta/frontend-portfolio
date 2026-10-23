@@ -74,13 +74,16 @@ function App() {
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <div className="relative bg-black w-full min-h-screen overflow-x-hidden">
         
-        {/* Hero Section */}
-        <div className="relative z-10 w-full">
+        {/* Fixed Hero Section in the background */}
+        <div className="fixed top-0 left-0 w-full h-screen z-0">
           <HeroSection />
         </div>
 
-        {/* Content wrapper for Section 2 and onwards */}
-        <div className="relative z-20 w-full min-h-screen">
+        {/* Hero Spacer in document flow: maintains 100vh scroll height and preserves navigation */}
+        <div id="hero" className="relative w-full h-screen pointer-events-none" />
+
+        {/* Content wrapper for Section 2 and onwards — rolls up and covers the fixed Hero with clouds */}
+        <div className="relative z-20 w-full min-h-screen bg-[#070312]">
           
           {/* Scrollable Background Image — covers Section 2 and smoothly fades into Tech Stack */}
           <div className="absolute inset-0 z-0 pointer-events-none">
