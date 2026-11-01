@@ -43,20 +43,6 @@ export const Section7: React.FC = () => {
       }
     );
 
-    gsap.fromTo(portalRef.current,
-      { scale: 0.7, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1.2,
-        ease: 'back.out(1.2)',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-        }
-      }
-    );
-
     gsap.fromTo(buttonRef.current,
       { y: 20, opacity: 0 },
       {
@@ -141,141 +127,22 @@ export const Section7: React.FC = () => {
       <section
         ref={sectionRef}
         id="contact"
-        className="relative w-full min-h-screen pt-48 sm:pt-56 md:pt-64 pb-20 flex flex-col items-center justify-between bg-gradient-to-b from-[#f8fafc] via-[#f0f9ff] via-35% to-[#e0f2fe] text-slate-800 overflow-hidden"
+        className="relative w-full min-h-screen pt-32 sm:pt-36 md:pt-40 pb-20 flex flex-col items-center justify-between text-slate-800 overflow-hidden bg-[#7aa331]"
       >
-        {/* Soft sunny white & light blue ambient light glows */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-sky-100/60 rounded-full blur-[140px] pointer-events-none z-0" />
-        <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-emerald-100/30 rounded-full blur-[140px] pointer-events-none z-0" />
-
-        {/* ── Full Fresh Grass Meadow Landscape Illustration ── */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
-          <svg
-            viewBox="0 0 1440 900"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            className="w-full h-full object-cover"
-          >
-            <defs>
-              {/* Distant Hills Gradient - Light Fresh Meadow Grass */}
-              <linearGradient id="hillFar" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#bbf7d0" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#86efac" stopOpacity="0.95" />
-              </linearGradient>
-
-              {/* Mid Hills Gradient - Vibrant Natural Grass Green */}
-              <linearGradient id="hillMid" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#86efac" />
-                <stop offset="100%" stopColor="#4ade80" />
-              </linearGradient>
-
-              {/* Near Grass Gradient - Rich Lush Turf */}
-              <linearGradient id="hillNear" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#22c55e" />
-                <stop offset="60%" stopColor="#16a34a" />
-                <stop offset="100%" stopColor="#15803d" />
-              </linearGradient>
-
-              {/* Foreground Turf Gradient - Deep Rolling Green Meadow */}
-              <linearGradient id="turfGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#16a34a" />
-                <stop offset="40%" stopColor="#15803d" />
-                <stop offset="100%" stopColor="#14532d" />
-              </linearGradient>
-            </defs>
-
-            {/* Far soft rolling hill */}
-            <path
-              d="M-50,480 Q320,340 720,420 T1490,370 L1490,900 L-50,900 Z"
-              fill="url(#hillFar)"
-            />
-
-            {/* Mid rolling hill with crest curve */}
-            <path
-              d="M-50,560 Q260,450 680,520 T1490,470 L1490,900 L-50,900 Z"
-              fill="url(#hillMid)"
-            />
-
-            {/* Near lush green hill */}
-            <path
-              d="M-50,640 Q420,530 920,600 T1490,570 L1490,900 L-50,900 Z"
-              fill="url(#hillNear)"
-            />
-
-            {/* Foreground rich green grass turf */}
-            <path
-              d="M-50,710 Q250,630 620,690 T1180,660 Q1340,680 1490,650 L1490,900 L-50,900 Z"
-              fill="url(#turfGradient)"
-            />
-
-            {/* Detailed Grass Blade Tufts along the ridge */}
-            <g fill="#bbf7d0" opacity="0.9">
-              {/* Clump 1 */}
-              <path d="M140,650 Q145,610 142,580 Q148,615 152,650 Z" />
-              <path d="M148,650 Q155,605 158,575 Q160,612 163,650 Z" />
-              <path d="M156,650 Q168,612 174,585 Q171,618 168,650 Z" />
-              {/* Clump 2 */}
-              <path d="M380,655 Q385,615 382,585 Q388,620 392,655 Z" />
-              <path d="M388,655 Q395,610 400,580 Q402,617 403,655 Z" />
-              <path d="M396,655 Q408,618 414,590 Q411,623 408,655 Z" />
-              {/* Clump 3 */}
-              <path d="M680,690 Q685,645 683,615 Q690,650 694,690 Z" />
-              <path d="M690,690 Q700,640 706,610 Q706,648 706,690 Z" />
-              <path d="M700,690 Q712,650 720,620 Q715,655 712,690 Z" />
-              {/* Clump 4 */}
-              <path d="M960,660 Q965,620 962,590 Q968,625 972,660 Z" />
-              <path d="M968,660 Q976,615 982,585 Q983,622 984,660 Z" />
-              <path d="M978,660 Q990,622 998,595 Q993,628 989,660 Z" />
-              {/* Clump 5 */}
-              <path d="M1240,665 Q1245,625 1242,595 Q1248,630 1252,665 Z" />
-              <path d="M1248,665 Q1256,620 1262,590 Q1263,627 1264,665 Z" />
-              <path d="M1258,665 Q1270,628 1278,600 Q1273,633 1269,665 Z" />
-            </g>
-          </svg>
-
-          {/* Ambient Glowing Fireflies */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="firefly firefly-1" />
-            <div className="firefly firefly-2" />
-            <div className="firefly firefly-3" />
-            <div className="firefly firefly-4" />
-            <div className="firefly firefly-5" />
-            <div className="firefly firefly-6" />
-          </div>
+        {/* Full Width Image Background - bg-daun.jpg (no crop/zoom, full left-to-right) */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <img 
+            src="/images/bg-daun.jpg" 
+            alt="Background Daun Footer" 
+            className="w-full h-full object-fill sm:object-cover sm:object-top"
+          />
+          {/* Subtle soft dark overlay to ensure readability */}
+          <div className="absolute inset-0 bg-black/10" />
         </div>
 
-        {/* Main Content Area */}
-        <div className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center justify-center text-center my-auto px-6">
+        {/* Main Content Area - Raised higher */}
+        <div className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center justify-center text-center my-auto px-6 pt-2">
           
-          {/* Abstract Glowing Meadow Portal */}
-          <div 
-            ref={portalRef}
-            className="
-              relative w-56 h-56 md:w-64 md:h-64 rounded-full mb-12
-              bg-white/40 border border-[#4ade80]/60
-              shadow-[0_0_50px_rgba(74,222,128,0.35),_inset_0_0_20px_rgba(255,255,255,0.6)]
-              flex items-center justify-center backdrop-blur-md
-            "
-          >
-            {/* Inner concentric ring */}
-            <div className="w-[80%] h-[80%] rounded-full border border-[#22c55e]/40 bg-[#86efac]/30 flex items-center justify-center animate-spin duration-[20s]">
-              <div className="w-4 h-4 rounded-full bg-[#15803d] shadow-[0_0_14px_#4ade80] transform translate-x-20" />
-            </div>
-
-            {/* Keyhole light core */}
-            <div className="absolute w-[40%] h-[40%] rounded-full bg-white/70 border border-[#4ade80]/50 shadow-[0_0_20px_rgba(74,222,128,0.25)] flex flex-col items-center justify-center animate-pulse duration-[4s]">
-              {/* Keyhole shape */}
-              <div className="w-4 h-4 rounded-full bg-gradient-to-b from-[#16a34a] to-[#14532d] shadow-sm" />
-              <div className="w-2.5 h-6 bg-gradient-to-b from-[#16a34a] to-[#14532d] -mt-1 rounded-b" />
-            </div>
-
-            {/* Sparkling motes inside portal */}
-            <div className="absolute inset-0 w-full h-full rounded-full overflow-hidden opacity-50 pointer-events-none">
-              <div className="absolute top-[20%] left-[10%] w-1.5 h-1.5 bg-[#86efac] rounded-full animate-ping duration-[3s]" />
-              <div className="absolute bottom-[25%] right-[15%] w-1 h-1 bg-[#4ade80] rounded-full animate-ping duration-[4s]" />
-            </div>
-          </div>
-
           {/* Text */}
           <p className="text-[#14532d] font-extrabold tracking-[0.4em] uppercase mb-4 drop-shadow-sm">
             Ready for the Next Chapter?
@@ -283,7 +150,7 @@ export const Section7: React.FC = () => {
 
           <h2 
             ref={titleRef}
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic text-[#052e16] drop-shadow-[0_2px_15px_rgba(255,255,255,0.9)] leading-none mb-8 select-none font-script"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic text-[#052e16] drop-shadow-[0_2px_15px_rgba(255,255,255,0.95)] leading-none mb-6 select-none font-script"
             style={{ transform: 'rotate(-2deg)' }}
           >
             Let's Create Something Great
@@ -291,7 +158,7 @@ export const Section7: React.FC = () => {
 
           <p 
             ref={subtitleRef}
-            className="text-[#064e3b] font-medium text-sm md:text-base max-w-lg leading-relaxed mb-12 drop-shadow-sm"
+            className="text-[#064e3b] font-medium text-sm md:text-base max-w-lg leading-relaxed mb-10 drop-shadow-sm"
           >
             I am currently open to full-time opportunities, freelance projects, and exciting collaborations. 
             Tap below to send a direct email and let's explore how we can work together.

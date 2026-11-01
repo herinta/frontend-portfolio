@@ -1,0 +1,396 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <pattern id="bwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#D4D4D8" />
+    </pattern>
+  </defs>
+
+  <!-- White Background & Outer Frame -->
+  <rect width="1600" height="900" fill="#FFFFFF" />
+  <rect width="1600" height="900" fill="url(#bwGrid)" />
+  <rect x="12" y="12" width="1576" height="876" rx="6" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="22" width="1544" height="62" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <line x1="28" y1="56" x2="1572" y2="56" stroke="#111111" stroke-width="1" />
+  <text x="46" y="46" fill="#111111" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800" letter-spacing="0.5">
+    ENTITY RELATIONSHIP DIAGRAM (ERD) — MULTICHAT AI (SUPABASE POSTGRESQL)
+  </text>
+  <text x="46" y="75" fill="#3F3F46" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    Supabase PostgreSQL | 8 Tables | Multi-Agent Group Party Bridge | Consolidated Room Memory | Realtime Broadcast Enabled
+  </text>
+  <rect x="1360" y="29" width="196" height="22" rx="4" fill="#111111" />
+  <text x="1458" y="44" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    Supabase PostgreSQL
+  </text>
+
+
+  <!-- ========================================================================= -->
+  <!-- RELATIONSHIP CONNECTOR LINES (BLACK CROW'S FOOT)                          -->
+  <!-- ========================================================================= -->
+  <!-- 1. auth.users.id (1) ───< (N) user_personas.user_id -->
+  <path d="M 218 320 L 218 370" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="228" y="340" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="228" y="364" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 210 370 L 218 358 L 226 370" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 2. auth.users.id (1) ─── (1) user_settings.user_id -->
+  <path d="M 48 320 L 48 672" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="5,4" />
+  <text x="58" y="662" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1:1</text>
+
+  <!-- 3. auth.users.id (1) ───< (N) rooms.user_id -->
+  <path d="M 408 185 L 552 185" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="420" y="177" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="532" y="177" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 552 178 L 540 185 L 552 192" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 4. user_personas.id (1) ───< (N) rooms.user_persona_id -->
+  <path d="M 408 430 L 480 430 L 480 236 L 552 236" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="420" y="422" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="532" y="228" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 552 229 L 540 236 L 552 243" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 5. rooms.id (1) ───< (N) room_party.room_id -->
+  <path d="M 768 386 L 768 434" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="780" y="405" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="780" y="428" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 760 434 L 768 422 L 776 434" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 6. agents.id (1) ───< (N) room_party.agent_id -->
+  <path d="M 1140 265 L 1062 265 L 1062 518 L 984 518" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="1120" y="257" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="998" y="510" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 984 511 L 996 518 L 984 525" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 7. rooms.id (1) ───< (N) messages.room_id -->
+  <path d="M 552 330 L 512 330 L 512 715 L 552 715" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="522" y="322" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="532" y="707" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 552 708 L 540 715 L 552 722" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 8. agents.id (1) ───< (N) messages.sender_id -->
+  <path d="M 1140 350 L 1094 350 L 1094 742 L 984 742" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <text x="1120" y="342" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="998" y="734" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N (AI Msg)</text>
+  <path d="M 984 735 L 996 742 L 984 749" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 9. agents.id (1) ───< (N) agent_likes.agent_id -->
+  <path d="M 1356 446 L 1356 544" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="1368" y="468" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="1368" y="536" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N (Likes)</text>
+  <path d="M 1348 544 L 1356 532 L 1364 544" fill="none" stroke="#111111" stroke-width="2" />
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 1: auth.users                                                       -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="102" width="380" height="218" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="102" width="380" height="36" rx="6" fill="#111111" />
+    <text x="44" y="125" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">auth.users</text>
+    <text x="392" y="125" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Supabase Auth Schema</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="40" y="148" width="28" height="18" rx="3" fill="#111111" />
+      <text x="54" y="161" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="76" y="162" fill="#111111" font-weight="800">id</text>
+      <text x="392" y="162" text-anchor="end" fill="#111111" font-weight="700">UUID (auth.uid())</text>
+
+      <rect x="40" y="174" width="28" height="18" rx="3" fill="#F4F4F5" stroke="#111111" stroke-width="1" />
+      <text x="54" y="187" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">UQ</text>
+      <text x="76" y="188" fill="#111111" font-weight="700">email</text>
+      <text x="392" y="188" text-anchor="end" fill="#3F3F46">VARCHAR(255) NOT NULL</text>
+
+      <text x="76" y="214" fill="#27272A">encrypted_password</text>
+      <text x="392" y="214" text-anchor="end" fill="#3F3F46">VARCHAR(255)</text>
+
+      <text x="76" y="240" fill="#27272A">raw_user_meta_data</text>
+      <text x="392" y="240" text-anchor="end" fill="#3F3F46">JSONB</text>
+
+      <text x="76" y="266" fill="#27272A">last_sign_in_at</text>
+      <text x="392" y="266" text-anchor="end" fill="#3F3F46">TIMESTAMPTZ</text>
+
+      <text x="76" y="292" fill="#52525B">created_at</text>
+      <text x="392" y="292" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 2: user_personas                                                    -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="370" width="380" height="248" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="370" width="380" height="36" rx="6" fill="#111111" />
+    <text x="44" y="393" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">user_personas</text>
+    <text x="392" y="393" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Custom Roleplay Identity</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="40" y="416" width="28" height="18" rx="3" fill="#111111" />
+      <text x="54" y="429" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="76" y="430" fill="#111111" font-weight="800">id</text>
+      <text x="392" y="430" text-anchor="end" fill="#111111" font-weight="700">UUID</text>
+
+      <rect x="40" y="442" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="54" y="455" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="76" y="456" fill="#111111" font-weight="700">user_id</text>
+      <text x="392" y="456" text-anchor="end" fill="#111111">UUID -&gt; auth.users.id</text>
+
+      <text x="76" y="484" fill="#27272A">name</text>
+      <text x="392" y="484" text-anchor="end" fill="#3F3F46">TEXT NOT NULL</text>
+
+      <text x="76" y="512" fill="#27272A">background</text>
+      <text x="392" y="512" text-anchor="end" fill="#3F3F46">TEXT (Backstory context)</text>
+
+      <text x="76" y="540" fill="#27272A">personality</text>
+      <text x="392" y="540" text-anchor="end" fill="#3F3F46">TEXT (Traits &amp; tone)</text>
+
+      <text x="76" y="568" fill="#111111" font-weight="700">is_default</text>
+      <text x="392" y="568" text-anchor="end" fill="#111111">BOOLEAN DEFAULT FALSE</text>
+
+      <text x="76" y="594" fill="#52525B">created_at</text>
+      <text x="392" y="594" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 3: user_settings                                                    -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="672" width="380" height="204" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="672" width="380" height="36" rx="6" fill="#111111" />
+    <text x="44" y="695" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">user_settings</text>
+    <text x="392" y="695" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Safety Filter &amp; Theme</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="40" y="720" width="28" height="18" rx="3" fill="#111111" />
+      <text x="54" y="733" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <rect x="72" y="720" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="86" y="733" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="108" y="734" fill="#111111" font-weight="800">user_id</text>
+      <text x="392" y="734" text-anchor="end" fill="#111111">UUID -&gt; auth.users.id</text>
+
+      <text x="76" y="768" fill="#111111" font-weight="700">muted_words</text>
+      <text x="392" y="768" text-anchor="end" fill="#111111">TEXT[] (Server Regex Filter)</text>
+
+      <text x="76" y="802" fill="#27272A">global_theme</text>
+      <text x="392" y="802" text-anchor="end" fill="#3F3F46">TEXT (UI Color Theme)</text>
+
+      <rect x="40" y="828" width="356" height="28" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="218" y="846" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        1:1 User Preference &amp; Anti-Injection Word Blocklist
+      </text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 4: rooms                                                            -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="552" y="102" width="432" height="284" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="552" y="102" width="432" height="36" rx="6" fill="#111111" />
+    <text x="568" y="125" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">rooms</text>
+    <text x="968" y="125" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">1-on-1 &amp; Group Chat Rooms</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="564" y="148" width="28" height="18" rx="3" fill="#111111" />
+      <text x="578" y="161" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="600" y="162" fill="#111111" font-weight="800">id</text>
+      <text x="968" y="162" text-anchor="end" fill="#111111" font-weight="700">UUID (gen_random_uuid)</text>
+
+      <rect x="564" y="176" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="578" y="189" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="600" y="190" fill="#111111" font-weight="700">user_id</text>
+      <text x="968" y="190" text-anchor="end" fill="#111111">UUID -&gt; auth.users.id</text>
+
+      <rect x="564" y="204" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="578" y="217" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="600" y="218" fill="#111111" font-weight="700">user_persona_id</text>
+      <text x="968" y="218" text-anchor="end" fill="#111111">UUID -&gt; user_personas.id (NULL)</text>
+
+      <text x="600" y="246" fill="#27272A">title</text>
+      <text x="968" y="246" text-anchor="end" fill="#3F3F46">TEXT NOT NULL</text>
+
+      <text x="600" y="274" fill="#27272A">theme</text>
+      <text x="968" y="274" text-anchor="end" fill="#3F3F46">TEXT (Room Bubble Theme)</text>
+
+      <text x="600" y="302" fill="#111111" font-weight="700">memory</text>
+      <text x="968" y="302" text-anchor="end" fill="#111111">TEXT (Consolidated &gt;3d &amp; Voice Call)</text>
+
+      <text x="600" y="330" fill="#52525B">created_at</text>
+      <text x="968" y="330" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+
+      <rect x="564" y="348" width="408" height="24" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="768" y="364" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        Stores consolidated long-term &amp; post-voice-call summary
+      </text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 5: room_party                                                       -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="552" y="434" width="432" height="172" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="552" y="434" width="432" height="36" rx="6" fill="#111111" />
+    <text x="568" y="457" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">room_party</text>
+    <text x="968" y="457" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">M:N Room &lt;-&gt; AI Agents Bridge</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="564" y="482" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="578" y="495" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="600" y="496" fill="#111111" font-weight="700">room_id</text>
+      <text x="968" y="496" text-anchor="end" fill="#111111">UUID -&gt; rooms.id (ON DELETE CASCADE)</text>
+
+      <rect x="564" y="512" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="578" y="525" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="600" y="526" fill="#111111" font-weight="700">agent_id</text>
+      <text x="968" y="526" text-anchor="end" fill="#111111">UUID -&gt; agents.id (ON DELETE CASCADE)</text>
+
+      <rect x="564" y="548" width="408" height="44" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="768" y="566" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        COMPOSITE KEY (room_id, agent_id) — Strict 2-Column Bridge
+      </text>
+      <text x="768" y="582" text-anchor="middle" fill="#3F3F46" font-size="10.5">
+        Enables 1-on-1 Private Chat (1 Agent) &amp; Multi-Agent Group Chat (N Agents)
+      </text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 6: messages                                                         -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="552" y="644" width="432" height="232" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="552" y="644" width="432" height="36" rx="6" fill="#111111" />
+    <text x="568" y="667" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">messages</text>
+    <text x="968" y="667" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Realtime Chat &amp; Call Log</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="564" y="690" width="28" height="18" rx="3" fill="#111111" />
+      <text x="578" y="703" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="600" y="704" fill="#111111" font-weight="800">id</text>
+      <text x="968" y="704" text-anchor="end" fill="#111111" font-weight="700">UUID (Replaces client opt- ID)</text>
+
+      <rect x="564" y="716" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="578" y="729" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="600" y="730" fill="#111111" font-weight="700">room_id</text>
+      <text x="968" y="730" text-anchor="end" fill="#111111">UUID -&gt; rooms.id (CASCADE)</text>
+
+      <rect x="564" y="742" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="578" y="755" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="600" y="756" fill="#111111" font-weight="700">sender_id</text>
+      <text x="968" y="756" text-anchor="end" fill="#111111">UUID -&gt; agents.id (NULL if USER)</text>
+
+      <text x="600" y="784" fill="#111111" font-weight="700">sender_type</text>
+      <text x="968" y="784" text-anchor="end" fill="#111111">'USER' | 'AI' | 'SYSTEM'</text>
+
+      <text x="600" y="812" fill="#27272A">content</text>
+      <text x="968" y="812" text-anchor="end" fill="#3F3F46">TEXT (Markdown / Call Summary)</text>
+
+      <text x="600" y="840" fill="#52525B">created_at</text>
+      <text x="968" y="840" text-anchor="end" fill="#52525B">TIMESTAMPTZ (Indexed for &gt;3d)</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 7: agents                                                           -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="1140" y="102" width="432" height="344" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="1140" y="102" width="432" height="36" rx="6" fill="#111111" />
+    <text x="1156" y="125" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">agents</text>
+    <text x="1556" y="125" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">AI Characters &amp; Marketplace</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="1152" y="148" width="28" height="18" rx="3" fill="#111111" />
+      <text x="1166" y="161" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="1188" y="162" fill="#111111" font-weight="800">id</text>
+      <text x="1556" y="162" text-anchor="end" fill="#111111" font-weight="700">UUID (gen_random_uuid)</text>
+
+      <rect x="1152" y="176" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="1166" y="189" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="1188" y="190" fill="#111111" font-weight="700">creator_id</text>
+      <text x="1556" y="190" text-anchor="end" fill="#111111">UUID -&gt; auth.users.id</text>
+
+      <text x="1188" y="218" fill="#111111" font-weight="700">name</text>
+      <text x="1556" y="218" text-anchor="end" fill="#3F3F46">TEXT NOT NULL (@Mention key)</text>
+
+      <text x="1188" y="246" fill="#27272A">role</text>
+      <text x="1556" y="246" text-anchor="end" fill="#3F3F46">TEXT (Relationship / Title)</text>
+
+      <text x="1188" y="274" fill="#111111" font-weight="700">system_prompt</text>
+      <text x="1556" y="274" text-anchor="end" fill="#111111">TEXT (Core Persona &amp; Voice Style)</text>
+
+      <text x="1188" y="302" fill="#27272A">avatar_url</text>
+      <text x="1556" y="302" text-anchor="end" fill="#3F3F46">TEXT (Pollinations.ai / Custom)</text>
+
+      <text x="1188" y="330" fill="#27272A">description</text>
+      <text x="1556" y="330" text-anchor="end" fill="#3F3F46">TEXT (Explore Card Bio)</text>
+
+      <text x="1188" y="358" fill="#111111" font-weight="700">is_public</text>
+      <text x="1556" y="358" text-anchor="end" fill="#111111">BOOLEAN DEFAULT FALSE</text>
+
+      <text x="1188" y="386" fill="#52525B">created_at</text>
+      <text x="1556" y="386" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+
+      <rect x="1152" y="406" width="408" height="24" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="1356" y="422" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        Cross-Room Aware: Recalls last 15 messages across rooms
+      </text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 8: agent_likes                                                      -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="1140" y="544" width="432" height="236" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="1140" y="544" width="432" height="36" rx="6" fill="#111111" />
+    <text x="1156" y="567" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">agent_likes</text>
+    <text x="1556" y="567" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Community Explore Likes</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="1152" y="592" width="28" height="18" rx="3" fill="#111111" />
+      <text x="1166" y="605" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="1188" y="606" fill="#111111" font-weight="800">id</text>
+      <text x="1556" y="606" text-anchor="end" fill="#111111" font-weight="700">UUID (gen_random_uuid)</text>
+
+      <rect x="1152" y="622" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="1166" y="635" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="1188" y="636" fill="#111111" font-weight="700">user_id</text>
+      <text x="1556" y="636" text-anchor="end" fill="#111111">UUID -&gt; auth.users.id (CASCADE)</text>
+
+      <rect x="1152" y="652" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="1166" y="665" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="1188" y="666" fill="#111111" font-weight="700">agent_id</text>
+      <text x="1556" y="666" text-anchor="end" fill="#111111">UUID -&gt; agents.id (CASCADE)</text>
+
+      <text x="1188" y="696" fill="#52525B">created_at</text>
+      <text x="1556" y="696" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+
+      <rect x="1152" y="726" width="408" height="36" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="1356" y="748" text-anchor="middle" fill="#111111" font-size="11.5" font-weight="800">
+        CONSTRAINT uq_user_agent_like UNIQUE (user_id, agent_id)
+      </text>
+    </g>
+  </g>
+
+  <!-- Summary Footer Box on Bottom Right -->
+  <rect x="1140" y="796" width="432" height="80" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="1156" y="820" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="800">
+    KEY ARCHITECTURAL INVARIANTS:
+  </text>
+  <text x="1156" y="840" fill="#27272A" font-family="ui-monospace, monospace" font-size="11">
+    • room_party maps (room_id, agent_id); owner is rooms.user_id
+  </text>
+  <text x="1156" y="860" fill="#27272A" font-family="ui-monospace, monospace" font-size="11">
+    • messages.sender_type='SYSTEM' stores Voice Call Summary cards
+  </text>
+</svg>

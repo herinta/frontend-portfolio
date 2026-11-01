@@ -1,0 +1,274 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <!-- Subtle Engineering Dot Grid -->
+    <pattern id="bwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#D4D4D8" />
+    </pattern>
+
+    <!-- Black Arrow Marker -->
+    <marker id="arrowBlack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#111111" />
+    </marker>
+  </defs>
+
+  <!-- White Background & Outer Frame -->
+  <rect width="1600" height="900" fill="#FFFFFF" />
+  <rect width="1600" height="900" fill="url(#bwGrid)" />
+  <rect x="12" y="12" width="1576" height="876" rx="6" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="24" width="1544" height="64" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <line x1="28" y1="60" x2="1572" y2="60" stroke="#111111" stroke-width="1" />
+  <text x="46" y="49" fill="#111111" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800" letter-spacing="0.5">
+    SYSTEM ARCHITECTURE FLOWCHART — CODEVAS LEARNING (60FPS REAL-TIME UI ENGINE)
+  </text>
+  <text x="46" y="79" fill="#3F3F46" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    Stack: Next.js 16 (App Router) | Monaco Editor | Custom AST/Style Parser | PostgreSQL 16 | Synology NAS Docker | Cloudflare Tunnel
+  </text>
+  <rect x="1390" y="31" width="166" height="22" rx="4" fill="#111111" />
+  <text x="1473" y="46" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    https://codevas.my.id
+  </text>
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 1: CLIENT WORKSPACE (BROWSER 60FPS ENGINE)                       -->
+  <!-- ========================================================================= -->
+  <rect x="28" y="104" width="416" height="718" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="28" y="104" width="416" height="38" rx="6" fill="#111111" />
+  <text x="44" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    01. CLIENT WORKSPACE (BROWSER 60FPS ENGINE)
+  </text>
+
+  <!-- Node 1.1 -->
+  <rect x="46" y="160" width="380" height="108" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">1</text>
+  <text x="94" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Student / HRD Demo / Admin Client</text>
+  <line x1="58" y1="200" x2="414" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="218" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Entry via Landing Page (/), Demo Showcase (/demo/login)</text>
+  <text x="58" y="237" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• 1-Click Auto Credentials (demo_student / demo_admin)</text>
+  <text x="58" y="256" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Routes: /classes | /arena/[id] | /leaderboard | /admin</text>
+
+  <!-- Node 1.2 -->
+  <rect x="46" y="294" width="380" height="142" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="306" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="322" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">2</text>
+  <text x="94" y="322" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Monaco Editor &amp; Syntax Helpers (45% View)</text>
+  <line x1="58" y1="334" x2="414" y2="334" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="352" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• In-browser VS Code engine (@monaco-editor/react)</text>
+  <text x="58" y="371" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Toggleable Smart Syntax Helper Bubbles (Quick-Insert)</text>
+  <text x="58" y="390" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Anti-Spam Guard: prevents duplicate CSS property lines</text>
+  <text x="58" y="409" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Locked HTML/CSS Skeleton (locked_template JSONB)</text>
+  <text x="58" y="426" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">State: code string + Daily 10-Min Study Timer</text>
+
+  <!-- Node 1.3 -->
+  <rect x="46" y="462" width="380" height="146" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="474" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="490" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">3</text>
+  <text x="94" y="490" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">60FPS Style &amp; DOM Parser Engine</text>
+  <line x1="58" y1="502" x2="414" y2="502" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="520" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Zero-Submit Loop: evaluates on every keystroke</text>
+  <text x="58" y="539" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Parses CSS declarations, Tailwind classes &amp; HTML DOM</text>
+  <text x="58" y="558" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Validates parent-child hierarchy, attributes &amp; tag counts</text>
+  <text x="58" y="577" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Compares computed state against validation_rules JSONB</text>
+  <text x="58" y="596" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Modules: src/lib/style-parser.ts | src/lib/evaluator.ts</text>
+
+  <!-- Node 1.4 -->
+  <rect x="46" y="634" width="380" height="168" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <rect x="58" y="646" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="662" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">4</text>
+  <text x="94" y="662" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Live Arena Canvas (55% View) &amp; Auto-Judge</text>
+  <line x1="58" y1="674" x2="414" y2="674" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="694" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Renders real-time Neo-Brutalist visual preview</text>
+  <text x="58" y="713" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Interactive Concept Demo Tabs (Teori | Misi | Petunjuk)</text>
+  <text x="58" y="732" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Supports Live Code, Drag-and-Drop Blocks &amp; Quiz Modes</text>
+  <text x="58" y="753" fill="#111111" font-family="system-ui, sans-serif" font-size="12" font-weight="800">[PASS] All rules matched -&gt; Fires Confetti + Server Sync</text>
+  <text x="58" y="776" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Components: LiveCodeArena.tsx | DragDropArena.tsx</text>
+
+  <!-- Internal Client Arrows -->
+  <line x1="236" y1="268" x2="236" y2="290" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <line x1="236" y1="436" x2="236" y2="458" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <line x1="236" y1="608" x2="236" y2="630" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 2: EDGE & SYNOLOGY NAS INFRASTRUCTURE                            -->
+  <!-- ========================================================================= -->
+  <rect x="476" y="104" width="320" height="718" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="476" y="104" width="320" height="38" rx="6" fill="#111111" />
+  <text x="492" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    02. EDGE &amp; NAS DEVOPS INFRA
+  </text>
+
+  <!-- Node 2.1 -->
+  <rect x="494" y="160" width="284" height="192" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="506" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="519" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">5</text>
+  <text x="542" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Cloudflare Edge &amp; Tunnel</text>
+  <line x1="506" y1="200" x2="766" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="506" y="220" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Public Domain: https://codevas.my.id</text>
+  <text x="506" y="240" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Full SSL/TLS Encryption &amp; WAF</text>
+  <text x="506" y="260" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Zero-Trust Outbound Tunnel</text>
+  <text x="506" y="278" fill="#52525B" font-family="system-ui, sans-serif" font-size="11.5">  (No public router port forwarding)</text>
+  <text x="506" y="302" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Routes internal Docker traffic:</text>
+  <rect x="506" y="314" width="260" height="26" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+  <text x="636" y="331" text-anchor="middle" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">http://codevas-web:3000</text>
+
+  <!-- Node 2.2 -->
+  <rect x="494" y="382" width="284" height="198" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="506" y="408" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Synology NAS Docker Host</text>
+  <text x="506" y="426" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">docker-compose.prod.yml (codevas-net)</text>
+  <line x1="506" y1="436" x2="766" y2="436" stroke="#D4D4D8" stroke-width="1" />
+  <text x="506" y="456" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Container 1: codevas-web (Next.js 16)</text>
+  <text x="506" y="476" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Container 2: codevas-db (Postgres 16)</text>
+  <text x="506" y="496" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Container 3: codevas-tunnel (cloudflared)</text>
+  <text x="506" y="516" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Container 4: codevas-watchtower</text>
+  <text x="506" y="542" fill="#3F3F46" font-family="system-ui, sans-serif" font-size="11.5">Healthchecks: pg_isready &amp; /api/health</text>
+  <text x="506" y="564" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Volume: /volume1/docker/codevas</text>
+
+  <!-- Node 2.3 -->
+  <rect x="494" y="608" width="284" height="194" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="506" y="634" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Automated Multi-Arch CI/CD</text>
+  <text x="506" y="652" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">.github/workflows/docker-publish.yml</text>
+  <line x1="506" y1="662" x2="766" y2="662" stroke="#D4D4D8" stroke-width="1" />
+  <text x="506" y="682" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">1. git push origin main</text>
+  <text x="506" y="702" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">2. Docker Buildx (amd64 + arm64)</text>
+  <text x="506" y="722" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">3. Push to GHCR Registry:</text>
+  <text x="506" y="740" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">   ghcr.io/herinta/codevas:latest</text>
+  <text x="506" y="762" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">4. Watchtower polls every 300s &amp;</text>
+  <text x="506" y="780" fill="#111111" font-family="system-ui, sans-serif" font-size="12" font-weight="700">   auto-restarts container zero-touch</text>
+
+  <line x1="636" y1="352" x2="636" y2="378" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <line x1="636" y1="608" x2="636" y2="584" stroke="#111111" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrowBlack)" />
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 3: NEXT.JS 16 SERVER & REST API                                  -->
+  <!-- ========================================================================= -->
+  <rect x="828" y="104" width="372" height="718" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="828" y="104" width="372" height="38" rx="6" fill="#111111" />
+  <text x="846" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    03. NEXT.JS 16 SERVER &amp; REST API
+  </text>
+
+  <!-- Node 3.1 -->
+  <rect x="848" y="160" width="332" height="156" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="860" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="873" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">6</text>
+  <text x="896" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Auth &amp; Session Guard Layer</text>
+  <line x1="860" y1="200" x2="1168" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="860" y="220" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Bcrypt password hashing (10 salt rounds)</text>
+  <text x="860" y="239" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Custom HMAC-SHA256 signed HTTP-only cookie</text>
+  <text x="860" y="258" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Role-Based Guard: USER vs ADMIN (admin-guard.ts)</text>
+  <text x="860" y="277" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Auto-updates last_seen_at &amp; daily streak_days</text>
+  <text x="860" y="300" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">API: /api/auth/login | /register | /me | /profile</text>
+
+  <!-- Node 3.2 -->
+  <rect x="848" y="338" width="332" height="178" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <rect x="860" y="350" width="26" height="22" rx="4" fill="#111111" />
+  <text x="873" y="366" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">7</text>
+  <text x="896" y="366" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Challenge Evaluator &amp; XP Service</text>
+  <line x1="860" y1="378" x2="1168" y2="378" stroke="#D4D4D8" stroke-width="1" />
+  <text x="860" y="398" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Re-validates submitted code on server side</text>
+  <text x="860" y="417" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Idempotent XP Reward Check (first-time clear only)</text>
+  <text x="860" y="436" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Unlocks next challenge (order_index + 1)</text>
+  <text x="860" y="455" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Calculates user Level = floor(xp / 250) + 1</text>
+  <text x="860" y="474" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Tracks 10-Min Daily Target (+50 EXP bonus)</text>
+  <text x="860" y="498" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">POST /api/challenges/[id]/evaluate | /daily-activity</text>
+
+  <!-- Node 3.3 -->
+  <rect x="848" y="538" width="332" height="120" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="860" y="564" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Curriculum &amp; Leaderboard Engine</text>
+  <line x1="860" y1="574" x2="1168" y2="574" stroke="#D4D4D8" stroke-width="1" />
+  <text x="860" y="594" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Serves 8+ Interactive Classes &amp; 64+ Levels</text>
+  <text x="860" y="613" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Auto-enrolls active students &amp; syncs code_snapshot</text>
+  <text x="860" y="632" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Ranks Top Coders by xp_points &amp; streak_days</text>
+  <text x="860" y="650" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">GET /api/classes | /api/classes/[id] | /leaderboard</text>
+
+  <!-- Node 3.4 -->
+  <rect x="848" y="678" width="332" height="124" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="860" y="704" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Admin CMS &amp; Live Telemetry API</text>
+  <line x1="860" y1="714" x2="1168" y2="714" stroke="#D4D4D8" stroke-width="1" />
+  <text x="860" y="734" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Real-time Online Status (active &lt; 2 mins ago)</text>
+  <text x="860" y="753" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Full CRUD for Classes, Challenges &amp; JSONB Rules</text>
+  <text x="860" y="772" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Anonymous Visitor Tracker (5-min throttle)</text>
+  <text x="860" y="792" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">API: /api/admin/stats | /users | /classes | /analytics</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 4: POSTGRESQL 16 DATABASE                                        -->
+  <!-- ========================================================================= -->
+  <rect x="1232" y="104" width="340" height="718" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="1232" y="104" width="340" height="38" rx="6" fill="#111111" />
+  <text x="1250" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    04. POSTGRESQL 16 (codevas_db)
+  </text>
+
+  <!-- Node 4.1 -->
+  <rect x="1250" y="160" width="304" height="90" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="1262" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="1275" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">8</text>
+  <text x="1298" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">pg Pool Singleton (db.ts)</text>
+  <line x1="1262" y1="200" x2="1542" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1262" y="218" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Max 20 pooled connections + ACID Tx</text>
+  <text x="1262" y="238" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Auto-Seed: docker/init-db.sql</text>
+
+  <!-- Node 4.2 -->
+  <rect x="1250" y="270" width="304" height="122" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="1250" y="270" width="304" height="28" rx="6" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+  <text x="1264" y="289" fill="#111111" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800">Identity &amp; Gamification Ledger</text>
+  <text x="1264" y="318" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• users</text>
+  <text x="1278" y="335" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(xp_points, level, streak_days, role)</text>
+  <text x="1264" y="357" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• xp_transactions</text>
+  <text x="1278" y="374" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(amount, source, reference_id)</text>
+
+  <!-- Node 4.3 -->
+  <rect x="1250" y="412" width="304" height="136" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="1250" y="412" width="304" height="28" rx="6" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+  <text x="1264" y="431" fill="#111111" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800">Curriculum &amp; JSONB Rules</text>
+  <text x="1264" y="460" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• classes</text>
+  <text x="1278" y="477" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(LIVE_CODE | DRAG_DROP | QUIZ)</text>
+  <text x="1264" y="500" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• challenges</text>
+  <text x="1278" y="517" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(validation_rules, syntax_helpers,</text>
+  <text x="1278" y="533" fill="#52525B" font-family="ui-monospace, monospace" font-size="11"> locked_template, target_visual)</text>
+
+  <!-- Node 4.4 -->
+  <rect x="1250" y="568" width="304" height="234" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="1250" y="568" width="304" height="28" rx="6" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+  <text x="1264" y="587" fill="#111111" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800">Progress &amp; Activity Telemetry</text>
+  <text x="1264" y="616" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• user_enrollments</text>
+  <text x="1278" y="633" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(user_id, class_id, status)</text>
+  <text x="1264" y="656" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• user_progress</text>
+  <text x="1278" y="673" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(status, code_snapshot, completed_at)</text>
+  <text x="1264" y="696" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• user_daily_activity</text>
+  <text x="1278" y="713" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(active_seconds, target=600s, xp_claimed)</text>
+  <text x="1264" y="736" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• site_visits</text>
+  <text x="1278" y="753" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(visitor_id, path, ip_hash, visited_at)</text>
+  <text x="1264" y="784" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Cascade FK Integrity + Composite Unique Keys</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- CROSS-SWIMLANE ARROWS                                                     -->
+  <!-- ========================================================================= -->
+  <path d="M 426 215 L 490 215" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <text x="458" y="207" text-anchor="middle" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="800">HTTPS</text>
+
+  <path d="M 426 718 L 456 718 L 456 428 L 844 428" fill="none" stroke="#111111" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowBlack)" />
+  <rect x="542" y="414" width="192" height="22" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="1.5" />
+  <text x="638" y="429" text-anchor="middle" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="800">POST /evaluate (Code + XP)</text>
+
+  <path d="M 778 240 L 844 240" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <text x="811" y="232" text-anchor="middle" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="800">Proxy</text>
+
+  <path d="M 1180 235 L 1246 210" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 1180 428 L 1246 335" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 1180 450 L 1246 655" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 1180 595 L 1246 485" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 1180 740 L 1246 740" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- Bottom Legend Footer -->
+  <rect x="28" y="836" width="1544" height="38" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="48" y="860" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    [1-4] Client 60FPS Live Loop (Zero Submit Button)   |   [5] Cloudflare Zero-Trust Tunnel + Watchtower CI/CD   |   [6-7] Next.js 16 App Router + Server Judge   |   [8] PostgreSQL 16 (8 Tables + JSONB)
+  </text>
+</svg>

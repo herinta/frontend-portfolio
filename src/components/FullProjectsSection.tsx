@@ -1,4 +1,7 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ProjectDetailModal } from './ProjectDetailModal';
+import { getProjectDetail, type ProjectDetail } from '../data/projectDetailsData';
 
 type SubFilter = 'All' | 'Backend' | 'Frontend' | 'AI / Fullstack';
 
@@ -33,13 +36,14 @@ const REPOSITORIES: RepoItem[] = [
     id: 'codevas-learning',
     name: 'codevas-learning',
     category: 'Frontend',
-    description: 'Interactive frontend coding platform with an in-browser live execution playground, real-time feedback engine, and structured curricula for web architecture.',
-    tags: ['#engineering', '#github', '#nextjs', '#react', '#typescript'],
+    description: 'Interactive frontend learning platform featuring a 60FPS real-time DOM/Style evaluation engine, Monaco Editor with Smart Syntax Helper bubbles, PostgreSQL 16 XP ledger, and Synology NAS + Cloudflare Tunnel deployment.',
+    tags: ['#nextjs-16', '#typescript', '#monaco-editor', '#postgresql', '#docker'],
     language: 'TypeScript',
     langColor: '#3178c6',
     stars: 2,
     forks: 0,
     githubUrl: 'https://github.com/herinta/codevas-learning',
+    liveUrl: 'https://codevas.my.id/demo',
   },
   {
     id: 'digisell-frontend',
@@ -81,8 +85,8 @@ const REPOSITORIES: RepoItem[] = [
     id: 'multichat-ai',
     name: 'multichat-ai',
     category: 'AI / Fullstack',
-    description: 'Multi-agent conversational AI platform built with Next.js App Router, Supabase, and Google Gemini API supporting persistent multi-persona chat rooms.',
-    tags: ['#nextjs', '#gemini-api', '#supabase', '#ai-agents', '#motion'],
+    description: 'Multi-agent conversational AI workspace built with Next.js 16, Supabase Realtime & Gemini 3.5 Flash Lite supporting group voice calls, cross-room memory consolidation, proactive messaging, and dual-layer anti-prompt injection.',
+    tags: ['#nextjs-16', '#gemini-api', '#supabase-realtime', '#voice-call', '#pwa'],
     language: 'TypeScript',
     langColor: '#3178c6',
     stars: 3,
@@ -195,6 +199,13 @@ const REPOSITORIES: RepoItem[] = [
 export const FullProjectsSection: React.FC = () => {
   const [subFilter, setSubFilter] = useState<SubFilter>('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenCaseStudy = (idOrTitle: string) => {
+    setSelectedProject(getProjectDetail(idOrTitle));
+    setIsModalOpen(true);
+  };
 
   const filteredRepos = useMemo(() => {
     return REPOSITORIES.filter(repo => {
@@ -213,10 +224,14 @@ export const FullProjectsSection: React.FC = () => {
     });
   }, [subFilter, searchQuery]);
 
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, [subFilter, searchQuery]);
+
   return (
     <section 
       id="full-projects" 
-      className="relative w-full py-24 px-6 md:px-12 bg-gradient-to-b from-[#9ad9ff] via-[#d0ecff] via-35% to-[#f8fafc] text-slate-800 overflow-hidden min-h-[950px]"
+      className="relative w-full pt-24 pb-36 md:pb-44 px-6 md:px-12 bg-gradient-to-b from-[#9ad9ff] via-[#d0ecff] via-35% to-[#f8fafc] text-slate-800 overflow-hidden min-h-[950px]"
     >
       {/* High-performance scoped styles for falling leaves */}
       <style>{`
@@ -322,6 +337,7 @@ export const FullProjectsSection: React.FC = () => {
               alt="Herinta's Live GitHub Contribution Chart" 
               className="w-full max-w-5xl min-w-[700px] h-auto select-none"
               loading="lazy"
+              onLoad={() => ScrollTrigger.refresh()}
             />
           </div>
         </div>
@@ -470,6 +486,15 @@ export const FullProjectsSection: React.FC = () => {
 
                   {/* Right: Commits badge button + Repo Link */}
                   <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => handleOpenCaseStudy(repo.name)}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 border border-indigo-200 text-[10px] font-semibold transition-colors cursor-pointer"
+                      title="View System Design & Details"
+                    >
+                      <span>Detail Project</span>
+                    </button>
+
                     <a
                       href={repo.githubUrl + '/commits'}
                       target="_blank"
@@ -530,6 +555,13 @@ export const FullProjectsSection: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Fullscreen Case Study Modal */}
+      <ProjectDetailModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };

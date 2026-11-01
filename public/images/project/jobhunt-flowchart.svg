@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <pattern id="bwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#D4D4D8" />
+    </pattern>
+
+    <marker id="arrowBlack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#111111" />
+    </marker>
+  </defs>
+
+  <!-- White Background & Outer Frame -->
+  <rect width="1600" height="900" fill="#FFFFFF" />
+  <rect width="1600" height="900" fill="url(#bwGrid)" />
+  <rect x="12" y="12" width="1576" height="876" rx="6" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="24" width="1544" height="64" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <line x1="28" y1="60" x2="1572" y2="60" stroke="#111111" stroke-width="1" />
+  <text x="46" y="49" fill="#111111" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800" letter-spacing="0.5">
+    SYSTEM ARCHITECTURE FLOWCHART — JOBHUNT (DUAL-APP EMPLOYER CMS &amp; JOB SEEKER PORTAL)
+  </text>
+  <text x="46" y="79" fill="#3F3F46" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    Stack: Next.js App Router (2 Apps) | TypeScript 5 | Prisma ORM v5.2 | PostgreSQL | Supabase Storage | NextAuth.js | SWR &amp; Zod
+  </text>
+  <rect x="1352" y="31" width="204" height="22" rx="4" fill="#111111" />
+  <text x="1454" y="46" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    Dual-App Architecture
+  </text>
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 1A: JOB HUNT CMS — EMPLOYER DASHBOARD (:3000)                    -->
+  <!-- ========================================================================= -->
+  <rect x="28" y="104" width="440" height="348" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="28" y="104" width="440" height="38" rx="6" fill="#111111" />
+  <text x="44" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    01A. JOB HUNT CMS (EMPLOYER DASHBOARD :3000)
+  </text>
+
+  <!-- Node 1A.1 -->
+  <rect x="46" y="158" width="404" height="130" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="170" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="186" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">1</text>
+  <text x="94" y="186" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Employer Auth &amp; 3-Tab Company Settings</text>
+  <line x1="58" y1="198" x2="438" y2="198" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="216" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Tab 1 (Overview): Logo upload, industry, techStack[], bio</text>
+  <text x="58" y="235" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Tab 2 (Social Links): Instagram, LinkedIn, Twitter, YouTube</text>
+  <text x="58" y="254" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Tab 3 (Teams): Add &amp; showcase core company team members</text>
+  <text x="58" y="274" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Routes: /auth/signin | /auth/signup | /settings</text>
+
+  <!-- Node 1A.2 -->
+  <rect x="46" y="302" width="404" height="134" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="314" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="330" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">2</text>
+  <text x="94" y="330" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Job Publishing (CKEditor 5) &amp; ATS Review</text>
+  <line x1="58" y1="342" x2="438" y2="342" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="360" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• CKEditor 5 Rich HTML: Description, Responsibility, WhoYouAre</text>
+  <text x="58" y="379" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Dynamic requiredSkills[] &amp; JSON Benefits builder + Quota</text>
+  <text x="58" y="398" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Applicant Inspector: View portfolio, LinkedIn &amp; PDF Resume</text>
+  <text x="58" y="420" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Routes: /post-a-job | /job-listings | /job-detail/[id]</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 1B: JOB HUNT WEBSITE — PUBLIC PORTAL (:3001)                     -->
+  <!-- ========================================================================= -->
+  <rect x="28" y="472" width="440" height="350" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="28" y="472" width="440" height="38" rx="6" fill="#111111" />
+  <text x="44" y="496" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    01B. JOB HUNT WEBSITE (PUBLIC PORTAL :3001)
+  </text>
+
+  <!-- Node 1B.1 -->
+  <rect x="46" y="526" width="404" height="128" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="538" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="554" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">3</text>
+  <text x="94" y="554" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Job &amp; Company Discovery (SWR Client Cache)</text>
+  <line x1="58" y1="566" x2="438" y2="566" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="584" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Landing Showcase: CategoryJob (_count.Job), Featured &amp; Latest</text>
+  <text x="58" y="603" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Multi-Checkbox Dynamic Filter by CategoryJob &amp; Industry</text>
+  <text x="58" y="622" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Company Directory: Tech stack badges, teams &amp; active openings</text>
+  <text x="58" y="642" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Routes: / | /find-jobs | /find-companies | /detail/company/[id]</text>
+
+  <!-- Node 1B.2 -->
+  <rect x="46" y="668" width="404" height="138" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="680" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="696" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">4</text>
+  <text x="94" y="696" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">1-Click Apply Modal &amp; PDF Resume Upload</text>
+  <line x1="58" y1="708" x2="438" y2="708" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="726" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Visual Progress Bar comparing Job.applicants vs Job.needs</text>
+  <text x="58" y="745" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• FormModalApply: React Hook Form + Zod schema validation</text>
+  <text x="58" y="764" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Direct client upload of PDF CV to Supabase 'applicant' bucket</text>
+  <text x="58" y="790" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Route: /detail/job/[id] | Component: FormModalApply.tsx</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 2: NEXT.JS ROUTE HANDLERS, NEXTAUTH & ZOD                        -->
+  <!-- ========================================================================= -->
+  <rect x="506" y="104" width="468" height="718" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="506" y="104" width="468" height="38" rx="6" fill="#111111" />
+  <text x="524" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    02. NEXT.JS ROUTE HANDLERS, NEXTAUTH &amp; ZOD LAYER
+  </text>
+
+  <!-- Node 2.1 -->
+  <rect x="526" y="160" width="428" height="146" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="538" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="551" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">5</text>
+  <text x="574" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Isolated Dual-Role NextAuth.js + Bcrypt</text>
+  <line x1="538" y1="200" x2="942" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="538" y="220" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• CredentialsProvider with stateless JWT Session strategy</text>
+  <text x="538" y="239" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• CMS Auth authenticates against Prisma model: Company</text>
+  <text x="538" y="258" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Website Auth authenticates against Prisma model: User</text>
+  <text x="538" y="277" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Passwords hashed via bcryptjs before Prisma create</text>
+  <text x="538" y="296" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">APIs: /api/auth/[...nextauth] | /api/company/new-user | /api/user</text>
+
+  <!-- Node 2.2 -->
+  <rect x="526" y="324" width="428" height="214" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="538" y="336" width="26" height="22" rx="4" fill="#111111" />
+  <text x="551" y="352" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">6</text>
+  <text x="574" y="352" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">CMS Employer API Service (Port 3000)</text>
+  <line x1="538" y1="364" x2="942" y2="364" stroke="#D4D4D8" stroke-width="1" />
+  <text x="538" y="384" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800">POST /api/company/overview</text>
+  <text x="550" y="401" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">Upserts Companyoverview record (checks existing companyId)</text>
+  <text x="538" y="423" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800">POST /api/company/social-media &amp; /api/company/teams</text>
+  <text x="550" y="440" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">Upserts social links &amp; inserts CompanyTeam members</text>
+  <text x="538" y="462" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800">POST /api/job &amp; GET /api/job/categories</text>
+  <text x="550" y="479" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">Creates Job posting with CKEditor HTML &amp; JSON benefits</text>
+  <text x="538" y="501" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800">GET /api/company/industry</text>
+  <text x="550" y="518" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">Fetches master Industry options for profile setup</text>
+
+  <!-- Node 2.3 -->
+  <rect x="526" y="556" width="428" height="248" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <rect x="538" y="568" width="26" height="22" rx="4" fill="#111111" />
+  <text x="551" y="584" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">7</text>
+  <text x="574" y="584" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Website Job Seeker API Service (Port 3001)</text>
+  <line x1="538" y1="596" x2="942" y2="596" stroke="#D4D4D8" stroke-width="1" />
+  <text x="538" y="616" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800">GET /api/jobs/categories &amp; /api/jobs/featured</text>
+  <text x="550" y="633" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">Aggregates _count.Job per category &amp; fetches top 6 jobs</text>
+  <text x="538" y="655" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800">GET /api/jobs/filter?category=... &amp; /api/company/filter</text>
+  <text x="550" y="672" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">Dynamic Prisma IN-clause query powered by client SWR hooks</text>
+  <text x="538" y="694" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800">POST /api/jobs/apply (Atomic Application Flow)</text>
+  <text x="550" y="711" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">1. Inserts candidate record + resume filename into Applicant</text>
+  <text x="550" y="729" fill="#111111" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700">2. Increments Job.applicants (+1) counter in PostgreSQL</text>
+  <text x="538" y="762" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">SWR Hooks: useJobs | useCompanies | useCategoryJobFilter</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 3: SHARED POSTGRESQL & SUPABASE STORAGE                          -->
+  <!-- ========================================================================= -->
+  <rect x="1012" y="104" width="560" height="718" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="1012" y="104" width="560" height="38" rx="6" fill="#111111" />
+  <text x="1030" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    03. SHARED POSTGRESQL (PRISMA) &amp; SUPABASE STORAGE
+  </text>
+
+  <!-- Node 3.1 -->
+  <rect x="1032" y="160" width="520" height="110" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="1044" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="1057" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">8</text>
+  <text x="1080" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Prisma Client Singleton (lib/prisma.ts)</text>
+  <line x1="1044" y1="200" x2="1538" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1044" y="218" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Shared schema across CMS (DATABASE_URL) &amp; Website (POSTGRES_PRISMA_URL)</text>
+  <text x="1044" y="238" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• CUID (@default(cuid())) primary keys &amp; relational nested includes</text>
+  <text x="1044" y="258" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">ORM: @prisma/client ^5.2.0 | Schema Master: Job-Hunt-CMS/prisma/schema.prisma</text>
+
+  <!-- Node 3.2 -->
+  <rect x="1032" y="288" width="520" height="294" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="1032" y="288" width="520" height="30" rx="6" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+  <text x="1048" y="308" fill="#111111" font-family="ui-monospace, monospace" font-size="13.5" font-weight="800">PostgreSQL Database (9 Synchronized Tables)</text>
+
+  <text x="1048" y="344" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">1. Company</text>
+  <text x="1062" y="361" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(id, name, email UNIQUE, password)</text>
+
+  <text x="1048" y="388" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">2. Companyoverview</text>
+  <text x="1062" y="405" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(image, industry, techStack[], companyId)</text>
+
+  <text x="1048" y="432" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">3. CompanySocialMedia</text>
+  <text x="1062" y="449" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(instagram, linkedin, twitter, youtube)</text>
+
+  <text x="1048" y="476" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">4. CompanyTeam</text>
+  <text x="1062" y="493" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(name, position, instagram, linkedin)</text>
+
+  <text x="1048" y="520" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">5. Industry (Master)</text>
+  <text x="1062" y="537" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(id, name — Tech, Finance, etc.)</text>
+
+  <text x="1310" y="344" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">6. CategoryJob (Master)</text>
+  <text x="1324" y="361" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(id, name — Engineering, Design)</text>
+
+  <text x="1310" y="388" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="800">7. Job (Core Vacancy)</text>
+  <text x="1324" y="405" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(roles, jobType, applicants, needs,</text>
+  <text x="1324" y="421" fill="#52525B" font-family="ui-monospace, monospace" font-size="11"> requiredSkills[], benefits JSON)</text>
+
+  <text x="1310" y="452" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">8. User (Job Seeker)</text>
+  <text x="1324" y="469" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(id, name, email UNIQUE, password)</text>
+
+  <text x="1310" y="500" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="800">9. Applicant (Submission)</text>
+  <text x="1324" y="517" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(userId, jobId, resume, portfolio,</text>
+  <text x="1324" y="533" fill="#52525B" font-family="ui-monospace, monospace" font-size="11"> coverLetter, linkedIn, phone)</text>
+
+  <rect x="1048" y="548" width="488" height="22" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1" />
+  <text x="1292" y="563" text-anchor="middle" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">
+    Real-Time Sync: Jobs posted in CMS appear immediately on Public Website
+  </text>
+
+  <!-- Node 3.3 -->
+  <rect x="1032" y="600" width="520" height="202" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="1044" y="612" width="26" height="22" rx="4" fill="#111111" />
+  <text x="1057" y="628" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">9</text>
+  <text x="1080" y="628" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Supabase Cloud Storage (lib/supabase.ts)</text>
+
+  <rect x="1048" y="646" width="236" height="140" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.4" />
+  <text x="1062" y="670" fill="#111111" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800">Bucket 1: 'company'</text>
+  <line x1="1062" y1="678" x2="1270" y2="678" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1062" y="696" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Stores Company Logos</text>
+  <text x="1062" y="715" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Path: public/&lt;filename&gt;.jpg</text>
+  <text x="1062" y="734" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Uploaded via CMS Overview</text>
+  <text x="1062" y="753" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Rendered via Public URL</text>
+  <text x="1062" y="774" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">supabaseUploadFile()</text>
+
+  <rect x="1300" y="646" width="236" height="140" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.4" />
+  <text x="1314" y="670" fill="#111111" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800">Bucket 2: 'applicant'</text>
+  <line x1="1314" y1="678" x2="1522" y2="678" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1314" y="696" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Stores Candidate Resumes</text>
+  <text x="1314" y="715" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Path: public/&lt;resume&gt;.pdf</text>
+  <text x="1314" y="734" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Uploaded on Job Apply</text>
+  <text x="1314" y="753" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Opened by HR in CMS ATS</text>
+  <text x="1314" y="774" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">supabaseGetPublicUrl()</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- CONNECTOR ARROWS BETWEEN ZONES                                            -->
+  <!-- ========================================================================= -->
+  <path d="M 450 225 L 522 225" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 450 370 L 522 370" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <path d="M 450 595 L 522 595" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 450 735 L 522 735" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <path d="M 954 225 L 1028 225" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 954 430 L 1028 430" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 954 640 L 992 640 L 992 470 L 1028 470" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <line x1="1292" y1="270" x2="1292" y2="284" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <path d="M 450 265 L 486 265 L 486 814 L 1166 814 L 1166 788" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrowBlack)" />
+  <path d="M 450 770 L 1028 730" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrowBlack)" />
+
+  <!-- Bottom Legend Footer -->
+  <rect x="28" y="836" width="1544" height="38" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="48" y="860" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    [1-2] App 1: Job Hunt CMS (Employer Dashboard, CKEditor 5, ATS)   |   [3-4] App 2: Job Hunt Website (SWR Filter, 1-Click Apply)   |   [5-7] NextAuth.js Dual JWT + Zod   |   [8-9] Prisma + Supabase Buckets
+  </text>
+</svg>

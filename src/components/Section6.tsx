@@ -328,12 +328,82 @@ export const Section6: React.FC = () => {
     <section
       ref={containerRef}
       id="guestbook"
-      className="relative w-full min-h-screen py-28 px-6 bg-gradient-to-b from-[#f0f9ff] via-white via-40% to-white text-slate-800 flex flex-col items-center justify-center gap-8 overflow-x-hidden overflow-y-visible md:overflow-hidden"
+      className="relative w-full min-h-screen pt-48 sm:pt-56 md:pt-64 pb-28 px-6 bg-gradient-to-b from-[#f0f9ff] via-white via-40% to-white text-slate-800 flex flex-col items-center justify-center gap-8 overflow-x-hidden overflow-y-visible md:overflow-hidden"
     >
+        <style>{`
+          @keyframes leafFall {
+            0% {
+              transform: translateY(-80px) translateX(0) rotate(0deg);
+              opacity: 0;
+            }
+            15% {
+              opacity: 0.85;
+            }
+            85% {
+              opacity: 0.85;
+            }
+            100% {
+              transform: translateY(115vh) translateX(120px) rotate(420deg);
+              opacity: 0;
+            }
+          }
+          @keyframes leafSway {
+            0%, 100% {
+              margin-left: 0px;
+            }
+            50% {
+              margin-left: 45px;
+            }
+          }
+        `}</style>
+
         {/* Soft luminous airy ambient background glow */}
         <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-sky-100/50 rounded-full blur-[140px] pointer-events-none z-0" />
         {/* Pure white airy bottom feather glow */}
         <div className="absolute bottom-0 left-0 w-full h-[450px] bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none z-0" />
+
+        {/* ── Raining Small Leaves Animation (daun-1 & daun-2) ── */}
+        <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden select-none">
+          {[
+            { id: 1, img: '/images/daun-1.png', left: '4%',  size: 22, dur: '11s', delay: '0s',   swayDur: '4.2s', opacity: 0.75 },
+            { id: 2, img: '/images/daun-2.png', left: '12%', size: 18, dur: '14s', delay: '2.5s', swayDur: '5.1s', opacity: 0.7 },
+            { id: 3, img: '/images/daun-1.png', left: '20%', size: 26, dur: '10s', delay: '5s',   swayDur: '3.8s', opacity: 0.8 },
+            { id: 4, img: '/images/daun-2.png', left: '28%', size: 20, dur: '13s', delay: '1.2s', swayDur: '4.6s', opacity: 0.75 },
+            { id: 5, img: '/images/daun-1.png', left: '38%', size: 24, dur: '12s', delay: '7.5s', swayDur: '4.0s', opacity: 0.85 },
+            { id: 6, img: '/images/daun-2.png', left: '48%', size: 19, dur: '15s', delay: '3.8s', swayDur: '5.4s', opacity: 0.7 },
+            { id: 7, img: '/images/daun-1.png', left: '58%', size: 28, dur: '9.5s',delay: '6.2s', swayDur: '3.5s', opacity: 0.8 },
+            { id: 8, img: '/images/daun-2.png', left: '68%', size: 21, dur: '13.5s',delay: '0.8s',swayDur: '4.8s', opacity: 0.75 },
+            { id: 9, img: '/images/daun-1.png', left: '78%', size: 25, dur: '11.5s',delay: '4.5s',swayDur: '4.3s', opacity: 0.8 },
+            { id: 10, img: '/images/daun-2.png', left: '86%', size: 17, dur: '14.2s',delay: '8s',   swayDur: '5.0s', opacity: 0.65 },
+            { id: 11, img: '/images/daun-1.png', left: '94%', size: 23, dur: '12.8s',delay: '2s',   swayDur: '4.5s', opacity: 0.75 },
+            { id: 12, img: '/images/daun-2.png', left: '33%', size: 22, dur: '16s',  delay: '9.5s',swayDur: '5.7s', opacity: 0.7 },
+          ].map((leaf) => (
+            <div
+              key={leaf.id}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: leaf.left,
+                width: `${leaf.size}px`,
+                height: 'auto',
+                animation: `leafFall ${leaf.dur} linear infinite`,
+                animationDelay: leaf.delay,
+                opacity: leaf.opacity,
+              }}
+            >
+              <img
+                src={leaf.img}
+                alt=""
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  animation: `leafSway ${leaf.swayDur} ease-in-out infinite`,
+                }}
+                className="filter drop-shadow-sm select-none"
+              />
+            </div>
+          ))}
+        </div>
 
         {/* DESKTOP VIEW: SCATTERED CONVEYOR BELT COMMENTS */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">

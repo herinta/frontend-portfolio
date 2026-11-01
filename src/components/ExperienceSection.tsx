@@ -123,29 +123,27 @@ export const ExperienceSection: React.FC = () => {
       });
     });
 
-    // ── Timeline line draw-down (Stepped per-card for Sun descent) ───────
-    const TARGET_HEIGHTS = ['20%', '48%', '75%', '100%'];
-    
-    cardRefs.current.forEach((card, i) => {
-      ScrollTrigger.create({
-        trigger: card,
-        start: 'top 80%',
-        onEnter: () => {
-          gsap.to(lineRef.current, {
-            height: TARGET_HEIGHTS[i] || '100%',
-            duration: 0.8,
-            ease: 'power2.out'
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(lineRef.current, {
-            height: i === 0 ? '0%' : (TARGET_HEIGHTS[i - 1] || '0%'),
-            duration: 0.8,
-            ease: 'power2.out'
-          });
+    // ── Timeline line draw-down (Tied directly to card centers so Sun stays in sync) ───
+    const cards = cardRefs.current.filter(Boolean) as HTMLElement[];
+    if (cards.length > 0 && lineRef.current) {
+      const firstCard = cards[0];
+      const lastCard = cards[cards.length - 1];
+
+      gsap.fromTo(lineRef.current, 
+        { height: '0%' },
+        {
+          height: '100%',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: firstCard,
+            start: 'center center',
+            endTrigger: lastCard,
+            end: 'center center',
+            scrub: 0.3,
+          }
         }
-      });
-    });
+      );
+    }
 
     // ── Experience cards fly in + bounce float after ────────────────────
     const isMobile = window.innerWidth < 768;
@@ -277,10 +275,10 @@ export const ExperienceSection: React.FC = () => {
         </div>
 
         {/* ── Timeline ──────────────────────────────────────────────── */}
-        <div className="relative">
+        <div className="experience-timeline-container relative">
 
           {/* Vertical line */}
-          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 -bottom-64 w-1 bg-sky-900/15 rounded-full">
+          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 bottom-4 w-1 bg-sky-900/15 rounded-full">
             <div
               ref={lineRef}
               className="w-full bg-gradient-to-b from-cyan-400 via-teal-400 to-blue-500 rounded-full relative shadow-[0_0_8px_rgba(6,182,212,0.4)]"

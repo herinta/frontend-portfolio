@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <pattern id="bwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#D4D4D8" />
+    </pattern>
+
+    <marker id="arrowBlack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#111111" />
+    </marker>
+  </defs>
+
+  <!-- White Background & Outer Frame -->
+  <rect width="1600" height="900" fill="#FFFFFF" />
+  <rect width="1600" height="900" fill="url(#bwGrid)" />
+  <rect x="12" y="12" width="1576" height="876" rx="6" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="24" width="1544" height="64" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <line x1="28" y1="60" x2="1572" y2="60" stroke="#111111" stroke-width="1" />
+  <text x="46" y="49" fill="#111111" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800" letter-spacing="0.5">
+    SYSTEM ARCHITECTURE FLOWCHART — MULTICHAT AI (MULTI-AGENT CHAT &amp; GROUP VOICE CALL)
+  </text>
+  <text x="46" y="79" fill="#3F3F46" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    Stack: Next.js 16.3 (App Router) | React 19 | Gemini 3.5 Flash Lite | Supabase Auth, PostgreSQL &amp; Realtime | Web Speech API &amp; PWA
+  </text>
+  <rect x="1364" y="31" width="192" height="22" rx="4" fill="#111111" />
+  <text x="1460" y="46" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    Multi-Agent AI Engine
+  </text>
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 1: CLIENT & PWA WORKSPACE (REACT 19)                             -->
+  <!-- ========================================================================= -->
+  <rect x="28" y="104" width="405" height="718" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="28" y="104" width="405" height="38" rx="6" fill="#111111" />
+  <text x="44" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    01. CLIENT &amp; PWA WORKSPACE (REACT 19)
+  </text>
+
+  <!-- Node 1.1 -->
+  <rect x="46" y="160" width="369" height="124" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">1</text>
+  <text x="94" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Glassmorphism Landing &amp; SSR Route Guard</text>
+  <line x1="58" y1="200" x2="403" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="218" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Live Gemini Voice Simulator (Empathy &amp; Humor sliders)</text>
+  <text x="58" y="237" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Strict Middleware Guard: protects Dashboard routes</text>
+  <text x="58" y="256" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Explore Marketplace: Like, Clone &amp; Publish AI Personas</text>
+  <text x="58" y="274" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Files: LandingPage.tsx | middleware.ts | ExploreView.tsx</text>
+
+  <!-- Node 1.2 -->
+  <rect x="46" y="302" width="369" height="160" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="314" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="330" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">2</text>
+  <text x="94" y="330" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Multi-Agent Chat UI &amp; Optimistic Engine</text>
+  <line x1="58" y1="342" x2="403" y2="342" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="360" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Instant Optimistic Bubble (opt- ID) + 3s Debounce Batch</text>
+  <text x="58" y="379" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• @AgentName Mention Routing, Pin &amp; In-Chat Search</text>
+  <text x="58" y="398" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Per-Bubble TTS Speaker (cleanTextForSpeech id-ID)</text>
+  <text x="58" y="417" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Markdown + Code Syntax Highlight + /imagine Command</text>
+  <text x="58" y="436" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• User Persona Switcher per Room (user_personas)</text>
+  <text x="58" y="453" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Hook: hooks/useChat.ts | components/Chat/ChatArea.tsx</text>
+
+  <!-- Node 1.3 -->
+  <rect x="46" y="480" width="369" height="150" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="492" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="508" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">3</text>
+  <text x="94" y="508" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">1-on-1 &amp; Group Voice Call (Discord Style)</text>
+  <line x1="58" y1="520" x2="403" y2="520" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="538" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Web Speech Recognition (id-ID) realtime voice input</text>
+  <text x="58" y="557" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Web Speech Synthesis with per-agent Pitch &amp; Speed</text>
+  <text x="58" y="576" fill="#111111" font-family="system-ui, sans-serif" font-size="11.8" font-weight="700">• Anti-Echo Guard: auto-mutes mic while AI is speaking</text>
+  <text x="58" y="595" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Mobile iOS/Android silent audio warmup on call start</text>
+  <text x="58" y="616" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Hook: hooks/useVoiceCall.ts | CallModal.tsx</text>
+
+  <!-- Node 1.4 -->
+  <rect x="46" y="648" width="369" height="154" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="58" y="660" width="26" height="22" rx="4" fill="#111111" />
+  <text x="71" y="676" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">4</text>
+  <text x="94" y="676" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Proactive Heartbeat &amp; Standalone PWA</text>
+  <line x1="58" y1="688" x2="403" y2="688" stroke="#D4D4D8" stroke-width="1" />
+  <text x="58" y="706" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Multi-Tab Mutex Lock (localStorage leader election)</text>
+  <text x="58" y="725" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Prevents duplicate proactive triggers across open tabs</text>
+  <text x="58" y="744" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Service Worker (/sw.js) + Background Push Notifications</text>
+  <text x="58" y="763" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Clicking notification navigates directly to /?room=ID</text>
+  <text x="58" y="786" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Hooks: useProactiveChat.ts | useWebNotifications.ts</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 2: NEXT.JS 16 API ORCHESTRATOR & GUARDRAILS                      -->
+  <!-- ========================================================================= -->
+  <rect x="462" y="104" width="430" height="718" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="462" y="104" width="430" height="38" rx="6" fill="#111111" />
+  <text x="480" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    02. NEXT.JS 16 API ORCHESTRATOR &amp; GUARDRAILS
+  </text>
+
+  <!-- Node 2.1 -->
+  <rect x="480" y="160" width="394" height="164" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="492" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="505" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">5</text>
+  <text x="528" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Core Chat &amp; Inter-AI Ping-Pong Engine</text>
+  <line x1="492" y1="200" x2="862" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="492" y="218" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Dynamic Agent Selection: @Mention match or context pick</text>
+  <text x="492" y="237" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Cross-Room Memory Fetch: recalls last 15 messages across</text>
+  <text x="492" y="254" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">  other rooms involving the same user &amp; AI agent</text>
+  <text x="492" y="273" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Inter-AI Auto Reply: agents reply to each other in group</text>
+  <text x="492" y="290" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">  chats (capped at 4 turns to prevent infinite loops)</text>
+  <text x="492" y="312" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Endpoint: POST /api/chat (app/api/chat/route.ts)</text>
+
+  <!-- Node 2.2 -->
+  <rect x="480" y="342" width="394" height="148" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <rect x="492" y="354" width="26" height="22" rx="4" fill="#111111" />
+  <text x="505" y="370" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">6</text>
+  <text x="528" y="370" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Dual-Layer Anti-Prompt Injection Shield</text>
+  <line x1="492" y1="382" x2="862" y2="382" stroke="#D4D4D8" stroke-width="1" />
+  <text x="492" y="400" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Input Sanitizer: strips |||, [Bubble], [SYSTEM] &amp; muted_words</text>
+  <text x="492" y="419" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Layer 1 (Prompt Framing): locks human-friend identity</text>
+  <text x="492" y="438" fill="#111111" font-family="system-ui, sans-serif" font-size="11.8" font-weight="700">• Layer 2 (Server Interceptor): catches jailbreak / prompt</text>
+  <text x="492" y="455" fill="#111111" font-family="system-ui, sans-serif" font-size="11.8" font-weight="700">  leaks &amp; generates Persona-Tuned "Respon Manusia Bingung"</text>
+  <text x="492" y="476" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Defense: Dynamic confusion in character's exact slang/tone</text>
+
+  <!-- Node 2.3 -->
+  <rect x="480" y="508" width="394" height="134" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="492" y="520" width="26" height="22" rx="4" fill="#111111" />
+  <text x="505" y="536" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">7</text>
+  <text x="528" y="536" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">"AI Chat Duluan" Proactive Engine</text>
+  <line x1="492" y1="548" x2="862" y2="548" stroke="#D4D4D8" stroke-width="1" />
+  <text x="492" y="566" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Smart Follow-Up: checks memory for past exams/interviews</text>
+  <text x="492" y="585" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Zero Hallucination: casual check-in if no prior agenda exists</text>
+  <text x="492" y="604" fill="#111111" font-family="system-ui, sans-serif" font-size="11.8" font-weight="700">• Anti-Ghosting Guard: aborts if last room message was AI</text>
+  <text x="492" y="626" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Endpoint: POST /api/chat/proactive</text>
+
+  <!-- Node 2.4 -->
+  <rect x="480" y="658" width="394" height="144" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="492" y="670" width="26" height="22" rx="4" fill="#111111" />
+  <text x="505" y="686" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">8</text>
+  <text x="528" y="686" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Voice Call Turn &amp; Memory Consolidation</text>
+  <line x1="492" y1="698" x2="862" y2="698" stroke="#D4D4D8" stroke-width="1" />
+  <text x="492" y="716" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• /api/call/turn: spoken TTS prompt + 2-turn Inter-AI banter</text>
+  <text x="492" y="735" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• /api/call/end: summarizes transcript (&gt;3s) into rooms.memory</text>
+  <text x="492" y="754" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• /api/memory/consolidate: auto-summarizes chats &gt; 3 days</text>
+  <text x="492" y="771" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">  with Memory Anti-Poisoning filter against old injections</text>
+  <text x="492" y="790" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">APIs: /api/call/turn | /api/call/end | /api/memory/consolidate</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 3: EXTERNAL AI & GENERATIVE MEDIA ENGINE                         -->
+  <!-- ========================================================================= -->
+  <rect x="922" y="104" width="650" height="276" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="922" y="104" width="650" height="38" rx="6" fill="#111111" />
+  <text x="940" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    03. EXTERNAL AI &amp; GENERATIVE MEDIA ENGINE
+  </text>
+
+  <!-- Node 3.1 -->
+  <rect x="942" y="160" width="380" height="202" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="954" y="172" width="26" height="22" rx="4" fill="#111111" />
+  <text x="967" y="188" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">9</text>
+  <text x="990" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Google Gemini API (gemini-3.5-flash-lite)</text>
+  <line x1="954" y1="200" x2="1310" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="954" y="220" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• High-EQ Character Prompting (system_prompt priority)</text>
+  <text x="954" y="240" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Adaptive Depth: 1-3 sentences casual vs deep coding/story</text>
+  <text x="954" y="260" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Multi-bubble delimiter output (splits natural chat bubbles)</text>
+  <text x="954" y="280" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Post-call &amp; &gt;3-day long-term memory extraction</text>
+  <text x="954" y="300" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Public Landing Voice Preview (/api/voice-preview)</text>
+  <text x="954" y="334" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">SDK: @google/generative-ai ^0.24.1</text>
+
+  <!-- Node 3.2 -->
+  <rect x="1340" y="160" width="212" height="202" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="1354" y="188" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Pollinations.ai Media</text>
+  <line x1="1354" y1="200" x2="1538" y2="200" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1354" y="222" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• Keyless AI Image Engine</text>
+  <text x="1354" y="244" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• AI Avatar Generator</text>
+  <text x="1354" y="262" fill="#52525B" font-family="system-ui, sans-serif" font-size="11.5">  in NewChatModal.tsx</text>
+  <text x="1354" y="286" fill="#27272A" font-family="system-ui, sans-serif" font-size="12">• In-Chat /imagine command</text>
+  <text x="1354" y="304" fill="#52525B" font-family="system-ui, sans-serif" font-size="11.5">  renders AI illustrations</text>
+  <text x="1354" y="334" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Zero API Key Overhead</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 4: SUPABASE CLOUD (AUTH, REALTIME & POSTGRESQL)                  -->
+  <!-- ========================================================================= -->
+  <rect x="922" y="400" width="650" height="422" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="922" y="400" width="650" height="38" rx="6" fill="#111111" />
+  <text x="940" y="424" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="0.6">
+    04. SUPABASE CLOUD (AUTH | REALTIME WEBSOCKET | POSTGRESQL)
+  </text>
+
+  <!-- Node 4.1 -->
+  <rect x="942" y="458" width="290" height="168" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="954" y="470" width="30" height="22" rx="4" fill="#111111" />
+  <text x="969" y="486" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800">10</text>
+  <text x="994" y="486" fill="#111111" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Supabase Realtime &amp; Auth</text>
+  <line x1="954" y1="498" x2="1218" y2="498" stroke="#D4D4D8" stroke-width="1" />
+  <text x="954" y="518" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Global postgres_changes subscription</text>
+  <text x="954" y="537" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Instant cross-tab message &amp; unread</text>
+  <text x="954" y="554" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">  badge synchronization</text>
+  <text x="954" y="574" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• Deduplicates opt- ID with DB UUID</text>
+  <text x="954" y="594" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.8">• SSR Cookie Auth (@supabase/ssr)</text>
+  <text x="954" y="614" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Channel: realtime:messages</text>
+
+  <!-- Node 4.2 -->
+  <rect x="1250" y="458" width="302" height="168" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="1250" y="458" width="302" height="28" rx="6" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+  <text x="1264" y="477" fill="#111111" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800">Rooms, Agents &amp; Memory Store</text>
+  <text x="1264" y="508" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• rooms</text>
+  <text x="1278" y="525" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(title, user_id, theme, memory, persona)</text>
+  <text x="1264" y="550" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• agents</text>
+  <text x="1278" y="567" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">(name, role, system_prompt, is_public)</text>
+  <text x="1264" y="592" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• room_party</text>
+  <text x="1278" y="609" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Bridge: (room_id, agent_id) M:N</text>
+
+  <!-- Node 4.3 -->
+  <rect x="942" y="644" width="610" height="158" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="942" y="644" width="610" height="28" rx="6" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+  <text x="956" y="663" fill="#111111" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800">Messages, User Personas, Guardrail Settings &amp; Community Likes</text>
+
+  <text x="958" y="698" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• messages</text>
+  <text x="972" y="716" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">room_id, sender_type ('USER'|'AI'|'SYSTEM'), sender_id, content</text>
+
+  <text x="958" y="744" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• user_personas</text>
+  <text x="972" y="762" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">user_id, name, background, personality, is_default</text>
+
+  <text x="1310" y="698" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• user_settings</text>
+  <text x="1324" y="716" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">user_id (PK), muted_words TEXT[],</text>
+  <text x="1324" y="732" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">global_theme TEXT</text>
+
+  <text x="1310" y="758" fill="#111111" font-family="ui-monospace, monospace" font-size="12" font-weight="700">• agent_likes</text>
+  <text x="1324" y="776" fill="#52525B" font-family="ui-monospace, monospace" font-size="11">UNIQUE(user_id, agent_id)</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- CONNECTOR ARROWS BETWEEN ZONES                                            -->
+  <!-- ========================================================================= -->
+  <path d="M 415 370 L 446 370 L 446 245 L 476 245" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 415 560 L 440 560 L 440 720 L 476 720" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 415 710 L 452 710 L 452 575 L 476 575" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrowBlack)" />
+
+  <path d="M 874 245 L 938 245" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 874 415 L 906 415 L 906 275 L 938 275" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 874 575 L 906 575 L 906 305 L 938 305" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <path d="M 874 285 L 906 285 L 906 535 L 1246 535" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+  <path d="M 874 735 L 938 735" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <path d="M 942 545 L 914 545 L 914 826 L 230 826 L 230 806" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrowBlack)" />
+
+  <!-- Bottom Legend Footer -->
+  <rect x="28" y="836" width="1544" height="38" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="48" y="860" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    [1-4] React 19 Optimistic UI + Web Speech Voice Call + PWA   |   [5-8] Inter-AI Group Routing + Dual-Layer Anti-Injection   |   [9] Gemini 3.5 Flash Lite   |   [10] Supabase Realtime &amp; PostgreSQL
+  </text>
+</svg>

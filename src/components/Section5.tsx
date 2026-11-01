@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ProjectDetailModal } from './ProjectDetailModal';
+import { getProjectDetail, type ProjectDetail } from '../data/projectDetailsData';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,12 +18,12 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    title: 'Nutrisi AI',
-    category: 'AI & Health',
-    description: 'A smart web application that analyzes dietary intake and provides personalized nutritional recommendations using AI to help you achieve your health goals.',
+    title: 'JobHunt',
+    category: 'Job Portal & Employer CMS',
+    description: 'A dual-app recruitment ecosystem combining an Employer ATS/CMS Dashboard and a Public Job Seeker Portal powered by Next.js App Router, Prisma ORM, PostgreSQL, and Supabase Storage.',
     image: '/images/p1.svg',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'OpenAI API'],
-    color: 'from-green-500/20 to-emerald-500/20',
+    tags: ['Next.js', 'TypeScript', 'Prisma ORM', 'PostgreSQL', 'Supabase Storage'],
+    color: 'from-blue-500/20 to-indigo-500/20',
   },
   {
     title: 'Focus App',
@@ -33,18 +35,18 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'Multichat AI',
-    category: 'Conversational AI',
-    description: 'A versatile multi-channel chat platform enabling seamless integration with multiple AI models, featuring real-time messaging and context-aware responses.',
+    category: 'Conversational AI & Multi-Agent System',
+    description: 'A multi-agent conversational AI platform featuring 1-on-1 & group voice calls, cross-room long-term memory, proactive "AI Chat Duluan" messaging, and dual-layer anti-prompt injection.',
     image: '/images/p3.svg',
-    tags: ['Next.js', 'WebSockets', 'Prisma', 'LangChain'],
+    tags: ['Next.js 16', 'Gemini 3.5', 'Supabase Realtime', 'Web Speech API', 'PWA'],
     color: 'from-purple-500/20 to-fuchsia-500/20',
   },
   {
     title: 'Codevas Learning',
-    category: 'EdTech Platform',
-    description: 'An interactive developer learning platform featuring live code execution, interactive coding challenges, and structured engineering roadmaps.',
+    category: 'EdTech & Interactive Coding Platform',
+    description: 'An interactive frontend learning platform featuring a 60FPS real-time HTML/CSS/Tailwind evaluation engine, Monaco Editor with Smart Syntax Helpers, gamified XP ledger, and self-hosted NAS Docker infrastructure.',
     image: '/images/p1.svg',
-    tags: ['React', 'Next.js', 'Tailwind CSS', 'Monaco Editor'],
+    tags: ['Next.js 16', 'TypeScript', 'Monaco Editor', 'PostgreSQL 16', 'Docker'],
     color: 'from-amber-500/20 to-orange-500/20',
   },
 ];
@@ -53,6 +55,14 @@ export const Section5: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
   const cloudsRef = useRef<HTMLDivElement>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenCaseStudy = (title: string) => {
+    const detail = getProjectDetail(title);
+    setSelectedProject(detail);
+    setIsModalOpen(true);
+  };
 
   useGSAP(() => {
     const isMobile = window.innerWidth < 768;
@@ -204,9 +214,7 @@ export const Section5: React.FC = () => {
             >
               My Top Project
             </h2>
-            <p className="text-slate-700 text-sm md:text-base max-w-md leading-relaxed mb-8">
-              Scroll down to explore my featured projects. Cards will stack and overlay one another from the bottom, just like a deck of cards.
-            </p>
+           
             <div className="flex items-center gap-3 text-indigo-900 animate-bounce mt-4">
               <span className="text-sm font-semibold tracking-wider">SCROLL DOWN</span>
               <span>↓</span>
@@ -221,10 +229,10 @@ export const Section5: React.FC = () => {
               style={{ zIndex: 11 + index }}
             >
 {/* The project card wrapper wrapper (to mount Figma edit outline) */}
-              <div className="relative w-full max-w-4xl">
+              <div className="relative w-full max-w-5xl">
                 
                 {/* Figma Selection Bounding Box */}
-                <div className="absolute inset-[-8px] md:inset-[-14px] border-2 border-dashed border-indigo-400/50 rounded-[2.2rem] pointer-events-none origin-center">
+                <div className="absolute inset-[-8px] md:inset-[-16px] border-2 border-dashed border-indigo-400/50 rounded-[2.5rem] pointer-events-none origin-center">
                   {/* Corner Handles (Resize Dots) */}
                   <div className="absolute -top-1.5 -left-1.5 w-2.5 h-2.5 md:w-3.5 md:h-3.5 bg-indigo-600 border-2 border-white rounded-[2px]" />
                   <div className="absolute -top-1.5 -right-1.5 w-2.5 h-2.5 md:w-3.5 md:h-3.5 bg-indigo-600 border-2 border-white rounded-[2px]" />
@@ -238,16 +246,16 @@ export const Section5: React.FC = () => {
 
                 {/* The actual project card (clean light theme optimized for performance) */}
                 <div className="
-                  w-full rounded-3xl border border-white/80 
-                  bg-white p-4 sm:p-6 md:p-10 shadow-2xl 
-                  grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center
+                  w-full min-h-[380px] md:min-h-[460px] rounded-[2rem] border border-white/80 
+                  bg-white p-5 sm:p-8 md:p-12 shadow-2xl 
+                  grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center
                   relative overflow-hidden
                 ">
                   {/* Corner ambient card gradient */}
-                  <div className={`absolute -right-20 -bottom-20 w-80 h-80 bg-gradient-to-br ${project.color} rounded-full blur-3xl pointer-events-none opacity-40`} />
+                  <div className={`absolute -right-20 -bottom-20 w-96 h-96 bg-gradient-to-br ${project.color} rounded-full blur-3xl pointer-events-none opacity-40`} />
 
                   {/* Left side: Card Image mockup */}
-                  <div className="rounded-2xl overflow-hidden border border-white/40 shadow-md group aspect-video relative z-10 flex items-center justify-center bg-white/50 max-h-[140px] sm:max-h-[220px] md:max-h-none">
+                  <div className="w-full min-w-0 rounded-2xl overflow-hidden border border-slate-200/60 shadow-md group aspect-video relative z-10 flex items-center justify-center bg-slate-50 max-h-[180px] sm:max-h-[240px] md:max-h-none">
                     <img 
                       src={project.image} 
                       alt={project.title} 
@@ -257,37 +265,40 @@ export const Section5: React.FC = () => {
                   </div>
 
                   {/* Right side: Card Content */}
-                  <div className="flex flex-col items-start text-left relative z-10">
-                    <span className="text-sky-600 text-xs font-bold tracking-wider uppercase mb-1 md:mb-2">
+                  <div className="flex flex-col items-start text-left relative z-10 min-w-0">
+                    <span className="text-sky-600 text-xs sm:text-sm font-bold tracking-wider uppercase mb-1.5 md:mb-2.5">
                       {project.category}
                     </span>
-                    <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-indigo-950 mb-2 md:mb-4 leading-tight">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-indigo-950 mb-3 md:mb-4 leading-tight">
                       {project.title}
                     </h3>
-                    <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed mb-4 md:mb-6">
+                    <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed mb-5 md:mb-6">
                       {project.description}
                     </p>
 
                     {/* Tech tags */}
-                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-8">
+                    <div className="flex flex-wrap gap-2 mb-5 md:mb-8">
                       {project.tags.map(tag => (
                         <span 
                           key={tag}
-                          className="text-[10px] sm:text-xs px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-white/70 border border-slate-200 text-slate-700 font-medium shadow-sm"
+                          className="text-xs px-3 py-1 rounded-full bg-white/70 border border-slate-200 text-slate-700 font-medium shadow-sm"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    {/* Dummy Action button */}
-                    <a 
-                      href="#view-details" 
-                      onClick={(e) => e.preventDefault()}
-                      className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-indigo-950 text-white font-bold hover:bg-indigo-900 transition-colors shadow text-xs sm:text-sm"
+                    {/* Detail Project Action button */}
+                    <button 
+                      type="button"
+                      onClick={() => handleOpenCaseStudy(project.title)}
+                      className="px-6 py-2.5 sm:px-7 sm:py-3 rounded-full bg-indigo-950 text-white font-bold hover:bg-indigo-900 animate-pulse-scale hover:[animation-play-state:paused] hover:scale-105 active:scale-95 transition-all shadow-md text-xs sm:text-sm md:text-base inline-flex items-center gap-2 cursor-pointer group"
                     >
-                      View Case Study
-                    </a>
+                      <span>View Detail Project</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
 
@@ -299,6 +310,13 @@ export const Section5: React.FC = () => {
         </div>
 
       </section>
+
+      {/* Fullscreen Project Detail Case Study Modal */}
+      <ProjectDetailModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };

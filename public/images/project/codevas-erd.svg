@@ -1,0 +1,414 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <pattern id="bwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#D4D4D8" />
+    </pattern>
+  </defs>
+
+  <!-- White Background & Outer Frame -->
+  <rect width="1600" height="900" fill="#FFFFFF" />
+  <rect width="1600" height="900" fill="url(#bwGrid)" />
+  <rect x="12" y="12" width="1576" height="876" rx="6" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="22" width="1544" height="62" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <line x1="28" y1="56" x2="1572" y2="56" stroke="#111111" stroke-width="1" />
+  <text x="46" y="46" fill="#111111" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800" letter-spacing="0.5">
+    ENTITY RELATIONSHIP DIAGRAM (ERD) — CODEVAS LEARNING (POSTGRESQL 16)
+  </text>
+  <text x="46" y="75" fill="#3F3F46" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    Database: codevas_db | 8 Tables | UUIDv4 (pgcrypto) | JSONB Curriculum Validation Rules | ON DELETE CASCADE Referential Integrity
+  </text>
+  <rect x="1370" y="29" width="186" height="22" rx="4" fill="#111111" />
+  <text x="1463" y="44" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    PostgreSQL 16 Schema
+  </text>
+
+  <!-- ========================================================================= -->
+  <!-- RELATIONSHIP CONNECTOR LINES (BLACK CROW'S FOOT)                          -->
+  <!-- ========================================================================= -->
+  <!-- 1. users.id (1) ───< (N) xp_transactions.user_id -->
+  <path d="M 210 468 L 210 530" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="220" y="490" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="220" y="520" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N (CASCADE)</text>
+  <path d="M 202 530 L 210 518 L 218 530" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 2. users.id (1) ───< (N) user_enrollments.user_id -->
+  <path d="M 392 185 L 556 185" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="404" y="177" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="536" y="177" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 556 178 L 544 185 L 556 192" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 3. users.id (1) ───< (N) user_progress.user_id -->
+  <path d="M 392 310 L 474 310 L 474 425 L 556 425" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="404" y="302" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="536" y="417" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 556 418 L 544 425 L 556 432" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 4. users.id (1) ───< (N) user_daily_activity.user_id -->
+  <path d="M 392 395 L 444 395 L 444 685 L 556 685" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <text x="404" y="387" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="536" y="677" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 556 678 L 544 685 L 556 692" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 5. classes.id (1) ───< (N) user_enrollments.class_id -->
+  <path d="M 1144 210 L 980 210" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="1124" y="202" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="994" y="202" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 980 203 L 992 210 L 980 217" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 6. classes.id (1) ───< (N) challenges.class_id -->
+  <path d="M 1358 386 L 1358 438" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="1370" y="406" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="1370" y="430" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N (64+ Levels)</text>
+  <path d="M 1350 438 L 1358 426 L 1366 438" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 7. challenges.id (1) ───< (N) user_progress.challenge_id -->
+  <path d="M 1144 510 L 1062 510 L 1062 452 L 980 452" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="1124" y="502" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="994" y="444" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 980 445 L 992 452 L 980 459" fill="none" stroke="#111111" stroke-width="2" />
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 1: users                                                            -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="102" width="364" height="366" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="102" width="364" height="36" rx="6" fill="#111111" />
+    <text x="44" y="125" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">users</text>
+    <text x="376" y="125" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Core Identity &amp; Stats</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="40" y="148" width="28" height="18" rx="3" fill="#111111" />
+      <text x="54" y="161" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="76" y="162" fill="#111111" font-weight="800">id</text>
+      <text x="376" y="162" text-anchor="end" fill="#111111" font-weight="700">UUID (gen_random_uuid)</text>
+
+      <rect x="40" y="172" width="28" height="18" rx="3" fill="#F4F4F5" stroke="#111111" stroke-width="1" />
+      <text x="54" y="185" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">UQ</text>
+      <text x="76" y="186" fill="#111111" font-weight="700">username</text>
+      <text x="376" y="186" text-anchor="end" fill="#3F3F46">VARCHAR(50) NOT NULL</text>
+
+      <rect x="40" y="196" width="28" height="18" rx="3" fill="#F4F4F5" stroke="#111111" stroke-width="1" />
+      <text x="54" y="209" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">UQ</text>
+      <text x="76" y="210" fill="#111111" font-weight="700">email</text>
+      <text x="376" y="210" text-anchor="end" fill="#3F3F46">VARCHAR(100) NOT NULL</text>
+
+      <text x="76" y="234" fill="#27272A">password_hash</text>
+      <text x="376" y="234" text-anchor="end" fill="#3F3F46">VARCHAR(255) (Bcrypt)</text>
+
+      <text x="76" y="258" fill="#27272A">full_name</text>
+      <text x="376" y="258" text-anchor="end" fill="#3F3F46">VARCHAR(100)</text>
+
+      <text x="76" y="282" fill="#27272A">avatar_url</text>
+      <text x="376" y="282" text-anchor="end" fill="#3F3F46">TEXT</text>
+
+      <text x="76" y="306" fill="#111111" font-weight="700">xp_points</text>
+      <text x="376" y="306" text-anchor="end" fill="#111111">INT DEFAULT 50 (&gt;=0)</text>
+
+      <text x="76" y="330" fill="#111111" font-weight="700">level</text>
+      <text x="376" y="330" text-anchor="end" fill="#111111">INT DEFAULT 1 (&gt;=1)</text>
+
+      <text x="76" y="354" fill="#111111" font-weight="700">streak_days</text>
+      <text x="376" y="354" text-anchor="end" fill="#111111">INT DEFAULT 1 (&gt;=0)</text>
+
+      <text x="76" y="378" fill="#27272A">last_active_date</text>
+      <text x="376" y="378" text-anchor="end" fill="#3F3F46">DATE DEFAULT CURRENT_DATE</text>
+
+      <text x="76" y="402" fill="#111111" font-weight="700">role</text>
+      <text x="376" y="402" text-anchor="end" fill="#111111">VARCHAR(20) ['USER'|'ADMIN']</text>
+
+      <text x="76" y="426" fill="#27272A">last_seen_at</text>
+      <text x="376" y="426" text-anchor="end" fill="#3F3F46">TIMESTAMPTZ (Heartbeat)</text>
+
+      <text x="76" y="450" fill="#52525B">created_at / updated_at</text>
+      <text x="376" y="450" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 2: xp_transactions                                                  -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="530" width="364" height="226" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="530" width="364" height="36" rx="6" fill="#111111" />
+    <text x="44" y="553" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">xp_transactions</text>
+    <text x="376" y="553" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Audit Trail EXP Ledger</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="40" y="576" width="28" height="18" rx="3" fill="#111111" />
+      <text x="54" y="589" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="76" y="590" fill="#111111" font-weight="800">id</text>
+      <text x="376" y="590" text-anchor="end" fill="#111111" font-weight="700">UUID</text>
+
+      <rect x="40" y="602" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="54" y="615" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="76" y="616" fill="#111111" font-weight="700">user_id</text>
+      <text x="376" y="616" text-anchor="end" fill="#111111">UUID -&gt; users.id</text>
+
+      <text x="76" y="642" fill="#111111" font-weight="700">amount</text>
+      <text x="376" y="642" text-anchor="end" fill="#111111">INT NOT NULL (+XP)</text>
+
+      <text x="76" y="668" fill="#27272A">source</text>
+      <text x="376" y="668" text-anchor="end" fill="#3F3F46">VARCHAR(50) (CHALLENGE_...)</text>
+
+      <text x="76" y="694" fill="#27272A">reference_id</text>
+      <text x="376" y="694" text-anchor="end" fill="#3F3F46">VARCHAR(100) (challenge_id)</text>
+
+      <text x="76" y="720" fill="#27272A">description</text>
+      <text x="376" y="720" text-anchor="end" fill="#3F3F46">TEXT</text>
+
+      <text x="76" y="744" fill="#52525B">created_at</text>
+      <text x="376" y="744" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 3: site_visits                                                      -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="772" width="364" height="104" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="772" width="364" height="30" rx="6" fill="#111111" />
+    <text x="44" y="792" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13.5" font-weight="800">site_visits</text>
+    <text x="376" y="792" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="10.5">Anonymous Telemetry</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11.5">
+      <rect x="40" y="810" width="26" height="16" rx="3" fill="#111111" />
+      <text x="53" y="822" text-anchor="middle" fill="#FFFFFF" font-size="9.5" font-weight="800">PK</text>
+      <text x="74" y="822" fill="#111111" font-weight="800">id</text>
+      <text x="120" y="822" fill="#3F3F46">UUID</text>
+      <text x="180" y="822" fill="#111111" font-weight="700">visitor_id</text>
+      <text x="376" y="822" text-anchor="end" fill="#3F3F46">VARCHAR(100)</text>
+
+      <text x="44" y="844" fill="#27272A">path VARCHAR(255)</text>
+      <text x="200" y="844" fill="#27272A">• ip_hash VARCHAR(64)</text>
+
+      <text x="44" y="864" fill="#52525B">user_agent TEXT</text>
+      <text x="376" y="864" text-anchor="end" fill="#52525B">visited_at TIMESTAMPTZ</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 4: user_enrollments                                                 -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="556" y="102" width="424" height="222" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="556" y="102" width="424" height="36" rx="6" fill="#111111" />
+    <text x="572" y="125" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">user_enrollments</text>
+    <text x="964" y="125" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">M:N Student &lt;-&gt; Class Bridge</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="568" y="148" width="28" height="18" rx="3" fill="#111111" />
+      <text x="582" y="161" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="604" y="162" fill="#111111" font-weight="800">id</text>
+      <text x="964" y="162" text-anchor="end" fill="#111111" font-weight="700">UUID (gen_random_uuid)</text>
+
+      <rect x="568" y="174" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="582" y="187" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="604" y="188" fill="#111111" font-weight="700">user_id</text>
+      <text x="964" y="188" text-anchor="end" fill="#111111">UUID -&gt; users.id (CASCADE)</text>
+
+      <rect x="568" y="200" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="582" y="213" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="604" y="214" fill="#111111" font-weight="700">class_id</text>
+      <text x="964" y="214" text-anchor="end" fill="#111111">VARCHAR(50) -&gt; classes.id</text>
+
+      <text x="604" y="240" fill="#27272A">status</text>
+      <text x="964" y="240" text-anchor="end" fill="#3F3F46">'ACTIVE' | 'COMPLETED' | 'DROPPED'</text>
+
+      <text x="604" y="266" fill="#27272A">enrolled_at</text>
+      <text x="964" y="266" text-anchor="end" fill="#3F3F46">TIMESTAMPTZ</text>
+
+      <rect x="568" y="286" width="396" height="24" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="766" y="302" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        CONSTRAINT uq_user_class UNIQUE (user_id, class_id)
+      </text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 5: user_progress                                                    -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="556" y="346" width="424" height="254" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="556" y="346" width="424" height="36" rx="6" fill="#111111" />
+    <text x="572" y="369" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">user_progress</text>
+    <text x="964" y="369" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Per-Level Code &amp; Clear State</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="568" y="392" width="28" height="18" rx="3" fill="#111111" />
+      <text x="582" y="405" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="604" y="406" fill="#111111" font-weight="800">id</text>
+      <text x="964" y="406" text-anchor="end" fill="#111111" font-weight="700">UUID (gen_random_uuid)</text>
+
+      <rect x="568" y="418" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="582" y="431" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="604" y="432" fill="#111111" font-weight="700">user_id</text>
+      <text x="964" y="432" text-anchor="end" fill="#111111">UUID -&gt; users.id (CASCADE)</text>
+
+      <rect x="568" y="444" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="582" y="457" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="604" y="458" fill="#111111" font-weight="700">challenge_id</text>
+      <text x="964" y="458" text-anchor="end" fill="#111111">VARCHAR(60) -&gt; challenges.id</text>
+
+      <text x="604" y="484" fill="#111111" font-weight="700">status</text>
+      <text x="964" y="484" text-anchor="end" fill="#111111">'LOCKED' | 'IN_PROGRESS' | 'COMPLETED'</text>
+
+      <text x="604" y="510" fill="#111111" font-weight="700">code_snapshot</text>
+      <text x="964" y="510" text-anchor="end" fill="#3F3F46">TEXT (Saved Monaco Code)</text>
+
+      <text x="604" y="536" fill="#27272A">completed_at</text>
+      <text x="964" y="536" text-anchor="end" fill="#3F3F46">TIMESTAMPTZ (NULL until clear)</text>
+
+      <rect x="568" y="560" width="396" height="24" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="766" y="576" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        CONSTRAINT uq_user_challenge UNIQUE (user_id, challenge_id)
+      </text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 6: user_daily_activity                                              -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="556" y="622" width="424" height="254" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="556" y="622" width="424" height="36" rx="6" fill="#111111" />
+    <text x="572" y="645" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">user_daily_activity</text>
+    <text x="964" y="645" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">10-Min Daily Study Target</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="568" y="668" width="28" height="18" rx="3" fill="#111111" />
+      <text x="582" y="681" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="604" y="682" fill="#111111" font-weight="800">id</text>
+      <text x="964" y="682" text-anchor="end" fill="#111111" font-weight="700">UUID</text>
+
+      <rect x="568" y="694" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="582" y="707" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="604" y="708" fill="#111111" font-weight="700">user_id</text>
+      <text x="964" y="708" text-anchor="end" fill="#111111">UUID -&gt; users.id (CASCADE)</text>
+
+      <text x="604" y="734" fill="#27272A">activity_date</text>
+      <text x="964" y="734" text-anchor="end" fill="#3F3F46">DATE DEFAULT CURRENT_DATE</text>
+
+      <text x="604" y="760" fill="#111111" font-weight="700">active_seconds / target_seconds</text>
+      <text x="964" y="760" text-anchor="end" fill="#111111">INT (DEFAULT 0 / 600s)</text>
+
+      <text x="604" y="786" fill="#111111" font-weight="700">is_completed / xp_claimed</text>
+      <text x="964" y="786" text-anchor="end" fill="#111111">BOOLEAN (+50 EXP Bonus)</text>
+
+      <text x="604" y="812" fill="#52525B">updated_at</text>
+      <text x="964" y="812" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+
+      <rect x="568" y="834" width="396" height="24" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="766" y="850" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        CONSTRAINT uq_user_activity_date UNIQUE (user_id, activity_date)
+      </text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 7: classes                                                          -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="1144" y="102" width="428" height="284" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="1144" y="102" width="428" height="36" rx="6" fill="#111111" />
+    <text x="1160" y="125" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">classes</text>
+    <text x="1556" y="125" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">8+ Interactive Courses</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="1156" y="148" width="28" height="18" rx="3" fill="#111111" />
+      <text x="1170" y="161" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="1192" y="162" fill="#111111" font-weight="800">id</text>
+      <text x="1556" y="162" text-anchor="end" fill="#111111" font-weight="700">VARCHAR(50) (e.g. 'css-flexbox')</text>
+
+      <text x="1192" y="188" fill="#111111" font-weight="700">category</text>
+      <text x="1556" y="188" text-anchor="end" fill="#111111">'LIVE_CODE' | 'DRAG_DROP' | 'QUIZ'</text>
+
+      <text x="1192" y="214" fill="#27272A">title</text>
+      <text x="1556" y="214" text-anchor="end" fill="#3F3F46">VARCHAR(100) NOT NULL</text>
+
+      <text x="1192" y="240" fill="#27272A">tagline / description</text>
+      <text x="1556" y="240" text-anchor="end" fill="#3F3F46">TEXT</text>
+
+      <text x="1192" y="266" fill="#27272A">difficulty_level</text>
+      <text x="1556" y="266" text-anchor="end" fill="#3F3F46">VARCHAR(30) DEFAULT 'Pemula'</text>
+
+      <text x="1192" y="292" fill="#111111" font-weight="700">xp_reward</text>
+      <text x="1556" y="292" text-anchor="end" fill="#111111">INT DEFAULT 150</text>
+
+      <text x="1192" y="318" fill="#27272A">estimated_time</text>
+      <text x="1556" y="318" text-anchor="end" fill="#3F3F46">VARCHAR(50) DEFAULT '2 Jam'</text>
+
+      <text x="1192" y="344" fill="#27272A">is_published / order_index</text>
+      <text x="1556" y="344" text-anchor="end" fill="#3F3F46">BOOLEAN / INT</text>
+
+      <text x="1192" y="370" fill="#52525B">created_at / updated_at</text>
+      <text x="1556" y="370" text-anchor="end" fill="#52525B">TIMESTAMPTZ</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 8: challenges                                                       -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="1144" y="438" width="428" height="438" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="1144" y="438" width="428" height="36" rx="6" fill="#111111" />
+    <text x="1160" y="461" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">challenges</text>
+    <text x="1556" y="461" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">64+ Levels &amp; JSONB Judge Rules</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="1156" y="484" width="28" height="18" rx="3" fill="#111111" />
+      <text x="1170" y="497" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="1192" y="498" fill="#111111" font-weight="800">id</text>
+      <text x="1556" y="498" text-anchor="end" fill="#111111" font-weight="700">VARCHAR(60) (e.g. 'flex-1')</text>
+
+      <rect x="1156" y="510" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="1170" y="523" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="1192" y="524" fill="#111111" font-weight="700">class_id</text>
+      <text x="1556" y="524" text-anchor="end" fill="#111111">VARCHAR(50) -&gt; classes.id</text>
+
+      <text x="1192" y="550" fill="#27272A">title</text>
+      <text x="1556" y="550" text-anchor="end" fill="#3F3F46">VARCHAR(100) NOT NULL</text>
+
+      <text x="1192" y="576" fill="#27272A">difficulty</text>
+      <text x="1556" y="576" text-anchor="end" fill="#3F3F46">EASY..EXPERT | BOSS_FIGHT</text>
+
+      <text x="1192" y="602" fill="#27272A">order_index / xp_reward</text>
+      <text x="1556" y="602" text-anchor="end" fill="#3F3F46">INT (&gt;0) / INT DEFAULT 20</text>
+
+      <text x="1192" y="628" fill="#27272A">instruction / hint / theory</text>
+      <text x="1556" y="628" text-anchor="end" fill="#3F3F46">TEXT</text>
+
+      <text x="1192" y="654" fill="#111111" font-weight="700">concept_demo</text>
+      <text x="1556" y="654" text-anchor="end" fill="#111111">JSONB (Interactive Demo Tab)</text>
+
+      <text x="1192" y="680" fill="#111111" font-weight="700">syntax_helpers</text>
+      <text x="1556" y="680" text-anchor="end" fill="#111111">JSONB (Quick-Helper Bubbles)</text>
+
+      <text x="1192" y="706" fill="#111111" font-weight="700">locked_template</text>
+      <text x="1556" y="706" text-anchor="end" fill="#111111">JSONB (Read-Only Skeleton)</text>
+
+      <text x="1192" y="732" fill="#111111" font-weight="700">target_visual</text>
+      <text x="1556" y="732" text-anchor="end" fill="#111111">JSONB (Arena Target Config)</text>
+
+      <text x="1192" y="758" fill="#27272A">initial_state</text>
+      <text x="1556" y="758" text-anchor="end" fill="#3F3F46">TEXT (Starter Code)</text>
+
+      <text x="1192" y="784" fill="#111111" font-weight="800">validation_rules</text>
+      <text x="1556" y="784" text-anchor="end" fill="#111111" font-weight="700">JSONB (AST/CSS Judge Rules)</text>
+
+      <rect x="1156" y="840" width="400" height="24" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="1356" y="856" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        CONSTRAINT uq_class_order UNIQUE (class_id, order_index)
+      </text>
+    </g>
+  </g>
+</svg>

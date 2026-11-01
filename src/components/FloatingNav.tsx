@@ -119,32 +119,31 @@ export const FloatingNav: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] flex items-center bg-black/60 backdrop-blur-xl border border-white/10 rounded-full p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-500/40">
+    <div className="fixed left-4 sm:left-6 top-1/2 -translate-y-1/2 z-[100] flex flex-col items-center gap-2.5 bg-white/85 backdrop-blur-xl border border-slate-200/90 rounded-full py-3 px-2 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-slate-300">
       {NAV_ITEMS.map(item => {
         const isActive = activeSection === item.id;
         return (
           <button
             key={item.id}
             onClick={() => handleNavClick(item.id)}
+            aria-label={item.label}
             className={`
-              relative px-3.5 py-2 md:px-4 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300
-              flex items-center gap-2 group
-              ${isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'}
+              relative p-2.5 rounded-full transition-all duration-300
+              flex items-center justify-center group cursor-pointer
+              ${isActive ? 'text-white bg-cyan-600 scale-105 shadow-md shadow-cyan-600/30' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100 hover:scale-105'}
             `}
           >
-            {/* Smooth active background capsule transition */}
-            {isActive && (
-              <span className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-teal-600 to-blue-600 rounded-full -z-10 shadow-[0_0_15px_rgba(6,182,212,0.5)] animate-gradient" />
-            )}
+            {/* Icon only */}
+            <span className="relative z-10 w-4 h-4 flex items-center justify-center">{item.icon}</span>
 
-            {/* Icon (always visible) */}
-            <span className="relative z-10">{item.icon}</span>
-
-            {/* Label (visible on larger screens, or when active on mobile if desired, let's make it md:inline and hidden on mobile) */}
-            <span className="hidden md:inline relative z-10 text-[10px]">{item.label}</span>
-
-            {/* Micro tooltip label for mobile on long hover */}
-            <span className="md:hidden absolute bottom-12 left-1/2 -translate-x-1/2 px-2 py-1 bg-black/90 border border-white/10 rounded text-[9px] font-bold text-white tracking-widest pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-xl">
+            {/* Clean Light Tooltip to the right */}
+            <span className="
+              absolute left-full ml-3 px-2.5 py-1 
+              bg-white/95 border border-slate-200 rounded-md 
+              text-[10px] font-bold text-slate-800 tracking-wider uppercase
+              pointer-events-none opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 
+              transition-all duration-200 whitespace-nowrap shadow-lg z-20
+            ">
               {item.label}
             </span>
           </button>

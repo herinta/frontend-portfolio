@@ -7,10 +7,12 @@ import { Section5 } from './components/Section5'
 import { FullProjectsSection } from './components/FullProjectsSection'
 import { EducationSection } from './components/EducationSection'
 import { CertificatesSection } from './components/CertificatesSection'
+import { HonorsAwardsSection } from './components/HonorsAwardsSection'
 import { Section6 } from './components/Section6'
 import { Section7 } from './components/Section7'
 import { FloatingNav } from './components/FloatingNav'
 import { LoadingScreen } from './components/LoadingScreen'
+import { VisitorTracker } from './components/VisitorTracker'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ReactLenis } from 'lenis/react'
@@ -70,7 +72,16 @@ function App() {
   };
 
   return (
-    <ReactLenis ref={lenisRef} autoRaf={false} root>
+    <ReactLenis
+      ref={lenisRef}
+      autoRaf={false}
+      root
+      options={{
+        lerp: 0.06,
+        wheelMultiplier: 0.65,
+        touchMultiplier: 0.85,
+      }}
+    >
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <div className="relative bg-black w-full min-h-screen overflow-x-hidden">
         
@@ -116,17 +127,23 @@ function App() {
 
             {/* Certificates Section */}
             <CertificatesSection />
+
+            {/* Honors & Awards Section */}
+            <HonorsAwardsSection />
           </div>
         </div>
 
         {/* Section 6 (Padlet Wall/Guestbook) */}
-        <Section6 />
+        {/* <Section6 /> */}
 
         {/* Section 7 (Hire Me Call to Action / Footer) */}
         <Section7 />
 
         {/* Floating fixed navigation bar */}
         <FloatingNav />
+
+        {/* Visitor Analytics Tracker (/ counts visits, /me shows owner dashboard) */}
+        <VisitorTracker />
       </div>
     </ReactLenis>
   )

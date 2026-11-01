@@ -1,0 +1,383 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <pattern id="bwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#D4D4D8" />
+    </pattern>
+  </defs>
+
+  <!-- White Background & Outer Frame -->
+  <rect width="1600" height="900" fill="#FFFFFF" />
+  <rect width="1600" height="900" fill="url(#bwGrid)" />
+  <rect x="12" y="12" width="1576" height="876" rx="6" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="22" width="1544" height="62" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <line x1="28" y1="56" x2="1572" y2="56" stroke="#111111" stroke-width="1" />
+  <text x="46" y="46" fill="#111111" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800" letter-spacing="0.5">
+    ENTITY RELATIONSHIP DIAGRAM (ERD) — JOBHUNT (PRISMA ORM &amp; POSTGRESQL — 9 MODELS)
+  </text>
+  <text x="46" y="75" fill="#3F3F46" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    Prisma v5.2.0 | PostgreSQL | CUID (@default(cuid())) Primary Keys | String[] Array &amp; JSONB Columns | Supabase Bucket References
+  </text>
+  <rect x="1352" y="29" width="204" height="22" rx="4" fill="#111111" />
+  <text x="1454" y="44" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    schema.prisma (9 Tables)
+  </text>
+
+
+  <!-- ========================================================================= -->
+  <!-- RELATIONSHIP CONNECTOR LINES (BLACK CROW'S FOOT)                          -->
+  <!-- ========================================================================= -->
+  <!-- 1. Company.id (1) ───< (N) Companyoverview.companyId -->
+  <path d="M 218 282 L 218 324" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="228" y="299" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="228" y="318" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 210 324 L 218 312 L 226 324" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 2. Company.id (1) ───< (N) CompanySocialMedia.companyId -->
+  <path d="M 398 180 L 456 180 L 456 710 L 408 710" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="5,4" />
+  <text x="412" y="172" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="416" y="702" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+
+  <!-- 3. Company.id (1) ───< (N) CompanyTeam.companyId -->
+  <path d="M 398 215 L 484 215 L 484 745 L 548 745" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="5,4" />
+  <text x="412" y="207" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="528" y="737" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+
+  <!-- 4. Company.id (1) ───< (N) Job.companyId -->
+  <path d="M 398 150 L 548 250" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="412" y="146" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="526" y="242" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 548 243 L 536 248 L 545 256" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 5. CategoryJob.id (1) ───< (N) Job.categoryId -->
+  <path d="M 1144 175 L 992 276" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="1124" y="169" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="1004" y="268" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 992 269 L 1004 274 L 995 282" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 6. Job.id (1) ───< (N) Applicant.jobId -->
+  <path d="M 992 380 L 1068 380 L 1068 648 L 1144 648" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="1004" y="372" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="1124" y="640" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 1144 641 L 1132 648 L 1144 655" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 7. User.id (1) ───< (N) Applicant.userId -->
+  <path d="M 1358 518 L 1358 566" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="1370" y="538" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="1370" y="560" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <path d="M 1350 566 L 1358 554 L 1366 566" fill="none" stroke="#111111" stroke-width="2" />
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 1: Company                                                          -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="102" width="380" height="180" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="102" width="380" height="36" rx="6" fill="#111111" />
+    <text x="44" y="125" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">Company</text>
+    <text x="392" y="125" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Employer Auth Account</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="40" y="148" width="28" height="18" rx="3" fill="#111111" />
+      <text x="54" y="161" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="76" y="162" fill="#111111" font-weight="800">id</text>
+      <text x="392" y="162" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <text x="76" y="190" fill="#27272A">name</text>
+      <text x="392" y="190" text-anchor="end" fill="#3F3F46">String NOT NULL</text>
+
+      <rect x="40" y="204" width="28" height="18" rx="3" fill="#F4F4F5" stroke="#111111" stroke-width="1" />
+      <text x="54" y="217" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">UQ</text>
+      <text x="76" y="218" fill="#111111" font-weight="700">email</text>
+      <text x="392" y="218" text-anchor="end" fill="#3F3F46">String @unique</text>
+
+      <text x="76" y="246" fill="#27272A">password</text>
+      <text x="392" y="246" text-anchor="end" fill="#3F3F46">String (bcryptjs hash)</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 2: Companyoverview                                                  -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="324" width="380" height="312" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="324" width="380" height="36" rx="6" fill="#111111" />
+    <text x="44" y="347" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">Companyoverview</text>
+    <text x="392" y="347" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Company Profile &amp; Stack</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="40" y="370" width="28" height="18" rx="3" fill="#111111" />
+      <text x="54" y="383" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="76" y="384" fill="#111111" font-weight="800">id</text>
+      <text x="392" y="384" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <rect x="40" y="396" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="54" y="409" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="76" y="410" fill="#111111" font-weight="700">companyId</text>
+      <text x="392" y="410" text-anchor="end" fill="#111111">String? -&gt; Company.id</text>
+
+      <text x="76" y="436" fill="#111111" font-weight="700">image</text>
+      <text x="392" y="436" text-anchor="end" fill="#111111">String (Bucket: 'company')</text>
+
+      <text x="76" y="462" fill="#27272A">name / website</text>
+      <text x="392" y="462" text-anchor="end" fill="#3F3F46">String</text>
+
+      <text x="76" y="488" fill="#27272A">location / employee</text>
+      <text x="392" y="488" text-anchor="end" fill="#3F3F46">String</text>
+
+      <text x="76" y="514" fill="#111111" font-weight="700">industry</text>
+      <text x="392" y="514" text-anchor="end" fill="#111111">String (Filterable Industry)</text>
+
+      <text x="76" y="540" fill="#27272A">dateFounded</text>
+      <text x="392" y="540" text-anchor="end" fill="#3F3F46">DateTime</text>
+
+      <text x="76" y="566" fill="#111111" font-weight="700">techStack</text>
+      <text x="392" y="566" text-anchor="end" fill="#111111">String[] (PostgreSQL Array)</text>
+
+      <text x="76" y="592" fill="#27272A">description</text>
+      <text x="392" y="592" text-anchor="end" fill="#3F3F46">String (CKEditor 5 HTML)</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 3: CompanySocialMedia                                               -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="28" y="656" width="380" height="220" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="28" y="656" width="380" height="36" rx="6" fill="#111111" />
+    <text x="44" y="679" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">CompanySocialMedia</text>
+    <text x="392" y="679" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Official Social Links</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="40" y="702" width="28" height="18" rx="3" fill="#111111" />
+      <text x="54" y="715" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="76" y="716" fill="#111111" font-weight="800">id</text>
+      <text x="392" y="716" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <rect x="40" y="728" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="54" y="741" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="76" y="742" fill="#111111" font-weight="700">companyId</text>
+      <text x="392" y="742" text-anchor="end" fill="#111111">String? -&gt; Company.id</text>
+
+      <text x="76" y="770" fill="#27272A">instagram / twitter</text>
+      <text x="392" y="770" text-anchor="end" fill="#3F3F46">String</text>
+
+      <text x="76" y="798" fill="#27272A">facebook / linkedin</text>
+      <text x="392" y="798" text-anchor="end" fill="#3F3F46">String</text>
+
+      <text x="76" y="826" fill="#27272A">youtube</text>
+      <text x="392" y="826" text-anchor="end" fill="#3F3F46">String</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 4: Job                                                              -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="548" y="102" width="444" height="516" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2.2" />
+    <rect x="548" y="102" width="444" height="38" rx="6" fill="#111111" />
+    <text x="566" y="126" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="16" font-weight="800">Job</text>
+    <text x="976" y="126" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11.5">Core Job Vacancy Posting</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="562" y="152" width="28" height="18" rx="3" fill="#111111" />
+      <text x="576" y="165" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="598" y="166" fill="#111111" font-weight="800">id</text>
+      <text x="976" y="166" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <text x="598" y="192" fill="#111111" font-weight="700">roles</text>
+      <text x="976" y="192" text-anchor="end" fill="#27272A">String (Job Title)</text>
+
+      <text x="598" y="218" fill="#27272A">datePosted / dueDate</text>
+      <text x="976" y="218" text-anchor="end" fill="#3F3F46">DateTime (@default(now()))</text>
+
+      <rect x="562" y="232" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="576" y="245" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="598" y="246" fill="#111111" font-weight="700">companyId</text>
+      <text x="976" y="246" text-anchor="end" fill="#111111">String? -&gt; Company.id</text>
+
+      <rect x="562" y="260" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="576" y="273" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="598" y="274" fill="#111111" font-weight="700">categoryId</text>
+      <text x="976" y="274" text-anchor="end" fill="#111111">String? -&gt; CategoryJob.id</text>
+
+      <text x="598" y="302" fill="#111111" font-weight="700">jobType</text>
+      <text x="976" y="302" text-anchor="end" fill="#111111">Full-Time | Remote | Internship</text>
+
+      <text x="598" y="328" fill="#111111" font-weight="700">applicants / needs</text>
+      <text x="976" y="328" text-anchor="end" fill="#111111">Int (Applied count vs Quota)</text>
+
+      <text x="598" y="354" fill="#27272A">salaryFrom / salaryTo</text>
+      <text x="976" y="354" text-anchor="end" fill="#3F3F46">String</text>
+
+      <text x="598" y="380" fill="#111111" font-weight="700">requiredSkills</text>
+      <text x="976" y="380" text-anchor="end" fill="#111111">String[] (Skill Tags Array)</text>
+
+      <text x="598" y="406" fill="#27272A">description</text>
+      <text x="976" y="406" text-anchor="end" fill="#3F3F46">String (CKEditor HTML)</text>
+
+      <text x="598" y="432" fill="#27272A">responsibility</text>
+      <text x="976" y="432" text-anchor="end" fill="#3F3F46">String (CKEditor HTML)</text>
+
+      <text x="598" y="458" fill="#27272A">whoYouAre / niceToHaves</text>
+      <text x="976" y="458" text-anchor="end" fill="#3F3F46">String (CKEditor HTML)</text>
+
+      <text x="598" y="484" fill="#111111" font-weight="700">benefits</text>
+      <text x="976" y="484" text-anchor="end" fill="#111111">Json ([{benefit, description}])</text>
+
+      <rect x="562" y="556" width="416" height="44" rx="4" fill="#F4F4F5" stroke="#111111" stroke-width="1.2" />
+      <text x="770" y="575" text-anchor="middle" fill="#111111" font-size="11" font-weight="800">
+        Atomic Quota Tracking: Job.applicants increments (+1)
+      </text>
+      <text x="770" y="591" text-anchor="middle" fill="#3F3F46" font-size="10.5">
+        automatically whenever a candidate submits POST /api/jobs/apply
+      </text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 5: CompanyTeam                                                      -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="548" y="656" width="444" height="220" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="548" y="656" width="444" height="36" rx="6" fill="#111111" />
+    <text x="566" y="679" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">CompanyTeam</text>
+    <text x="976" y="679" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Company Team Members</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="562" y="702" width="28" height="18" rx="3" fill="#111111" />
+      <text x="576" y="715" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="598" y="716" fill="#111111" font-weight="800">id</text>
+      <text x="976" y="716" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <rect x="562" y="728" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="576" y="741" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="598" y="742" fill="#111111" font-weight="700">companyId</text>
+      <text x="976" y="742" text-anchor="end" fill="#111111">String? -&gt; Company.id</text>
+
+      <text x="598" y="770" fill="#27272A">name</text>
+      <text x="976" y="770" text-anchor="end" fill="#3F3F46">String NOT NULL</text>
+
+      <text x="598" y="798" fill="#27272A">position</text>
+      <text x="976" y="798" text-anchor="end" fill="#3F3F46">String (Role / Title)</text>
+
+      <text x="598" y="826" fill="#27272A">instagram / linkedin</text>
+      <text x="976" y="826" text-anchor="end" fill="#3F3F46">String</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 6 & 7: CategoryJob & Industry                                       -->
+  <!-- ========================================================================= -->
+  <g>
+    <!-- CategoryJob -->
+    <rect x="1144" y="102" width="428" height="112" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="1144" y="102" width="428" height="34" rx="6" fill="#111111" />
+    <text x="1160" y="124" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="14.5" font-weight="800">CategoryJob</text>
+    <text x="1556" y="124" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Job Category Master</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="1156" y="146" width="28" height="18" rx="3" fill="#111111" />
+      <text x="1170" y="159" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="1192" y="160" fill="#111111" font-weight="800">id</text>
+      <text x="1556" y="160" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <text x="1192" y="188" fill="#27272A">name</text>
+      <text x="1556" y="188" text-anchor="end" fill="#3F3F46">String (Engineering, Design, etc.)</text>
+    </g>
+
+    <!-- Industry -->
+    <rect x="1144" y="226" width="428" height="106" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="1144" y="226" width="428" height="34" rx="6" fill="#111111" />
+    <text x="1160" y="248" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="14.5" font-weight="800">Industry</text>
+    <text x="1556" y="248" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Company Sector Master</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="1156" y="270" width="28" height="18" rx="3" fill="#111111" />
+      <text x="1170" y="283" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="1192" y="284" fill="#111111" font-weight="800">id</text>
+      <text x="1556" y="284" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <text x="1192" y="310" fill="#27272A">name</text>
+      <text x="1556" y="310" text-anchor="end" fill="#3F3F46">String (Technology, Finance, etc.)</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 8: User                                                             -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="1144" y="346" width="428" height="172" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="1144" y="346" width="428" height="36" rx="6" fill="#111111" />
+    <text x="1160" y="369" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">User</text>
+    <text x="1556" y="369" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Job Seeker Account</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="1156" y="392" width="28" height="18" rx="3" fill="#111111" />
+      <text x="1170" y="405" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="1192" y="406" fill="#111111" font-weight="800">id</text>
+      <text x="1556" y="406" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <text x="1192" y="432" fill="#27272A">name</text>
+      <text x="1556" y="432" text-anchor="end" fill="#3F3F46">String NOT NULL</text>
+
+      <rect x="1156" y="444" width="28" height="18" rx="3" fill="#F4F4F5" stroke="#111111" stroke-width="1" />
+      <text x="1170" y="457" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">UQ</text>
+      <text x="1192" y="458" fill="#111111" font-weight="700">email</text>
+      <text x="1556" y="458" text-anchor="end" fill="#3F3F46">String @unique</text>
+
+      <text x="1192" y="486" fill="#27272A">password</text>
+      <text x="1556" y="486" text-anchor="end" fill="#3F3F46">String (bcryptjs hash)</text>
+    </g>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 9: Applicant                                                        -->
+  <!-- ========================================================================= -->
+  <g>
+    <rect x="1144" y="566" width="428" height="310" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect x="1144" y="566" width="428" height="36" rx="6" fill="#111111" />
+    <text x="1160" y="589" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="15" font-weight="800">Applicant</text>
+    <text x="1556" y="589" text-anchor="end" fill="#E4E4E7" font-family="ui-monospace, monospace" font-size="11">Job Application &amp; Resume</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+      <rect x="1156" y="612" width="28" height="18" rx="3" fill="#111111" />
+      <text x="1170" y="625" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="800">PK</text>
+      <text x="1192" y="626" fill="#111111" font-weight="800">id</text>
+      <text x="1556" y="626" text-anchor="end" fill="#111111" font-weight="700">String @default(cuid())</text>
+
+      <rect x="1156" y="638" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="1170" y="651" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="1192" y="652" fill="#111111" font-weight="700">jobId</text>
+      <text x="1556" y="652" text-anchor="end" fill="#111111">String? -&gt; Job.id</text>
+
+      <rect x="1156" y="664" width="28" height="18" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" />
+      <text x="1170" y="677" text-anchor="middle" fill="#111111" font-size="10" font-weight="800">FK</text>
+      <text x="1192" y="678" fill="#111111" font-weight="700">userId</text>
+      <text x="1556" y="678" text-anchor="end" fill="#111111">String? -&gt; User.id</text>
+
+      <text x="1192" y="706" fill="#27272A">previousJobTitle</text>
+      <text x="1556" y="706" text-anchor="end" fill="#3F3F46">String</text>
+
+      <text x="1192" y="734" fill="#27272A">phone / linkedIn</text>
+      <text x="1556" y="734" text-anchor="end" fill="#3F3F46">String</text>
+
+      <text x="1192" y="762" fill="#27272A">portfolio</text>
+      <text x="1556" y="762" text-anchor="end" fill="#3F3F46">String (URL)</text>
+
+      <text x="1192" y="790" fill="#27272A">coverLetter</text>
+      <text x="1556" y="790" text-anchor="end" fill="#3F3F46">String (Text)</text>
+
+      <text x="1192" y="818" fill="#111111" font-weight="800">resume</text>
+      <text x="1556" y="818" text-anchor="end" fill="#111111" font-weight="700">String (PDF in 'applicant' bucket)</text>
+    </g>
+  </g>
+</svg>
