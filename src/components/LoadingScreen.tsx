@@ -105,47 +105,8 @@ export const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete
         fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
-      {/* Self-contained high-performance keyframes for shooting stars */}
-      <style>{`
-        @keyframes shoot {
-          0% {
-            transform: rotate(-45deg) translate3d(0, 0, 0);
-            opacity: 0;
-            width: 0px;
-          }
-          10% {
-            opacity: 1;
-            width: 80px;
-          }
-          50% {
-            width: 120px;
-            opacity: 1;
-          }
-          90% {
-            opacity: 0;
-          }
-          100% {
-            transform: rotate(-45deg) translate3d(-600px, 600px, 0);
-            opacity: 0;
-            width: 0px;
-          }
-        }
-        .star-1 { top: -10%; right: 10%; animation: shoot 3.5s infinite linear; animation-delay: 0s; }
-        .star-2 { top: 15%; right: -5%; animation: shoot 4s infinite linear; animation-delay: 1.2s; }
-        .star-3 { top: -5%; right: 40%; animation: shoot 3.2s infinite linear; animation-delay: 0.5s; }
-        .star-4 { top: 40%; right: -10%; animation: shoot 4.5s infinite linear; animation-delay: 2s; }
-        .star-5 { top: -15%; right: 25%; animation: shoot 3s infinite linear; animation-delay: 1.8s; }
-      `}</style>
-
       {/* Atmospheric Starry Space Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950/20 via-black to-[#010005] overflow-hidden">
-        {/* Shooting Stars */}
-        <div className="absolute w-[3px] h-[3px] bg-gradient-to-r from-white to-transparent star-1 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
-        <div className="absolute w-[3px] h-[3px] bg-gradient-to-r from-white to-transparent star-2 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
-        <div className="absolute w-[3px] h-[3px] bg-gradient-to-r from-white to-transparent star-3 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
-        <div className="absolute w-[3px] h-[3px] bg-gradient-to-r from-white to-transparent star-4 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
-        <div className="absolute w-[3px] h-[3px] bg-gradient-to-r from-white to-transparent star-5 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
-        
         {/* Soft glowing space nebulae */}
         <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-600/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]" />

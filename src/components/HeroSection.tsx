@@ -35,10 +35,7 @@ export const HeroSection: React.FC = () => {
 
         {/* Impactful Title */}
         <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold italic tracking-wide text-white leading-[1.1] max-w-4xl mx-auto mb-8 font-script drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">
-          Software Engineer{' '}
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-teal-200 to-sky-300 drop-shadow-[0_0_40px_rgba(6,182,212,0.4)] font-script">
-            &amp; AI Enthusiast
-          </span>
+          Software Engineer
         </h1>
 
         {/* Clean Action Buttons */}

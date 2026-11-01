@@ -70,7 +70,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
     year: '2025 - 2026',
     role: 'Full Stack Developer',
     timeline: '3 Months',
-    image: '/images/p1.svg',
+    image: '/images/project/jobhunt.png',
     description:
       'JobHunt adalah ekosistem platform pencarian kerja (Job Portal) dan manajemen rekrutmen perusahaan (Applicant Tracking System / CMS) yang dibangun dengan arsitektur dua aplikasi Next.js App Router independen: Job Hunt CMS (Dashboard Perusahaan/HR) dan Job Hunt Website (Portal Publik Pencari Kerja). Kedua aplikasi terhubung secara real-time melalui satu basis data PostgreSQL terpusat yang dikelola menggunakan Prisma ORM serta penyimpanan objek Supabase Storage untuk aset logo perusahaan dan dokumen CV/Resume pelamar.',
     problemStatement:
@@ -1188,7 +1188,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
     year: '2026',
     role: 'Full Stack Engineer & DevOps Architect',
     timeline: '3 Months',
-    image: '/images/p1.svg',
+    image: '/images/project/codevas.png',
     description:
       'Codevas Learning adalah platform pembelajaran interaktif (Real-Time UI Learning Engine) berestetika Candy Neo-Brutalist yang dirancang untuk mengajarkan fondasi arsitektur HTML, CSS, Tailwind CSS, dan JavaScript Logic. Dilengkapi workspace split-screen (55% Live Visual Arena & 45% Monaco Editor), sistem ini mengevaluasi struktur DOM dan deklarasi style pada kecepatan 60 FPS secara instan di setiap ketikan tanpa tombol "Submit" manual, lengkap dengan fitur Smart Syntax Helper Bubbles, Gamifikasi EXP/Streak, serta Admin Control Panel & Live Monitoring.',
     problemStatement:
