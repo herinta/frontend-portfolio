@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <pattern id="bwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#D4D4D8" />
+    </pattern>
+
+    <marker id="arrowBlack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#111111" />
+    </marker>
+  </defs>
+
+  <!-- White Background & Outer Frame -->
+  <rect width="1600" height="900" fill="#FFFFFF" />
+  <rect width="1600" height="900" fill="url(#bwGrid)" />
+  <rect x="12" y="12" width="1576" height="876" rx="6" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="24" width="1544" height="64" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <line x1="28" y1="60" x2="1572" y2="60" stroke="#111111" stroke-width="1" />
+  <text x="46" y="49" fill="#111111" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800" letter-spacing="0.5">
+    SYSTEM ARCHITECTURE &amp; TRANSACTION FLOWCHART — DIGISELL (CREATOR COMMERCE PLATFORM)
+  </text>
+  <text x="46" y="79" fill="#3F3F46" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    Java 17 | Spring Boot 3.3.5 | Spring Security Stateless Bearer | Midtrans Snap API | MySQL 8.0 InnoDB | React 19 + Vite | React Router v7
+  </text>
+  <rect x="1330" y="31" width="226" height="22" rx="4" fill="#111111" />
+  <text x="1443" y="46" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    Link-in-Bio E-Commerce
+  </text>
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 1: CLIENT & STOREFRONT LAYER (REACT 19 + VITE)                   -->
+  <!-- ========================================================================= -->
+  <rect x="28" y="104" width="350" height="766" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="28" y="104" width="350" height="38" rx="6" fill="#111111" />
+  <text x="44" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800" letter-spacing="0.6">
+    01. CLIENT STOREFRONT (REACT 19)
+  </text>
+
+  <!-- Node 1.1: Creator Bio Storefront -->
+  <rect x="44" y="156" width="318" height="152" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="56" y="168" width="26" height="22" rx="4" fill="#111111" />
+  <text x="69" y="184" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">1</text>
+  <text x="92" y="184" fill="#111111" font-family="system-ui, sans-serif" font-size="13.5" font-weight="800">Link-in-Bio Isolated Storefront</text>
+  <line x1="56" y1="196" x2="350" y2="196" stroke="#D4D4D8" stroke-width="1" />
+  <text x="56" y="214" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Exclusive creator portal (/:username)</text>
+  <text x="56" y="233" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Zero competitor ads &amp; distraction-free</text>
+  <text x="56" y="252" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Product cards with badge, price &amp; stock</text>
+  <text x="56" y="271" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• In-app browser optimized (IG / TikTok / X)</text>
+  <text x="56" y="294" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Routes: /:username | /:username/product/:id</text>
+
+  <!-- Node 1.2: Fast Checkout Modal -->
+  <rect x="44" y="324" width="318" height="150" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="56" y="336" width="26" height="22" rx="4" fill="#111111" />
+  <text x="69" y="352" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">2</text>
+  <text x="92" y="352" fill="#111111" font-family="system-ui, sans-serif" font-size="13.5" font-weight="800">Fast Checkout &amp; Snap Embed</text>
+  <line x1="56" y1="364" x2="350" y2="364" stroke="#D4D4D8" stroke-width="1" />
+  <text x="56" y="382" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Guest checkout without mandatory login</text>
+  <text x="56" y="401" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Customer Name, Email &amp; Phone inputs</text>
+  <text x="56" y="420" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Embeds Midtrans Snap Pop-up window</text>
+  <text x="56" y="439" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Instant feedback &amp; sandbox mock trigger</text>
+  <text x="56" y="460" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Action: window.snap.pay(snapToken)</text>
+
+  <!-- Node 1.3: Secure Access Portal -->
+  <rect x="44" y="490" width="318" height="168" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="56" y="502" width="26" height="22" rx="4" fill="#111111" />
+  <text x="69" y="518" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">3</text>
+  <text x="92" y="518" fill="#111111" font-family="system-ui, sans-serif" font-size="13.5" font-weight="800">Secure Access &amp; Download Portal</text>
+  <line x1="56" y1="530" x2="350" y2="530" stroke="#D4D4D8" stroke-width="1" />
+  <text x="56" y="548" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Validates orderId + download_token</text>
+  <text x="56" y="567" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Real-time 24-hour expiration countdown</text>
+  <text x="56" y="586" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Direct download link / asset key decrypt</text>
+  <text x="56" y="605" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Prevents unauthorized file link leeching</text>
+  <text x="56" y="624" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Auto-redirect on payment confirmation</text>
+  <text x="56" y="646" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Route: /access?orderId={id}&amp;token={tk}</text>
+
+  <!-- Node 1.4: Seller CMS Dashboard -->
+  <rect x="44" y="674" width="318" height="180" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <rect x="56" y="686" width="26" height="22" rx="4" fill="#111111" />
+  <text x="69" y="702" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">4</text>
+  <text x="92" y="702" fill="#111111" font-family="system-ui, sans-serif" font-size="13.5" font-weight="800">Seller Dashboard &amp; Payout CMS</text>
+  <line x1="56" y1="714" x2="350" y2="714" stroke="#D4D4D8" stroke-width="1" />
+  <text x="56" y="732" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Digital catalog CRUD (Notion, Drive, Code)</text>
+  <text x="56" y="751" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Stock management (Limited vs Unlimited)</text>
+  <text x="56" y="770" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Real-time sales telemetry &amp; sold_count</text>
+  <text x="56" y="789" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Wallet balance &amp; Bank withdrawal request</text>
+  <text x="56" y="808" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Profile bio, avatar, and custom slug editor</text>
+  <text x="56" y="836" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Route: /dashboard (Bearer dgs_...)</text>
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 2: SPRING BOOT 3.3 REST CONTROLLER LAYER                         -->
+  <!-- ========================================================================= -->
+  <rect x="406" y="104" width="368" height="766" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="406" y="104" width="368" height="38" rx="6" fill="#111111" />
+  <text x="422" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800" letter-spacing="0.6">
+    02. SPRING BOOT 3.3 REST CONTROLLERS
+  </text>
+
+  <!-- Node 2.1: Auth & Token Filter -->
+  <rect x="422" y="156" width="336" height="152" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="438" y="184" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">AuthController &amp; SellerTokenFilter</text>
+  <line x1="438" y1="196" x2="744" y2="196" stroke="#D4D4D8" stroke-width="1" />
+  <text x="438" y="214" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Stateless Bearer Token: dgs_&lt;uuid&gt;&lt;timestamp&gt;</text>
+  <text x="438" y="233" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• BCrypt password hashing &amp; 30-day expiry</text>
+  <text x="438" y="252" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Jakarta Bean Validation (@NotBlank, @Email)</text>
+  <text x="438" y="271" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• SecurityFilterChain allows public storefront</text>
+  <text x="438" y="294" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">POST /api/auth/register | POST /api/auth/login</text>
+
+  <!-- Node 2.2: Order & Checkout Controller -->
+  <rect x="422" y="324" width="336" height="150" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="438" y="352" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">OrderController &amp; Concurrency Guard</text>
+  <line x1="438" y1="364" x2="744" y2="364" stroke="#D4D4D8" stroke-width="1" />
+  <text x="438" y="382" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Generates DIGI-&lt;timestamp&gt;-&lt;rand&gt; orderId</text>
+  <text x="438" y="401" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Executes PESSIMISTIC_WRITE lock on product</text>
+  <text x="438" y="420" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Intercepts out-of-stock race conditions</text>
+  <text x="438" y="439" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Generates Snap Token &amp; Redirect URL</text>
+  <text x="438" y="460" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">POST /api/orders | GET /api/orders/{orderId}</text>
+
+  <!-- Node 2.3: Payment Webhook Controller -->
+  <rect x="422" y="490" width="336" height="168" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="438" y="518" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">PaymentWebhookController</text>
+  <line x1="438" y1="530" x2="744" y2="530" stroke="#D4D4D8" stroke-width="1" />
+  <text x="438" y="548" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Midtrans HTTP Notification Webhook</text>
+  <text x="438" y="567" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• SHA-512 Signature Hash verification</text>
+  <text x="438" y="586" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Idempotency check (prevents double credit)</text>
+  <text x="438" y="605" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Updates status: PAID / EXPIRED / FAILED</text>
+  <text x="438" y="624" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Generates download_token (24h valid)</text>
+  <text x="438" y="646" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">POST /api/payment/notification</text>
+
+  <!-- Node 2.4: Seller & Product Controller -->
+  <rect x="422" y="674" width="336" height="180" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="438" y="702" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">Product &amp; Seller Management API</text>
+  <line x1="438" y1="714" x2="744" y2="714" stroke="#D4D4D8" stroke-width="1" />
+  <text x="438" y="732" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Masked public DTO (hides asset fileUrl)</text>
+  <text x="438" y="751" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Seller-authenticated catalog CRUD</text>
+  <text x="438" y="770" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Wallet balance &amp; revenue queries</text>
+  <text x="438" y="789" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Withdrawal request processing (WD-&lt;time&gt;)</text>
+  <text x="438" y="808" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Verifies minimum balance threshold</text>
+  <text x="438" y="836" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">/api/products | /api/seller/wallet | /api/seller/withdraw</text>
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 3: INTEGRATIONS, SECURITY & DELIVERY SERVICES                    -->
+  <!-- ========================================================================= -->
+  <rect x="802" y="104" width="374" height="766" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="802" y="104" width="374" height="38" rx="6" fill="#111111" />
+  <text x="818" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800" letter-spacing="0.6">
+    03. GATEWAY, CONCURRENCY &amp; DELIVERY
+  </text>
+
+  <!-- Node 3.1: Midtrans Snap Gateway -->
+  <rect x="818" y="156" width="342" height="152" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="834" y="184" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">Midtrans Snap Service</text>
+  <line x1="834" y1="196" x2="1144" y2="196" stroke="#D4D4D8" stroke-width="1" />
+  <text x="834" y="214" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Midtrans Snap API v1 integration</text>
+  <text x="834" y="233" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Generates Snap Token &amp; redirect URL</text>
+  <text x="834" y="252" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Multi-channel: QRIS, VA, GoPay, Card</text>
+  <text x="834" y="271" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Automatic mock sandbox fallback</text>
+  <text x="834" y="294" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Config: midtrans.server-key | client-key</text>
+
+  <!-- Node 3.2: Pessimistic Concurrency Lock -->
+  <rect x="818" y="324" width="342" height="150" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="834" y="352" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">Pessimistic Locking Engine</text>
+  <line x1="834" y1="364" x2="1144" y2="364" stroke="#D4D4D8" stroke-width="1" />
+  <text x="834" y="382" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• LockModeType.PESSIMISTIC_WRITE on DB</text>
+  <text x="834" y="401" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Executes: SELECT ... FOR UPDATE</text>
+  <text x="834" y="420" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Atomic decrement on limited stock item</text>
+  <text x="834" y="439" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Eliminates overselling during flash drop</text>
+  <text x="834" y="460" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">ProductRepository.findByIdWithLock()</text>
+
+  <!-- Node 3.3: SHA-512 & Webhook Idempotency -->
+  <rect x="818" y="490" width="342" height="168" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="834" y="518" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">Security &amp; Webhook Guard</text>
+  <line x1="834" y1="530" x2="1144" y2="530" stroke="#D4D4D8" stroke-width="1" />
+  <text x="834" y="548" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• SHA512(order_id+status+amount+serverKey)</text>
+  <text x="834" y="567" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Rejects fake payment tampering</text>
+  <text x="834" y="586" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Atomic status check: if PAID, ignore retries</text>
+  <text x="834" y="605" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Credit seller_wallet once only</text>
+  <text x="834" y="624" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Decrements stock &amp; increments sold_count</text>
+  <text x="834" y="646" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Atomic Idempotency Execution</text>
+
+  <!-- Node 3.4: 24h Token & Email Notification -->
+  <rect x="818" y="674" width="342" height="180" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="834" y="702" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">24H Expiring Access &amp; Delivery</text>
+  <line x1="834" y1="714" x2="1144" y2="714" stroke="#D4D4D8" stroke-width="1" />
+  <text x="834" y="732" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Generates UUID download_token</text>
+  <text x="834" y="751" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• download_expiry = paid_at + 24 Hours</text>
+  <text x="834" y="770" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Masks original Google Drive / S3 file URL</text>
+  <text x="834" y="789" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• EmailNotificationService dispatches receipt</text>
+  <text x="834" y="808" fill="#27272A" font-family="system-ui, sans-serif" font-size="11.5">• Buyer clicks magic link to claim digital asset</text>
+  <text x="834" y="836" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Protected File Concealment Guard</text>
+
+  <!-- ========================================================================= -->
+  <!-- SWIMLANE 4: MYSQL 8.0 PERSISTENCE LAYER                                   -->
+  <!-- ========================================================================= -->
+  <rect x="1204" y="104" width="368" height="766" rx="6" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" stroke-dasharray="6,4" />
+  <rect x="1204" y="104" width="368" height="38" rx="6" fill="#111111" />
+  <text x="1220" y="128" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800" letter-spacing="0.6">
+    04. PERSISTENCE — MYSQL 8.0 (INNODB)
+  </text>
+
+  <!-- Node 4.1: sellers & seller_wallets -->
+  <rect x="1220" y="156" width="336" height="152" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="1236" y="184" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">sellers &amp; seller_wallets (1:1)</text>
+  <line x1="1236" y1="196" x2="1542" y2="196" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1236" y="214" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• sellers.id (BIGINT PK, AUTO_INCREMENT)</text>
+  <text x="1236" y="233" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• username (UQ), email (UQ), password</text>
+  <text x="1236" y="252" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• auth_token, token_expiry, created_at</text>
+  <text x="1236" y="271" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• seller_wallets.id (PK), available_balance</text>
+  <text x="1236" y="294" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">total_revenue | total_withdrawn</text>
+
+  <!-- Node 4.2: products -->
+  <rect x="1220" y="324" width="336" height="150" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="1236" y="352" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">products (Digital Catalog)</text>
+  <line x1="1236" y1="364" x2="1542" y2="364" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1236" y="382" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• id (BIGINT PK), seller_username (FK/idx)</text>
+  <text x="1236" y="401" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• title, description, price, original_price</text>
+  <text x="1236" y="420" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• image_url, file_url (Hidden from public DTO)</text>
+  <text x="1236" y="439" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• stock (INT), unlimited_stock (BOOLEAN)</text>
+  <text x="1236" y="460" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">sold_count (INT) | category | badge</text>
+
+  <!-- Node 4.3: order_transactions -->
+  <rect x="1220" y="490" width="336" height="168" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="1236" y="518" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">order_transactions</text>
+  <line x1="1236" y1="530" x2="1542" y2="530" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1236" y="548" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• id (BIGINT PK), order_id (VARCHAR UQ)</text>
+  <text x="1236" y="567" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• product_id, seller_username, amount</text>
+  <text x="1236" y="586" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• customer_name, customer_email, phone</text>
+  <text x="1236" y="605" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• status: PENDING / PAID / EXPIRED / FAILED</text>
+  <text x="1236" y="624" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• snap_token, snap_redirect_url, payment_type</text>
+  <text x="1236" y="646" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">download_token (UUID) | download_expiry</text>
+
+  <!-- Node 4.4: withdrawals -->
+  <rect x="1220" y="674" width="336" height="180" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8" />
+  <text x="1236" y="702" fill="#111111" font-family="system-ui, sans-serif" font-size="14" font-weight="800">withdrawals (Payout Audit)</text>
+  <line x1="1236" y1="714" x2="1542" y2="714" stroke="#D4D4D8" stroke-width="1" />
+  <text x="1236" y="732" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• id (BIGINT PK), withdrawal_code (UQ)</text>
+  <text x="1236" y="751" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• amount (DECIMAL 15,2)</text>
+  <text x="1236" y="770" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• bank_name, account_number, account_holder</text>
+  <text x="1236" y="789" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• status: PENDING / PROCESSED / REJECTED</text>
+  <text x="1236" y="808" fill="#27272A" font-family="ui-monospace, monospace" font-size="11.2">• requested_at, processed_at</text>
+  <text x="1236" y="836" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Reconciles against seller_wallets</text>
+
+  <!-- ========================================================================= -->
+  <!-- CONNECTING ARROWS & INTER-SWIMLANE INTERACTION PATHS                      -->
+  <!-- ========================================================================= -->
+  <!-- 1. Checkout Click -> OrderController -->
+  <path d="M 362 399 L 422 399" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- 2. OrderController -> Pessimistic Lock & Snap Service -->
+  <path d="M 758 399 L 818 399" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- 3. Snap Service -> Snap Gateway (Return Token) -->
+  <path d="M 818 232 L 778 232 L 778 350 L 370 350" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrowBlack)" />
+
+  <!-- 4. Midtrans Webhook -> PaymentWebhookController -->
+  <path d="M 818 574 L 758 574" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- 5. PaymentWebhookController -> DB Update -->
+  <path d="M 758 630 L 790 630 L 790 700 L 1220 700" fill="none" stroke="#111111" stroke-width="1.8" marker-end="url(#arrowBlack)" />
+
+  <!-- 6. Webhook -> 24h Expiring Access Token & Email -->
+  <path d="M 989 658 L 989 674" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- 7. Access Portal -> Verify 24h Access Token -->
+  <path d="M 362 574 L 422 574" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- 8. Dashboard -> Seller API -->
+  <path d="M 362 764 L 422 764" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- 9. Seller API -> DB Products / Wallets -->
+  <path d="M 758 764 L 1220 764" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- 10. Products Concurrency Lock to products table -->
+  <path d="M 1160 399 L 1220 399" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+  <!-- 11. Order Transaction to order_transactions table -->
+  <path d="M 1160 574 L 1220 574" fill="none" stroke="#111111" stroke-width="2" marker-end="url(#arrowBlack)" />
+
+</svg>
+

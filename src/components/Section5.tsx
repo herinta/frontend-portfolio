@@ -26,11 +26,11 @@ const PROJECTS: Project[] = [
     color: 'from-blue-500/20 to-indigo-500/20',
   },
   {
-    title: 'Focus App',
-    category: 'Productivity',
-    description: 'A beautifully designed productivity companion that helps users manage their time, track tasks, and stay focused with customizable timers and insightful analytics.',
+    title: 'Digisell',
+    category: 'E-Commerce & Creator Economy',
+    description: 'A private link-in-bio digital product storefront and automated delivery platform powered by Java 17, Spring Boot 3.3, React 19, Midtrans Snap, and high-concurrency pessimistic locking.',
     image: '/images/p2.svg',
-    tags: ['Next.js', 'React', 'Zustand', 'Framer Motion'],
+    tags: ['Java 17', 'Spring Boot 3', 'React 19', 'Midtrans', 'MySQL'],
     color: 'from-blue-500/20 to-cyan-500/20',
   },
   {

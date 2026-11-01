@@ -15,9 +15,8 @@ interface Stat {
 
 const STATS: Stat[] = [
   { value: 20,  suffix: '+', label: 'Projects Completed', icon: '🚀' },
-  { value: 4,   suffix: '+', label: 'Years Experience',    icon: '⚡' },
+  { value: 1.5,   suffix: '+', label: 'Years Experience',    icon: '⚡' },
   { value: 3.84, suffix: '', label: 'Cumulative GPA',     icon: '🎓' },
-  { value: 100, suffix: '%', label: 'Passion for Code',    icon: '❤️' },
 ];
 
 // ── Experience entries ──────────────────────────────────────────────────────

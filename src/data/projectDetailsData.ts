@@ -354,170 +354,569 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
     }
   },
 
-  'focus-app': {
-    id: 'focus-app',
-    title: 'Focus App',
-    tagline: 'Flow State Companion with Smart Pomodoro & Focus Analytics',
-    category: 'Productivity & SaaS',
+  'digisell': {
+    id: 'digisell',
+    title: 'Digisell',
+    tagline: 'Private Link-in-Bio Digital Storefront with High-Concurrency Spring Boot & Midtrans',
+    category: 'E-Commerce & Creator Economy',
     status: 'Live Production',
     year: '2025',
-    role: 'Lead Frontend & UI/UX Developer',
-    timeline: '2 Months',
+    role: 'Full Stack Engineer & System Architect',
+    timeline: '2.5 Months',
     image: '/images/p2.svg',
     description:
-      'Focus App adalah aplikasi produktivitas minimalis yang dirancang untuk membantu profesional dan developer mencapai kondisi flow state. Dilengkapi dengan timer interval adaptif, pelacakan sesi kerja berbasis proyek, pemutar suara ambient, serta analitik visual mendalam untuk mengidentifikasi jam paling produktif dalam sehari.',
+      'DigiSell adalah platform Link-in-Bio Digital Product Storefront mandiri berbasis Java 17, Spring Boot 3.3, React 19, dan MySQL 8.0. Didesain khusus untuk kreator konten dan developer digital (mirip Gumroad / Lynk.id / Mayar) dengan pendekatan Isolated Storefront (zero-distraction & no competitor ads), di mana seluruh trafik tautan bio 100% terkonversi untuk kreator. Sistem dilengkapi dengan integrasi pembayaran Midtrans Snap, perlindungan stok berkonkurensi tinggi via Pessimistic Locking (PESSIMISTIC_WRITE), token akses unduhan berbatas waktu 24 jam dengan enkripsi URL aset (@JsonIgnore masking), serta subsistem rekonsiliasi dompet seller dan penarikan dana (withdrawal) otomatis.',
     problemStatement:
-      'Distraksi digital konstan dan kebiasaan multitasking menurunkan konsentrasi dan meningkatkan rasa lelah tanpa progres kerja nyata.',
+      'Pada marketplace umum, pembeli yang diarahkan dari media sosial (Instagram, TikTok, Twitter/X) sering kali teralihkan oleh rekomendasi toko lain, iklan bersaing, dan perang harga kompetitor. Selain itu, platform penjualan produk digital rawan terjadi race-condition overselling saat flash sale stok terbatas serta pembajakan link unduhan aset berharga secara publik.',
     solution:
-      'Menghadirkan lingkungan kerja bebas distraksi dengan timer Pomodoro fleksibel, soundscape terkurasi, dan pelaporan metrik fokus otomatis.',
+      'Membangun etalase privat link-in-bio (/:username) tanpa distraksi produk kompetitor, didukung arsitektur backend Spring Boot 3.3 berkemampuan Pessimistic Locking untuk integritas stok nol-oversell, verifikasi webhook Midtrans SHA-512 dengan idempotency guard anti double-credit, serta portal unduhan /access dengan expiring download token (valid 24 jam) yang menyembunyikan URL aset asli dari DTO publik.',
     features: [
       {
-        title: 'Adaptive Pomodoro & Custom Intervals',
-        description: 'Pengaturan durasi fokus 25/50 menit dengan jeda istirahat dinamis dan peringatan audio lembut.',
-        icon: 'timer'
+        title: 'Link-in-Bio Isolated Storefront (/:username)',
+        description: 'Halaman etalase profil kreator eksklusif tanpa katalog kompetitor, dioptimalkan untuk performa in-app browser media sosial.',
+        icon: 'globe'
       },
       {
-        title: 'Project & Tag Categorization',
-        description: 'Tautkan setiap sesi fokus ke proyek atau klien tertentu untuk penghitungan jam kerja akurat.',
-        icon: 'folder'
+        title: 'Fast Checkout & Midtrans Snap Modal',
+        description: 'Alur checkout instan tanpa login wajib, langsung membuka popup Midtrans Snap (QRIS, VA, e-Wallet) dengan fallback sandbox mock.',
+        icon: 'credit-card'
       },
       {
-        title: 'Curated Ambient Soundscapes',
-        description: 'Pemutar audio latar offline: White Noise, Lo-Fi Beat, Hujan, Hutan Pinus, dan Cafe binaural.',
-        icon: 'music'
+        title: 'Pessimistic Locking Stock Concurrency',
+        description: 'Penerapan PESSIMISTIC_WRITE (SELECT ... FOR UPDATE) pada database MySQL untuk mencegah race condition overselling saat stok terbatas.',
+        icon: 'lock'
       },
       {
-        title: 'Productivity Heatmaps & Stats',
-        description: 'Laporan visual harian/mingguan menyerupai GitHub contribution graph untuk memicu konsistensi.',
+        title: '24-Hour Expiring Download Portal',
+        description: 'Akses aset digital diberikan via UUID token yang kadaluarsa dalam 24 jam dengan penyembunyian URL file asli (@JsonIgnore).',
+        icon: 'download'
+      },
+      {
+        title: 'Automated Email Notification Service',
+        description: 'Pengiriman email otomatis kepada pembeli berisi tautan klaim lisensi dan file digital segera setelah webhook status PAID diverifikasi.',
+        icon: 'mail'
+      },
+      {
+        title: 'Seller Wallet & Bank Withdrawal CMS',
+        description: 'Dompet saldo real-time, rekonsiliasi omzet per transaksi, dan pengajuan penarikan dana ke rekening bank dengan validasi saldo minimum.',
         icon: 'chart'
       }
     ],
-    githubUrl: 'https://github.com/herinta/focus-app',
-    liveUrl: 'https://focus-flow.vercel.app',
+    githubUrl: 'https://github.com/herinta/digisell-backend-api',
+    liveUrl: 'https://digisell-store.vercel.app',
     techStacks: [
       {
-        name: 'React 19 & Next.js',
-        category: 'Frontend',
-        role: 'Core UI Framework',
-        reason: 'Reactivity instan untuk countdown timer tanpa frame dropping dan transisi mulus.'
+        name: 'Java 17 & Spring Boot 3.3.5',
+        category: 'Backend',
+        role: 'Enterprise REST API & Business Logic',
+        reason: 'Performa tinggi, virtual thread ready, ekosistem enterprise stabil dengan Spring Security dan Jakarta Bean Validation.'
       },
       {
-        name: 'Zustand',
+        name: 'React 19 & Vite',
         category: 'Frontend',
-        role: 'Lightweight State Management',
-        reason: 'Mengelola status timer global, background audio, dan preferensi user tanpa re-render berlebih.'
+        role: 'Modern Link-in-Bio SPA Storefront',
+        reason: 'Render instan dan bundle footprint sangat ringan untuk loading secepat kilat pada in-app browser media sosial.'
       },
       {
-        name: 'Web Audio API',
+        name: 'React Router v7 & Oxlint',
         category: 'Frontend',
-        role: 'Audio Synthesis & Ambient Mixing',
-        reason: 'Kemampuan looping ambient audio mulus tanpa glitch antar track audio.'
+        role: 'Declarative Routing & Fast Tooling',
+        reason: 'Routing dinamis multi-level untuk etalase creator (/:username), checkout, portal /access, dan dashboard seller.'
       },
       {
-        name: 'Framer Motion',
-        category: 'Frontend',
-        role: 'Micro-interactions & Page Transitions',
-        reason: 'Animasi pulsing visual yang menenangkan saat sesi fokus aktif.'
+        name: 'Spring Data JPA & Hibernate',
+        category: 'Backend',
+        role: 'ORM & Transaction Management',
+        reason: 'Abstraksi repository yang kuat serta mendukung LockModeType.PESSIMISTIC_WRITE untuk transaksi data berintegritas tinggi.'
       },
       {
-        name: 'Supabase PostgreSQL',
+        name: 'MySQL 8.0 (InnoDB Engine)',
         category: 'Database',
-        role: 'Cloud Sync & User Database',
-        reason: 'Sinkronisasi riwayat sesi lintas perangkat dengan autentikasi instan.'
+        role: 'ACID Relational Storage',
+        reason: 'Menyimpan 5 entitas relasional terindeks dengan row-level locking InnoDB dan integritas transaksi finansial mutlak.'
       },
       {
-        name: 'IndexedDB (Dexie.js)',
-        category: 'Database',
-        role: 'Local-First Offline Storage',
-        reason: 'Aplikasi tetap dapat digunakan 100% saat koneksi internet terputus; data disinkronkan saat online.'
+        name: 'Midtrans Snap API v1',
+        category: 'Backend',
+        role: 'Multi-Channel Payment Processing',
+        reason: 'Menerima pembayaran QRIS, Virtual Account bank, GoPay, dan kartu kredit dengan verifikasi tanda tangan SHA-512.'
+      },
+      {
+        name: 'Spring Security & BCrypt',
+        category: 'Backend',
+        role: 'Stateless Bearer Token Auth',
+        reason: 'Filter SellerTokenFilter dengan token dgs_<uuid><timestamp> (30 hari) serta hashing password BCrypt untuk keamanan akun seller.'
+      },
+      {
+        name: 'Jakarta Mail / JavaMailSender',
+        category: 'Backend',
+        role: 'Automated Digital Delivery Service',
+        reason: 'Mengirimkan konfirmasi pembayaran instan beserta magic link unduhan ke email pembeli secara asynchronous.'
       }
     ],
     systemDesign: {
       overview:
-        'Menggunakan arsitektur Local-First (Offline-First). Timer berjalan sepenuhnya di Web Worker agar akurasi waktu tidak terganggu ketika tab browser berada di background, dengan sinkronisasi batch ke cloud backend.',
+        'Arsitektur E-Commerce Kreator Mandiri: Frontend React 19 mengonsumsi REST API Spring Boot 3.3. Transaksi checkout diamankan dengan Pessimistic Write Lock pada MySQL InnoDB, Midtrans Snap API menangani pembayaran multi-metode, dan webhook divalidasi dengan signature SHA-512 untuk memicu penerbitan expiring access token 24 jam.',
+      diagramImage: '/images/project/digisell-flowchart.svg',
       nodes: [
         {
-          id: 'ui',
-          title: 'UI Shell & Sound Engine',
-          subtitle: 'React + Web Audio',
+          id: 'storefront-client',
+          title: 'React 19 Storefront & Bio',
+          subtitle: 'Link-in-Bio SPA (:5173)',
           type: 'client',
-          description: 'Interface minimalis dengan Web Audio API untuk generative soundscapes.',
-          technologies: ['React 19', 'Tailwind', 'Web Audio API']
+          description: 'Etalase profil privat kreator (/:username), fast checkout modal, portal akses unduh (/access), dan dashboard seller.',
+          technologies: ['React 19', 'Vite', 'React Router v7', 'Lucide React']
         },
         {
-          id: 'worker',
-          title: 'Dedicated Web Worker',
-          subtitle: 'Background Precision Clock',
+          id: 'spring-rest',
+          title: 'Spring Boot 3.3 REST API',
+          subtitle: 'Port 8080 (Stateless)',
           type: 'service',
-          description: 'Timer presisi tinggi yang independen dari throttling main-thread browser.',
-          technologies: ['Web Workers', 'postMessage']
+          description: 'AuthController, ProductController, OrderController, SellerController dengan SellerTokenFilter (dgs_...).',
+          technologies: ['Java 17', 'Spring Boot 3.3.5', 'Spring Security', 'Bean Validation']
         },
         {
-          id: 'local-db',
-          title: 'IndexedDB Storage',
-          subtitle: 'Dexie.js Offline Cache',
-          type: 'database',
-          description: 'Menyimpan riwayat sesi kerja secara lokal tanpa ketergantungan koneksi internet.',
-          technologies: ['IndexedDB', 'Dexie']
+          id: 'pessimistic-lock',
+          title: 'Pessimistic Lock & Stock Service',
+          subtitle: 'PESSIMISTIC_WRITE Lock',
+          type: 'service',
+          description: 'Eksekusi SELECT ... FOR UPDATE pada MySQL saat pemesanan produk berstok terbatas untuk mencegah double selling.',
+          technologies: ['Hibernate JPA', 'Row-Level Lock', 'InnoDB Engine']
         },
         {
-          id: 'sync-worker',
-          title: 'Cloud Sync Agent',
-          subtitle: 'Supabase Sync Gateway',
+          id: 'midtrans-gateway',
+          title: 'Midtrans Snap & Webhook',
+          subtitle: 'Payment Processing & SHA-512',
           type: 'gateway',
-          description: 'Penyelarasan data dua arah (two-way sync) dengan resolusi konflik timestamp terbaru.',
-          technologies: ['Supabase Client', 'WebSockets']
+          description: 'Mengenerate Snap Token pembayaran dan memverifikasi notifikasi webhook dengan signature hash SHA-512 serta proteksi idempotency.',
+          technologies: ['Midtrans Snap API', 'SHA-512 Crypto', 'Idempotent Handler']
+        },
+        {
+          id: 'delivery-service',
+          title: '24h Delivery & Email Service',
+          subtitle: 'Secure Token & File Concealment',
+          type: 'service',
+          description: 'Menyembunyikan URL file asli (@JsonIgnore), menerbitkan token akses unduh berbatas 24 jam, dan mengirimkan email konfirmasi ke pembeli.',
+          technologies: ['UUID Access Token', 'JavaMailSender', 'DTO File Concealment']
+        },
+        {
+          id: 'mysql-db',
+          title: 'MySQL 8.0 Database',
+          subtitle: 'digisell_db (5 Relational Tables)',
+          type: 'database',
+          description: 'Penyimpanan relasional sellers, products, order_transactions, seller_wallets, dan withdrawals dengan transaksi ACID.',
+          technologies: ['MySQL 8.0', 'InnoDB', 'Connection Pooling']
         }
       ],
       dataFlow: [
         {
           step: 1,
-          title: 'Start Session in Web Worker',
-          description: 'User menekan Start; Web Worker memulai interval independen dan memutar audio ambient.'
+          title: 'Pembeli Membuka Storefront & Checkout',
+          description: 'Pembeli mengunjungi /:username, memilih produk digital, dan mengisi nama/email pada Fast Checkout Modal.'
         },
         {
           step: 2,
-          title: 'Local Commit to IndexedDB',
-          description: 'Ketika sesi selesai, detail durasi dan tag dicatat langsung ke IndexedDB lokal.'
+          title: 'Order Creation & Pessimistic Stock Lock',
+          description: 'Backend mengunci baris produk dengan PESSIMISTIC_WRITE, memvalidasi stok, membuat order DIGI-..., dan meminta Snap Token dari Midtrans.'
         },
         {
           step: 3,
-          title: 'Background Sync to Supabase',
-          description: 'Service sync mendeteksi record baru dan mengunggah batch log ke PostgreSQL via REST API.'
+          title: 'Pembayaran Via Midtrans Snap',
+          description: 'Modal Snap terbuka di frontend; pembeli membayar melalui QRIS, Transfer VA Bank, atau e-Wallet.'
+        },
+        {
+          step: 4,
+          title: 'Midtrans Webhook & Signature Verification',
+          description: 'Midtrans mengirim notifikasi HTTP; backend memverifikasi signature SHA-512 dan idempotency status sebelum mendepositkan saldo ke wallet seller.'
+        },
+        {
+          step: 5,
+          title: '24-Hour Token Generation & Delivery',
+          description: 'Backend membuat download_token (valid 24 jam) dan mengirimkan email notifikasi ke pembeli berisi link ke portal /access.'
         }
       ]
     },
     databaseDesign: {
       overview:
-        'Skema database ringan berfokus pada efisiensi append-only session logging dengan indeks pada user_id dan session_date.',
+        'Skema basis data MySQL 8.0 (digisell_db) yang dinormalisasi dengan InnoDB engine, row-level locking untuk stok konkurensi, relasi 1:1 wallet saldo, audit riwayat penarikan, dan integritas transaksi finansial.',
+      erdImage: '/images/project/digisell-erd.svg',
       tables: [
         {
-          name: 'focus_sessions',
-          description: 'Catatan setiap sesi fokus atau istirahat yang berhasil diselesaikan.',
+          name: 'sellers',
+          description: 'Entitas akun kreator/penjual dengan slug username toko publik dan kredensial terenkripsi BCrypt.',
           fields: [
-            { name: 'id', type: 'UUID', isPk: true, desc: 'Primary key sesi fokus' },
-            { name: 'user_id', type: 'UUID', isFk: true, desc: 'Foreign key ke user' },
-            { name: 'project_name', type: 'VARCHAR(100)', desc: 'Nama proyek/kategori yang dikerjakan' },
-            { name: 'duration_minutes', type: 'INTEGER', desc: 'Durasi sesi terhitung (menit)' },
-            { name: 'type', type: 'VARCHAR(20)', desc: 'focus, short_break, long_break' },
-            { name: 'completed_at', type: 'TIMESTAMP WITH TIME ZONE', desc: 'Waktu selesai' }
+            { name: 'id', type: 'BIGINT', isPk: true, desc: 'Primary key seller (Auto Increment)' },
+            { name: 'username', type: 'VARCHAR(100)', desc: 'Slug URL storefront seller (UNIQUE, e.g. /:username)' },
+            { name: 'email', type: 'VARCHAR(150)', desc: 'Email seller terverifikasi (UNIQUE)' },
+            { name: 'password', type: 'VARCHAR(255)', desc: 'Password ter-hash dengan algoritma BCrypt' },
+            { name: 'full_name', type: 'VARCHAR(150)', desc: 'Nama lengkap pemilik etalase' },
+            { name: 'bio', type: 'VARCHAR(500)', desc: 'Deskripsi profil toko kreator' },
+            { name: 'avatar_url', type: 'VARCHAR(500)', desc: 'URL foto profil kreator' },
+            { name: 'auth_token', type: 'VARCHAR(255)', desc: 'Stateless Bearer token (dgs_<uuid><timestamp>)' },
+            { name: 'token_expiry', type: 'DATETIME', desc: 'Masa aktif token sesi (30 hari)' },
+            { name: 'created_at', type: 'DATETIME', desc: 'Waktu pendaftaran akun seller' }
           ]
         },
         {
-          name: 'user_settings',
-          description: 'Preferensi timer, sound effect, dan target harian masing-masing user.',
+          name: 'seller_wallets',
+          description: 'Rekapitulasi saldo dompet seller yang berelasi 1:1 dengan tabel sellers untuk menampung pendapatan lunas.',
           fields: [
-            { name: 'user_id', type: 'UUID', isPk: true, desc: 'ID user' },
-            { name: 'work_duration', type: 'INTEGER', desc: 'Default durasi kerja (menit)' },
-            { name: 'break_duration', type: 'INTEGER', desc: 'Default durasi istirahat' },
-            { name: 'daily_goal_minutes', type: 'INTEGER', desc: 'Target total fokus harian' },
-            { name: 'ambient_sound', type: 'VARCHAR(50)', desc: 'Pilihan ambient audio default' }
+            { name: 'id', type: 'BIGINT', isPk: true, isFk: true, desc: 'Primary key berelasi 1:1 ke sellers.id' },
+            { name: 'available_balance', type: 'DECIMAL(15,2)', desc: 'Saldo aktif yang dapat dicairkan' },
+            { name: 'total_revenue', type: 'DECIMAL(15,2)', desc: 'Akumulasi total omzet kotor penjualan' },
+            { name: 'total_withdrawn', type: 'DECIMAL(15,2)', desc: 'Total dana yang telah berhasil ditarik ke bank' },
+            { name: 'updated_at', type: 'DATETIME', desc: 'Waktu pembaruan saldo terakhir' }
+          ]
+        },
+        {
+          name: 'products',
+          description: 'Katalog produk digital (eBook, template, source code) dengan proteksi penyembunyian URL file aset (@JsonIgnore).',
+          fields: [
+            { name: 'id', type: 'BIGINT', isPk: true, desc: 'Primary key produk digital (Auto Increment)' },
+            { name: 'seller_username', type: 'VARCHAR(100)', isFk: true, desc: 'Pemilik produk, foreign key ke sellers.username' },
+            { name: 'title', type: 'VARCHAR(255)', desc: 'Judul produk digital' },
+            { name: 'description', type: 'VARCHAR(2000)', desc: 'Rincian deskripsi, silabus, atau manfaat produk' },
+            { name: 'price', type: 'DECIMAL(15,2)', desc: 'Harga jual aktif (IDR)' },
+            { name: 'original_price', type: 'DECIMAL(15,2)', desc: 'Harga coret sebelum diskon' },
+            { name: 'image_url', type: 'VARCHAR(500)', desc: 'Thumbnail cover produk' },
+            { name: 'file_url', type: 'VARCHAR(500)', desc: 'URL berkas digital asli (Hidden via @JsonIgnore)' },
+            { name: 'category', type: 'VARCHAR(50)', desc: 'Kategori produk (Template, Ebook, Source Code)' },
+            { name: 'badge', type: 'VARCHAR(50)', desc: 'Label penarik perhatian (e.g. Best Seller, New)' },
+            { name: 'stock', type: 'INT', desc: 'Sisa stok produk (Dilindungi PESSIMISTIC_WRITE lock)' },
+            { name: 'unlimited_stock', type: 'BOOLEAN', desc: 'Flag jika produk tidak memiliki batas kuantitas' },
+            { name: 'sold_count', type: 'INT', desc: 'Jumlah unit yang telah sukses terjual' },
+            { name: 'created_at', type: 'DATETIME', desc: 'Waktu pembuatan produk' }
+          ]
+        },
+        {
+          name: 'order_transactions',
+          description: 'Pencatatan invoice transaksi pesanan, status pembayaran Midtrans, dan penerbitan 24-hour access token.',
+          fields: [
+            { name: 'id', type: 'BIGINT', isPk: true, desc: 'Primary key transaksi (Auto Increment)' },
+            { name: 'order_id', type: 'VARCHAR(100)', desc: 'Kode invoice unik (Format: DIGI-<timestamp>-<rand>)' },
+            { name: 'product_id', type: 'BIGINT', isFk: true, desc: 'Foreign key merujuk ke products.id' },
+            { name: 'product_title', type: 'VARCHAR(255)', desc: 'Snapshot judul produk saat dibeli' },
+            { name: 'seller_username', type: 'VARCHAR(100)', isFk: true, desc: 'Foreign key merujuk ke sellers.username' },
+            { name: 'customer_name', type: 'VARCHAR(150)', desc: 'Nama pembeli' },
+            { name: 'customer_email', type: 'VARCHAR(150)', desc: 'Email tujuan pengiriman lisensi/file' },
+            { name: 'customer_phone', type: 'VARCHAR(50)', desc: 'Nomor kontak WhatsApp/telepon pembeli' },
+            { name: 'amount', type: 'DECIMAL(15,2)', desc: 'Nominal pembayaran total' },
+            { name: 'status', type: 'VARCHAR(50)', desc: 'PENDING, PAID, EXPIRED, CANCELLED, FAILED' },
+            { name: 'snap_token', type: 'VARCHAR(255)', desc: 'Token transaksi Midtrans Snap' },
+            { name: 'snap_redirect_url', type: 'VARCHAR(500)', desc: 'URL pembayaran Midtrans alternatif' },
+            { name: 'payment_type', type: 'VARCHAR(50)', desc: 'Metode pembayaran terpilih (qris, bank_transfer, dll.)' },
+            { name: 'download_token', type: 'VARCHAR(255)', desc: 'Token akses file digital unik (UUID)' },
+            { name: 'download_expiry', type: 'DATETIME', desc: 'Batas kadaluarsa unduhan (= paid_at + 24 Jam)' },
+            { name: 'created_at', type: 'DATETIME', desc: 'Waktu pembuatan pesanan' },
+            { name: 'paid_at', type: 'DATETIME', desc: 'Waktu pelunasan pembayaran terverifikasi' }
+          ]
+        },
+        {
+          name: 'withdrawals',
+          description: 'Riwayat pencairan saldo seller ke rekening bank dengan verifikasi status penarikan.',
+          fields: [
+            { name: 'id', type: 'BIGINT', isPk: true, desc: 'Primary key penarikan dana (Auto Increment)' },
+            { name: 'withdrawal_code', type: 'VARCHAR(100)', desc: 'Kode unik penarikan (Format: WD-<timestamp>)' },
+            { name: 'amount', type: 'DECIMAL(15,2)', desc: 'Nominal dana yang ditarik' },
+            { name: 'bank_name', type: 'VARCHAR(100)', desc: 'Nama bank tujuan pencairan (BCA, Mandiri, dll.)' },
+            { name: 'account_number', type: 'VARCHAR(100)', desc: 'Nomor rekening bank tujuan' },
+            { name: 'account_holder', type: 'VARCHAR(150)', desc: 'Nama pemilik rekening bank' },
+            { name: 'status', type: 'VARCHAR(50)', desc: 'Status pencairan (PENDING, PROCESSED, REJECTED)' },
+            { name: 'requested_at', type: 'DATETIME', desc: 'Waktu permohonan penarikan diajukan' },
+            { name: 'processed_at', type: 'DATETIME', desc: 'Waktu dana berhasil ditransfer' }
           ]
         }
       ],
       relationships: [
-        'users.id (1) ───< (N) focus_sessions.user_id',
-        'users.id (1) ─── (1) user_settings.user_id'
+        'sellers.id (1) ─── (1) seller_wallets.id [1:1 Dompet Saldo Penjual]',
+        'sellers.username (1) ───< (N) products.seller_username [Katalog Produk Kreator]',
+        'products.id (1) ───< (N) order_transactions.product_id [Transaksi Pesanan Produk]',
+        'seller_wallets.id (1) ───< (N) withdrawals.id [Pengajuan Penarikan Dana Seller]',
+        'sellers.username (1) ───< (N) order_transactions.seller_username [Riwayat Penjualan per Kreator]'
+      ]
+    }
+  },
+
+  // Backward compatibility alias for focus-app
+  'focus-app': {
+    id: 'digisell',
+    title: 'Digisell',
+    tagline: 'Private Link-in-Bio Digital Storefront with High-Concurrency Spring Boot & Midtrans',
+    category: 'E-Commerce & Creator Economy',
+    status: 'Live Production',
+    year: '2025',
+    role: 'Full Stack Engineer & System Architect',
+    timeline: '2.5 Months',
+    image: '/images/p2.svg',
+    description:
+      'DigiSell adalah platform Link-in-Bio Digital Product Storefront mandiri berbasis Java 17, Spring Boot 3.3, React 19, dan MySQL 8.0. Didesain khusus untuk kreator konten dan developer digital (mirip Gumroad / Lynk.id / Mayar) dengan pendekatan Isolated Storefront (zero-distraction & no competitor ads), di mana seluruh trafik tautan bio 100% terkonversi untuk kreator. Sistem dilengkapi dengan integrasi pembayaran Midtrans Snap, perlindungan stok berkonkurensi tinggi via Pessimistic Locking (PESSIMISTIC_WRITE), token akses unduhan berbatas waktu 24 jam dengan enkripsi URL aset (@JsonIgnore masking), serta subsistem rekonsiliasi dompet seller dan penarikan dana (withdrawal) otomatis.',
+    problemStatement:
+      'Pada marketplace umum, pembeli yang diarahkan dari media sosial (Instagram, TikTok, Twitter/X) sering kali teralihkan oleh rekomendasi toko lain, iklan bersaing, dan perang harga kompetitor. Selain itu, platform penjualan produk digital rawan terjadi race-condition overselling saat flash sale stok terbatas serta pembajakan link unduhan aset berharga secara publik.',
+    solution:
+      'Membangun etalase privat link-in-bio (/:username) tanpa distraksi produk kompetitor, didukung arsitektur backend Spring Boot 3.3 berkemampuan Pessimistic Locking untuk integritas stok nol-oversell, verifikasi webhook Midtrans SHA-512 dengan idempotency guard anti double-credit, serta portal unduhan /access dengan expiring download token (valid 24 jam) yang menyembunyikan URL aset asli dari DTO publik.',
+    features: [
+      {
+        title: 'Link-in-Bio Isolated Storefront (/:username)',
+        description: 'Halaman etalase profil kreator eksklusif tanpa katalog kompetitor, dioptimalkan untuk performa in-app browser media sosial.',
+        icon: 'globe'
+      },
+      {
+        title: 'Fast Checkout & Midtrans Snap Modal',
+        description: 'Alur checkout instan tanpa login wajib, langsung membuka popup Midtrans Snap (QRIS, VA, e-Wallet) dengan fallback sandbox mock.',
+        icon: 'credit-card'
+      },
+      {
+        title: 'Pessimistic Locking Stock Concurrency',
+        description: 'Penerapan PESSIMISTIC_WRITE (SELECT ... FOR UPDATE) pada database MySQL untuk mencegah race condition overselling saat stok terbatas.',
+        icon: 'lock'
+      },
+      {
+        title: '24-Hour Expiring Download Portal',
+        description: 'Akses aset digital diberikan via UUID token yang kadaluarsa dalam 24 jam dengan penyembunyian URL file asli (@JsonIgnore).',
+        icon: 'download'
+      },
+      {
+        title: 'Automated Email Notification Service',
+        description: 'Pengiriman email otomatis kepada pembeli berisi tautan klaim lisensi dan file digital segera setelah webhook status PAID diverifikasi.',
+        icon: 'mail'
+      },
+      {
+        title: 'Seller Wallet & Bank Withdrawal CMS',
+        description: 'Dompet saldo real-time, rekonsiliasi omzet per transaksi, dan pengajuan penarikan dana ke rekening bank dengan validasi saldo minimum.',
+        icon: 'chart'
+      }
+    ],
+    githubUrl: 'https://github.com/herinta/digisell-backend-api',
+    liveUrl: 'https://digisell-store.vercel.app',
+    techStacks: [
+      {
+        name: 'Java 17 & Spring Boot 3.3.5',
+        category: 'Backend',
+        role: 'Enterprise REST API & Business Logic',
+        reason: 'Performa tinggi, virtual thread ready, ekosistem enterprise stabil dengan Spring Security dan Jakarta Bean Validation.'
+      },
+      {
+        name: 'React 19 & Vite',
+        category: 'Frontend',
+        role: 'Modern Link-in-Bio SPA Storefront',
+        reason: 'Render instan dan bundle footprint sangat ringan untuk loading secepat kilat pada in-app browser media sosial.'
+      },
+      {
+        name: 'React Router v7 & Oxlint',
+        category: 'Frontend',
+        role: 'Declarative Routing & Fast Tooling',
+        reason: 'Routing dinamis multi-level untuk etalase creator (/:username), checkout, portal /access, dan dashboard seller.'
+      },
+      {
+        name: 'Spring Data JPA & Hibernate',
+        category: 'Backend',
+        role: 'ORM & Transaction Management',
+        reason: 'Abstraksi repository yang kuat serta mendukung LockModeType.PESSIMISTIC_WRITE untuk transaksi data berintegritas tinggi.'
+      },
+      {
+        name: 'MySQL 8.0 (InnoDB Engine)',
+        category: 'Database',
+        role: 'ACID Relational Storage',
+        reason: 'Menyimpan 5 entitas relasional terindeks dengan row-level locking InnoDB dan integritas transaksi finansial mutlak.'
+      },
+      {
+        name: 'Midtrans Snap API v1',
+        category: 'Backend',
+        role: 'Multi-Channel Payment Processing',
+        reason: 'Menerima pembayaran QRIS, Virtual Account bank, GoPay, dan kartu kredit dengan verifikasi tanda tangan SHA-512.'
+      },
+      {
+        name: 'Spring Security & BCrypt',
+        category: 'Backend',
+        role: 'Stateless Bearer Token Auth',
+        reason: 'Filter SellerTokenFilter dengan token dgs_<uuid><timestamp> (30 hari) serta hashing password BCrypt untuk keamanan akun seller.'
+      },
+      {
+        name: 'Jakarta Mail / JavaMailSender',
+        category: 'Backend',
+        role: 'Automated Digital Delivery Service',
+        reason: 'Mengirimkan konfirmasi pembayaran instan beserta magic link unduhan ke email pembeli secara asynchronous.'
+      }
+    ],
+    systemDesign: {
+      overview:
+        'Arsitektur E-Commerce Kreator Mandiri: Frontend React 19 mengonsumsi REST API Spring Boot 3.3. Transaksi checkout diamankan dengan Pessimistic Write Lock pada MySQL InnoDB, Midtrans Snap API menangani pembayaran multi-metode, dan webhook divalidasi dengan signature SHA-512 untuk memicu penerbitan expiring access token 24 jam.',
+      diagramImage: '/images/project/digisell-flowchart.svg',
+      nodes: [
+        {
+          id: 'storefront-client',
+          title: 'React 19 Storefront & Bio',
+          subtitle: 'Link-in-Bio SPA (:5173)',
+          type: 'client',
+          description: 'Etalase profil privat kreator (/:username), fast checkout modal, portal akses unduh (/access), dan dashboard seller.',
+          technologies: ['React 19', 'Vite', 'React Router v7', 'Lucide React']
+        },
+        {
+          id: 'spring-rest',
+          title: 'Spring Boot 3.3 REST API',
+          subtitle: 'Port 8080 (Stateless)',
+          type: 'service',
+          description: 'AuthController, ProductController, OrderController, SellerController dengan SellerTokenFilter (dgs_...).',
+          technologies: ['Java 17', 'Spring Boot 3.3.5', 'Spring Security', 'Bean Validation']
+        },
+        {
+          id: 'pessimistic-lock',
+          title: 'Pessimistic Lock & Stock Service',
+          subtitle: 'PESSIMISTIC_WRITE Lock',
+          type: 'service',
+          description: 'Eksekusi SELECT ... FOR UPDATE pada MySQL saat pemesanan produk berstok terbatas untuk mencegah double selling.',
+          technologies: ['Hibernate JPA', 'Row-Level Lock', 'InnoDB Engine']
+        },
+        {
+          id: 'midtrans-gateway',
+          title: 'Midtrans Snap & Webhook',
+          subtitle: 'Payment Processing & SHA-512',
+          type: 'gateway',
+          description: 'Mengenerate Snap Token pembayaran dan memverifikasi notifikasi webhook dengan signature hash SHA-512 serta proteksi idempotency.',
+          technologies: ['Midtrans Snap API', 'SHA-512 Crypto', 'Idempotent Handler']
+        },
+        {
+          id: 'delivery-service',
+          title: '24h Delivery & Email Service',
+          subtitle: 'Secure Token & File Concealment',
+          type: 'service',
+          description: 'Menyembunyikan URL file asli (@JsonIgnore), menerbitkan token akses unduh berbatas 24 jam, dan mengirimkan email konfirmasi ke pembeli.',
+          technologies: ['UUID Access Token', 'JavaMailSender', 'DTO File Concealment']
+        },
+        {
+          id: 'mysql-db',
+          title: 'MySQL 8.0 Database',
+          subtitle: 'digisell_db (5 Relational Tables)',
+          type: 'database',
+          description: 'Penyimpanan relasional sellers, products, order_transactions, seller_wallets, dan withdrawals dengan transaksi ACID.',
+          technologies: ['MySQL 8.0', 'InnoDB', 'Connection Pooling']
+        }
+      ],
+      dataFlow: [
+        {
+          step: 1,
+          title: 'Pembeli Membuka Storefront & Checkout',
+          description: 'Pembeli mengunjungi /:username, memilih produk digital, dan mengisi nama/email pada Fast Checkout Modal.'
+        },
+        {
+          step: 2,
+          title: 'Order Creation & Pessimistic Stock Lock',
+          description: 'Backend mengunci baris produk dengan PESSIMISTIC_WRITE, memvalidasi stok, membuat order DIGI-..., dan meminta Snap Token dari Midtrans.'
+        },
+        {
+          step: 3,
+          title: 'Pembayaran Via Midtrans Snap',
+          description: 'Modal Snap terbuka di frontend; pembeli membayar melalui QRIS, Transfer VA Bank, atau e-Wallet.'
+        },
+        {
+          step: 4,
+          title: 'Midtrans Webhook & Signature Verification',
+          description: 'Midtrans mengirim notifikasi HTTP; backend memverifikasi signature SHA-512 dan idempotency status sebelum mendepositkan saldo ke wallet seller.'
+        },
+        {
+          step: 5,
+          title: '24-Hour Token Generation & Delivery',
+          description: 'Backend membuat download_token (valid 24 jam) dan mengirimkan email notifikasi ke pembeli berisi link ke portal /access.'
+        }
+      ]
+    },
+    databaseDesign: {
+      overview:
+        'Skema basis data MySQL 8.0 (digisell_db) yang dinormalisasi dengan InnoDB engine, row-level locking untuk stok konkurensi, relasi 1:1 wallet saldo, audit riwayat penarikan, dan integritas transaksi finansial.',
+      erdImage: '/images/project/digisell-erd.svg',
+      tables: [
+        {
+          name: 'sellers',
+          description: 'Entitas akun kreator/penjual dengan slug username toko publik dan kredensial terenkripsi BCrypt.',
+          fields: [
+            { name: 'id', type: 'BIGINT', isPk: true, desc: 'Primary key seller (Auto Increment)' },
+            { name: 'username', type: 'VARCHAR(100)', desc: 'Slug URL storefront seller (UNIQUE, e.g. /:username)' },
+            { name: 'email', type: 'VARCHAR(150)', desc: 'Email seller terverifikasi (UNIQUE)' },
+            { name: 'password', type: 'VARCHAR(255)', desc: 'Password ter-hash dengan algoritma BCrypt' },
+            { name: 'full_name', type: 'VARCHAR(150)', desc: 'Nama lengkap pemilik etalase' },
+            { name: 'bio', type: 'VARCHAR(500)', desc: 'Deskripsi profil toko kreator' },
+            { name: 'avatar_url', type: 'VARCHAR(500)', desc: 'URL foto profil kreator' },
+            { name: 'auth_token', type: 'VARCHAR(255)', desc: 'Stateless Bearer token (dgs_<uuid><timestamp>)' },
+            { name: 'token_expiry', type: 'DATETIME', desc: 'Masa aktif token sesi (30 hari)' },
+            { name: 'created_at', type: 'DATETIME', desc: 'Waktu pendaftaran akun seller' }
+          ]
+        },
+        {
+          name: 'seller_wallets',
+          description: 'Rekapitulasi saldo dompet seller yang berelasi 1:1 dengan tabel sellers untuk menampung pendapatan lunas.',
+          fields: [
+            { name: 'id', type: 'BIGINT', isPk: true, isFk: true, desc: 'Primary key berelasi 1:1 ke sellers.id' },
+            { name: 'available_balance', type: 'DECIMAL(15,2)', desc: 'Saldo aktif yang dapat dicairkan' },
+            { name: 'total_revenue', type: 'DECIMAL(15,2)', desc: 'Akumulasi total omzet kotor penjualan' },
+            { name: 'total_withdrawn', type: 'DECIMAL(15,2)', desc: 'Total dana yang telah berhasil ditarik ke bank' },
+            { name: 'updated_at', type: 'DATETIME', desc: 'Waktu pembaruan saldo terakhir' }
+          ]
+        },
+        {
+          name: 'products',
+          description: 'Katalog produk digital (eBook, template, source code) dengan proteksi penyembunyian URL file aset (@JsonIgnore).',
+          fields: [
+            { name: 'id', type: 'BIGINT', isPk: true, desc: 'Primary key produk digital (Auto Increment)' },
+            { name: 'seller_username', type: 'VARCHAR(100)', isFk: true, desc: 'Pemilik produk, foreign key ke sellers.username' },
+            { name: 'title', type: 'VARCHAR(255)', desc: 'Judul produk digital' },
+            { name: 'description', type: 'VARCHAR(2000)', desc: 'Rincian deskripsi, silabus, atau manfaat produk' },
+            { name: 'price', type: 'DECIMAL(15,2)', desc: 'Harga jual aktif (IDR)' },
+            { name: 'original_price', type: 'DECIMAL(15,2)', desc: 'Harga coret sebelum diskon' },
+            { name: 'image_url', type: 'VARCHAR(500)', desc: 'Thumbnail cover produk' },
+            { name: 'file_url', type: 'VARCHAR(500)', desc: 'URL berkas digital asli (Hidden via @JsonIgnore)' },
+            { name: 'category', type: 'VARCHAR(50)', desc: 'Kategori produk (Template, Ebook, Source Code)' },
+            { name: 'badge', type: 'VARCHAR(50)', desc: 'Label penarik perhatian (e.g. Best Seller, New)' },
+            { name: 'stock', type: 'INT', desc: 'Sisa stok produk (Dilindungi PESSIMISTIC_WRITE lock)' },
+            { name: 'unlimited_stock', type: 'BOOLEAN', desc: 'Flag jika produk tidak memiliki batas kuantitas' },
+            { name: 'sold_count', type: 'INT', desc: 'Jumlah unit yang telah sukses terjual' },
+            { name: 'created_at', type: 'DATETIME', desc: 'Waktu pembuatan produk' }
+          ]
+        },
+        {
+          name: 'order_transactions',
+          description: 'Pencatatan invoice transaksi pesanan, status pembayaran Midtrans, dan penerbitan 24-hour access token.',
+          fields: [
+            { name: 'id', type: 'BIGINT', isPk: true, desc: 'Primary key transaksi (Auto Increment)' },
+            { name: 'order_id', type: 'VARCHAR(100)', desc: 'Kode invoice unik (Format: DIGI-<timestamp>-<rand>)' },
+            { name: 'product_id', type: 'BIGINT', isFk: true, desc: 'Foreign key merujuk ke products.id' },
+            { name: 'product_title', type: 'VARCHAR(255)', desc: 'Snapshot judul produk saat dibeli' },
+            { name: 'seller_username', type: 'VARCHAR(100)', isFk: true, desc: 'Foreign key merujuk ke sellers.username' },
+            { name: 'customer_name', type: 'VARCHAR(150)', desc: 'Nama pembeli' },
+            { name: 'customer_email', type: 'VARCHAR(150)', desc: 'Email tujuan pengiriman lisensi/file' },
+            { name: 'customer_phone', type: 'VARCHAR(50)', desc: 'Nomor kontak WhatsApp/telepon pembeli' },
+            { name: 'amount', type: 'DECIMAL(15,2)', desc: 'Nominal pembayaran total' },
+            { name: 'status', type: 'VARCHAR(50)', desc: 'PENDING, PAID, EXPIRED, CANCELLED, FAILED' },
+            { name: 'snap_token', type: 'VARCHAR(255)', desc: 'Token transaksi Midtrans Snap' },
+            { name: 'snap_redirect_url', type: 'VARCHAR(500)', desc: 'URL pembayaran Midtrans alternatif' },
+            { name: 'payment_type', type: 'VARCHAR(50)', desc: 'Metode pembayaran terpilih (qris, bank_transfer, dll.)' },
+            { name: 'download_token', type: 'VARCHAR(255)', desc: 'Token akses file digital unik (UUID)' },
+            { name: 'download_expiry', type: 'DATETIME', desc: 'Batas kadaluarsa unduhan (= paid_at + 24 Jam)' },
+            { name: 'created_at', type: 'DATETIME', desc: 'Waktu pembuatan pesanan' },
+            { name: 'paid_at', type: 'DATETIME', desc: 'Waktu pelunasan pembayaran terverifikasi' }
+          ]
+        },
+        {
+          name: 'withdrawals',
+          description: 'Riwayat pencairan saldo seller ke rekening bank dengan verifikasi status penarikan.',
+          fields: [
+            { name: 'id', type: 'BIGINT', isPk: true, desc: 'Primary key penarikan dana (Auto Increment)' },
+            { name: 'withdrawal_code', type: 'VARCHAR(100)', desc: 'Kode unik penarikan (Format: WD-<timestamp>)' },
+            { name: 'amount', type: 'DECIMAL(15,2)', desc: 'Nominal dana yang ditarik' },
+            { name: 'bank_name', type: 'VARCHAR(100)', desc: 'Nama bank tujuan pencairan (BCA, Mandiri, dll.)' },
+            { name: 'account_number', type: 'VARCHAR(100)', desc: 'Nomor rekening bank tujuan' },
+            { name: 'account_holder', type: 'VARCHAR(150)', desc: 'Nama pemilik rekening bank' },
+            { name: 'status', type: 'VARCHAR(50)', desc: 'Status pencairan (PENDING, PROCESSED, REJECTED)' },
+            { name: 'requested_at', type: 'DATETIME', desc: 'Waktu permohonan penarikan diajukan' },
+            { name: 'processed_at', type: 'DATETIME', desc: 'Waktu dana berhasil ditransfer' }
+          ]
+        }
+      ],
+      relationships: [
+        'sellers.id (1) ─── (1) seller_wallets.id [1:1 Dompet Saldo Penjual]',
+        'sellers.username (1) ───< (N) products.seller_username [Katalog Produk Kreator]',
+        'products.id (1) ───< (N) order_transactions.product_id [Transaksi Pesanan Produk]',
+        'seller_wallets.id (1) ───< (N) withdrawals.id [Pengajuan Penarikan Dana Seller]',
+        'sellers.username (1) ───< (N) order_transactions.seller_username [Riwayat Penjualan per Kreator]'
       ]
     }
   },

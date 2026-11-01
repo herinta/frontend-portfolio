@@ -1,0 +1,414 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <pattern id="bwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#D4D4D8" />
+    </pattern>
+  </defs>
+
+  <!-- White Background & Outer Frame -->
+  <rect width="1600" height="900" fill="#FFFFFF" />
+  <rect width="1600" height="900" fill="url(#bwGrid)" />
+  <rect x="12" y="12" width="1576" height="876" rx="6" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="22" width="1544" height="62" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+  <line x1="28" y1="56" x2="1572" y2="56" stroke="#111111" stroke-width="1" />
+  <text x="46" y="46" fill="#111111" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800" letter-spacing="0.5">
+    ENTITY RELATIONSHIP DIAGRAM (ERD) — DIGISELL (SPRING DATA JPA &amp; MYSQL 8.0)
+  </text>
+  <text x="46" y="75" fill="#3F3F46" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12">
+    MySQL 8.0 (InnoDB) | Hibernate JPA Entities | BIGINT Primary Keys | Pessimistic Locking (PESSIMISTIC_WRITE) | 5 Relational Tables
+  </text>
+  <rect x="1346" y="29" width="210" height="22" rx="4" fill="#111111" />
+  <text x="1451" y="44" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">
+    digisell_db (5 Models)
+  </text>
+
+  <!-- ========================================================================= -->
+  <!-- RELATIONSHIP CONNECTOR LINES (BLACK CROW'S FOOT & LABELS)                 -->
+  <!-- ========================================================================= -->
+
+  <!-- 1. sellers.id (1) ─── (1) seller_wallets.id -->
+  <path d="M 208 480 L 208 540" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="218" y="498" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="218" y="530" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1 (1:1)</text>
+
+  <!-- 2. sellers.username (1) ───< (N) products.seller_username -->
+  <path d="M 368 220 L 440 220" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="376" y="212" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="422" y="212" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <!-- Crow's foot at products -->
+  <path d="M 440 212 L 428 220 L 440 228" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 3. products.id (1) ───< (N) order_transactions.product_id -->
+  <path d="M 780 270 L 870 270" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="790" y="262" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="852" y="262" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <!-- Crow's foot at order_transactions -->
+  <path d="M 870 262 L 858 270 L 870 278" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 4. seller_wallets.id (1) ───< (N) withdrawals.id -->
+  <path d="M 368 680 L 440 680" fill="none" stroke="#111111" stroke-width="2" />
+  <text x="376" y="672" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">1</text>
+  <text x="422" y="672" fill="#111111" font-family="ui-monospace, monospace" font-size="11" font-weight="800">N</text>
+  <!-- Crow's foot at withdrawals -->
+  <path d="M 440 672 L 428 680 L 440 688" fill="none" stroke="#111111" stroke-width="2" />
+
+  <!-- 5. sellers.username (1) ───< (N) order_transactions.seller_username -->
+  <path d="M 280 480 L 280 508 L 810 508 L 810 430 L 870 430" fill="none" stroke="#111111" stroke-width="1.6" stroke-dasharray="5,4" />
+  <text x="290" y="502" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="800">1</text>
+  <text x="852" y="422" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="800">N (Seller Ref)</text>
+  <path d="M 870 424 L 860 430 L 870 436" fill="none" stroke="#111111" stroke-width="1.6" />
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 1: SELLERS                                                          -->
+  <!-- ========================================================================= -->
+  <g transform="translate(48, 114)">
+    <rect width="320" height="366" rx="5" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect width="320" height="32" rx="4" fill="#111111" />
+    <text x="12" y="22" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800">sellers</text>
+    <text x="308" y="21" text-anchor="end" fill="#D4D4D8" font-family="ui-monospace, monospace" font-size="10.5">Creator Identity</text>
+
+    <!-- Column Headers -->
+    <rect y="32" width="320" height="22" fill="#F4F4F5" stroke="#E4E4E7" stroke-width="1" />
+    <text x="12" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">ATTR</text>
+    <text x="64" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">COLUMN</text>
+    <text x="210" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">TYPE</text>
+
+    <!-- Field Rows -->
+    <text x="12" y="76" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">PK</text>
+    <text x="64" y="76" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">id</text>
+    <text x="210" y="76" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">BIGINT AUTO_INC</text>
+
+    <line x1="8" y1="88" x2="312" y2="88" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="106" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">UQ</text>
+    <text x="64" y="106" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">username</text>
+    <text x="210" y="106" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(100)</text>
+
+    <line x1="8" y1="118" x2="312" y2="118" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="136" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">UQ</text>
+    <text x="64" y="136" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">email</text>
+    <text x="210" y="136" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(150)</text>
+
+    <line x1="8" y1="148" x2="312" y2="148" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="166" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">password</text>
+    <text x="210" y="166" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(255) BCrypt</text>
+
+    <line x1="8" y1="178" x2="312" y2="178" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="196" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">full_name</text>
+    <text x="210" y="196" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(150)</text>
+
+    <line x1="8" y1="208" x2="312" y2="208" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="226" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">bio</text>
+    <text x="210" y="226" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(500)</text>
+
+    <line x1="8" y1="238" x2="312" y2="238" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="256" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">avatar_url</text>
+    <text x="210" y="256" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(500)</text>
+
+    <line x1="8" y1="268" x2="312" y2="268" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="286" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">auth_token</text>
+    <text x="210" y="286" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(255)</text>
+
+    <line x1="8" y1="298" x2="312" y2="298" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="316" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">token_expiry</text>
+    <text x="210" y="316" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DATETIME (30d)</text>
+
+    <line x1="8" y1="328" x2="312" y2="328" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="348" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">created_at</text>
+    <text x="210" y="348" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DATETIME</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 2: SELLER_WALLETS (1:1 WITH SELLERS)                                -->
+  <!-- ========================================================================= -->
+  <g transform="translate(48, 540)">
+    <rect width="320" height="260" rx="5" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect width="320" height="32" rx="4" fill="#111111" />
+    <text x="12" y="22" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800">seller_wallets</text>
+    <text x="308" y="21" text-anchor="end" fill="#D4D4D8" font-family="ui-monospace, monospace" font-size="10.5">1:1 Balance Ledger</text>
+
+    <!-- Column Headers -->
+    <rect y="32" width="320" height="22" fill="#F4F4F5" stroke="#E4E4E7" stroke-width="1" />
+    <text x="12" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">ATTR</text>
+    <text x="64" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">COLUMN</text>
+    <text x="210" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">TYPE</text>
+
+    <!-- Field Rows -->
+    <text x="12" y="78" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">PK/FK</text>
+    <text x="64" y="78" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">id</text>
+    <text x="210" y="78" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">BIGINT (sellers.id)</text>
+
+    <line x1="8" y1="92" x2="312" y2="92" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="116" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">available_balance</text>
+    <text x="210" y="116" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">DECIMAL(15,2)</text>
+
+    <line x1="8" y1="132" x2="312" y2="132" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="156" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">total_revenue</text>
+    <text x="210" y="156" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DECIMAL(15,2)</text>
+
+    <line x1="8" y1="172" x2="312" y2="172" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="196" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">total_withdrawn</text>
+    <text x="210" y="196" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DECIMAL(15,2)</text>
+
+    <line x1="8" y1="212" x2="312" y2="212" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="238" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">updated_at</text>
+    <text x="210" y="238" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DATETIME</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 3: PRODUCTS (CATALOG & ASSET FILE URL)                              -->
+  <!-- ========================================================================= -->
+  <g transform="translate(440, 114)">
+    <rect width="360" height="366" rx="5" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect width="360" height="32" rx="4" fill="#111111" />
+    <text x="12" y="22" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800">products</text>
+    <text x="348" y="21" text-anchor="end" fill="#D4D4D8" font-family="ui-monospace, monospace" font-size="10.5">Digital Products Catalog</text>
+
+    <!-- Column Headers -->
+    <rect y="32" width="360" height="22" fill="#F4F4F5" stroke="#E4E4E7" stroke-width="1" />
+    <text x="12" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">ATTR</text>
+    <text x="64" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">COLUMN</text>
+    <text x="230" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">TYPE</text>
+
+    <!-- Field Rows -->
+    <text x="12" y="74" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">PK</text>
+    <text x="64" y="74" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">id</text>
+    <text x="230" y="74" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">BIGINT AUTO_INC</text>
+
+    <line x1="8" y1="84" x2="352" y2="84" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="100" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">FK</text>
+    <text x="64" y="100" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">seller_username</text>
+    <text x="230" y="100" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(100)</text>
+
+    <line x1="8" y1="110" x2="352" y2="110" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="126" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">title</text>
+    <text x="230" y="126" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(255)</text>
+
+    <line x1="8" y1="136" x2="352" y2="136" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="152" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">description</text>
+    <text x="230" y="152" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(2000)</text>
+
+    <line x1="8" y1="162" x2="352" y2="162" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="178" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">price, original_price</text>
+    <text x="230" y="178" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DECIMAL(15,2)</text>
+
+    <line x1="8" y1="188" x2="352" y2="188" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="204" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">image_url</text>
+    <text x="230" y="204" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(500)</text>
+
+    <line x1="8" y1="214" x2="352" y2="214" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="230" fill="#111111" font-family="ui-monospace, monospace" font-size="9" font-weight="800">HIDE</text>
+    <text x="64" y="230" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">file_url</text>
+    <text x="230" y="230" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(500) @Ignore</text>
+
+    <line x1="8" y1="240" x2="352" y2="240" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="256" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">category, badge</text>
+    <text x="230" y="256" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(50)</text>
+
+    <line x1="8" y1="266" x2="352" y2="266" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="282" fill="#111111" font-family="ui-monospace, monospace" font-size="9" font-weight="800">LOCK</text>
+    <text x="64" y="282" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">stock</text>
+    <text x="230" y="282" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">INT (Pessimistic)</text>
+
+    <line x1="8" y1="292" x2="352" y2="292" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="308" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">unlimited_stock</text>
+    <text x="230" y="308" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">BOOLEAN</text>
+
+    <line x1="8" y1="318" x2="352" y2="318" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="334" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">sold_count</text>
+    <text x="230" y="334" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">INT DEFAULT 0</text>
+
+    <line x1="8" y1="344" x2="352" y2="344" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="358" fill="#111111" font-family="ui-monospace, monospace" font-size="11">created_at</text>
+    <text x="230" y="358" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DATETIME</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 4: WITHDRAWALS                                                      -->
+  <!-- ========================================================================= -->
+  <g transform="translate(440, 540)">
+    <rect width="360" height="260" rx="5" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect width="360" height="32" rx="4" fill="#111111" />
+    <text x="12" y="22" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800">withdrawals</text>
+    <text x="348" y="21" text-anchor="end" fill="#D4D4D8" font-family="ui-monospace, monospace" font-size="10.5">Seller Bank Payouts</text>
+
+    <!-- Column Headers -->
+    <rect y="32" width="360" height="22" fill="#F4F4F5" stroke="#E4E4E7" stroke-width="1" />
+    <text x="12" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">ATTR</text>
+    <text x="64" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">COLUMN</text>
+    <text x="220" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">TYPE</text>
+
+    <!-- Field Rows -->
+    <text x="12" y="74" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">PK</text>
+    <text x="64" y="74" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">id</text>
+    <text x="220" y="74" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">BIGINT AUTO_INC</text>
+
+    <line x1="8" y1="84" x2="352" y2="84" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="102" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">UQ</text>
+    <text x="64" y="102" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">withdrawal_code</text>
+    <text x="220" y="102" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(100) (WD-..)</text>
+
+    <line x1="8" y1="114" x2="352" y2="114" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="132" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">amount</text>
+    <text x="220" y="132" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">DECIMAL(15,2)</text>
+
+    <line x1="8" y1="144" x2="352" y2="144" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="162" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">bank_name</text>
+    <text x="220" y="162" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(100)</text>
+
+    <line x1="8" y1="174" x2="352" y2="174" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="192" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">account_num / holder</text>
+    <text x="220" y="192" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(100 / 150)</text>
+
+    <line x1="8" y1="204" x2="352" y2="204" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="222" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">status</text>
+    <text x="220" y="222" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">PENDING / PROCESSED</text>
+
+    <line x1="8" y1="234" x2="352" y2="234" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="250" fill="#111111" font-family="ui-monospace, monospace" font-size="11">requested / processed</text>
+    <text x="220" y="250" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DATETIME</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TABLE 5: ORDER_TRANSACTIONS (MIDTRANS & EXPIRING DOWNLOAD TOKEN)          -->
+  <!-- ========================================================================= -->
+  <g transform="translate(870, 114)">
+    <rect width="420" height="686" rx="5" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+    <rect width="420" height="32" rx="4" fill="#111111" />
+    <text x="12" y="22" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="13" font-weight="800">order_transactions</text>
+    <text x="408" y="21" text-anchor="end" fill="#D4D4D8" font-family="ui-monospace, monospace" font-size="10.5">Orders &amp; Payment Gateway</text>
+
+    <!-- Column Headers -->
+    <rect y="32" width="420" height="22" fill="#F4F4F5" stroke="#E4E4E7" stroke-width="1" />
+    <text x="12" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">ATTR</text>
+    <text x="64" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">COLUMN</text>
+    <text x="260" y="47" fill="#52525B" font-family="ui-monospace, monospace" font-size="10" font-weight="700">TYPE / CONSTRAINT</text>
+
+    <!-- Field Rows -->
+    <text x="12" y="74" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">PK</text>
+    <text x="64" y="74" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">id</text>
+    <text x="260" y="74" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">BIGINT AUTO_INCREMENT</text>
+
+    <line x1="8" y1="88" x2="412" y2="88" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="106" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">UQ</text>
+    <text x="64" y="106" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">order_id</text>
+    <text x="260" y="106" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(100) (DIGI-..)</text>
+
+    <line x1="8" y1="120" x2="412" y2="120" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="138" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">FK</text>
+    <text x="64" y="138" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">product_id</text>
+    <text x="260" y="138" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">BIGINT (products.id)</text>
+
+    <line x1="8" y1="152" x2="412" y2="152" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="170" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">product_title</text>
+    <text x="260" y="170" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(255)</text>
+
+    <line x1="8" y1="184" x2="412" y2="184" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="202" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="800">FK</text>
+    <text x="64" y="202" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">seller_username</text>
+    <text x="260" y="202" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(100)</text>
+
+    <line x1="8" y1="216" x2="412" y2="216" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="234" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">customer_name</text>
+    <text x="260" y="234" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(150)</text>
+
+    <line x1="8" y1="248" x2="412" y2="248" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="266" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">customer_email</text>
+    <text x="260" y="266" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(150)</text>
+
+    <line x1="8" y1="280" x2="412" y2="280" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="298" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">customer_phone</text>
+    <text x="260" y="298" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(50)</text>
+
+    <line x1="8" y1="312" x2="412" y2="312" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="330" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">amount</text>
+    <text x="260" y="330" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">DECIMAL(15,2)</text>
+
+    <line x1="8" y1="344" x2="412" y2="344" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="362" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">status</text>
+    <text x="260" y="362" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(50) (ENUM)</text>
+
+    <line x1="8" y1="376" x2="412" y2="376" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="394" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">snap_token</text>
+    <text x="260" y="394" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(255)</text>
+
+    <line x1="8" y1="408" x2="412" y2="408" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="426" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">snap_redirect_url</text>
+    <text x="260" y="426" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(500)</text>
+
+    <line x1="8" y1="440" x2="412" y2="440" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="458" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">payment_type</text>
+    <text x="260" y="458" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">VARCHAR(50) (qris/va)</text>
+
+    <line x1="8" y1="472" x2="412" y2="472" stroke="#F4F4F5" stroke-width="1" />
+    <text x="12" y="490" fill="#111111" font-family="ui-monospace, monospace" font-size="9" font-weight="800">UUID</text>
+    <text x="64" y="490" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">download_token</text>
+    <text x="260" y="490" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="11">VARCHAR(255) (24h valid)</text>
+
+    <line x1="8" y1="504" x2="412" y2="504" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="522" fill="#111111" font-family="ui-monospace, monospace" font-size="11.5">download_expiry</text>
+    <text x="260" y="522" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DATETIME (= paid + 24h)</text>
+
+    <line x1="8" y1="536" x2="412" y2="536" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="554" fill="#111111" font-family="ui-monospace, monospace" font-size="11">created_at</text>
+    <text x="260" y="554" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DATETIME</text>
+
+    <line x1="8" y1="568" x2="412" y2="568" stroke="#F4F4F5" stroke-width="1" />
+    <text x="64" y="586" fill="#111111" font-family="ui-monospace, monospace" font-size="11">paid_at</text>
+    <text x="260" y="586" fill="#71717A" font-family="ui-monospace, monospace" font-size="11">DATETIME</text>
+
+    <!-- Status Enum Legend Inside Table -->
+    <rect x="12" y="610" width="396" height="62" rx="4" fill="#F4F4F5" stroke="#E4E4E7" stroke-width="1" />
+    <text x="24" y="628" fill="#111111" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Order &amp; Payment Status Enums:</text>
+    <text x="24" y="646" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="10">• PENDING  → Order created, waiting for Snap payment</text>
+    <text x="24" y="662" fill="#3F3F46" font-family="ui-monospace, monospace" font-size="10">• PAID     → Settlement verified, token active for 24h</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT SIDEBAR / TECHNICAL CONSTRAINTS & ACID HIGHLIGHTS                   -->
+  <!-- ========================================================================= -->
+  <g transform="translate(1316, 114)">
+    <rect width="256" height="686" rx="5" fill="#FAFAFA" stroke="#111111" stroke-width="1.8" />
+    <rect width="256" height="32" rx="4" fill="#111111" />
+    <text x="12" y="22" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="12" font-weight="800">ARCHITECTURE CONSTRAINTS</text>
+
+    <rect x="12" y="44" width="232" height="124" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="1.2" />
+    <text x="22" y="64" fill="#111111" font-family="system-ui, sans-serif" font-size="12" font-weight="800">Pessimistic Locking</text>
+    <line x1="22" y1="72" x2="234" y2="72" stroke="#E4E4E7" stroke-width="1" />
+    <text x="22" y="90" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Query uses SELECT ...</text>
+    <text x="22" y="106" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">  FOR UPDATE on products</text>
+    <text x="22" y="124" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Guarantees zero oversell</text>
+    <text x="22" y="142" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Concurrency safe stock</text>
+
+    <rect x="12" y="180" width="232" height="142" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="1.2" />
+    <text x="22" y="200" fill="#111111" font-family="system-ui, sans-serif" font-size="12" font-weight="800">File Concealment</text>
+    <line x1="22" y1="208" x2="234" y2="208" stroke="#E4E4E7" stroke-width="1" />
+    <text x="22" y="226" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• products.file_url tagged</text>
+    <text x="22" y="242" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">  with @JsonIgnore</text>
+    <text x="22" y="260" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Never exposed in public</text>
+    <text x="22" y="278" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">  JSON catalog DTOs</text>
+    <text x="22" y="296" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Access only via /access</text>
+
+    <rect x="12" y="334" width="232" height="136" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="1.2" />
+    <text x="22" y="354" fill="#111111" font-family="system-ui, sans-serif" font-size="12" font-weight="800">24-Hour Expiring Access</text>
+    <line x1="22" y1="362" x2="234" y2="362" stroke="#E4E4E7" stroke-width="1" />
+    <text x="22" y="380" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• download_token (UUID)</text>
+    <text x="22" y="396" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Expiry: NOW() &gt; expiry</text>
+    <text x="22" y="414" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Blocks link leeching</text>
+    <text x="22" y="432" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Re-download requires auth</text>
+
+    <rect x="12" y="482" width="232" height="186" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="1.2" />
+    <text x="22" y="502" fill="#111111" font-family="system-ui, sans-serif" font-size="12" font-weight="800">SHA-512 &amp; Idempotency</text>
+    <line x1="22" y1="510" x2="234" y2="510" stroke="#E4E4E7" stroke-width="1" />
+    <text x="22" y="528" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Webhook verification:</text>
+    <text x="22" y="544" fill="#111111" font-family="ui-monospace, monospace" font-size="9.5">  SHA512(order_id +</text>
+    <text x="22" y="558" fill="#111111" font-family="ui-monospace, monospace" font-size="9.5">  status + gross_amount</text>
+    <text x="22" y="572" fill="#111111" font-family="ui-monospace, monospace" font-size="9.5">  + ServerKey)</text>
+    <text x="22" y="594" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Prevents double-credit</text>
+    <text x="22" y="612" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Retries are safe &amp; no-op</text>
+    <text x="22" y="630" fill="#27272A" font-family="system-ui, sans-serif" font-size="10.5">• Immutable audit trail</text>
+  </g>
+
+</svg>
+
